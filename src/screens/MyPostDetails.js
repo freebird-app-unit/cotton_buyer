@@ -465,7 +465,7 @@ class MyPostDetails extends Component {
                       marginRight: '5%',
                       height: 40,
                     }}>
-                    <Text
+                    {this.props.route.params.status != "active" ? <Text
                       numberOfLines={1}
                       ellipsizeMode="tail"
                       style={{
@@ -474,9 +474,10 @@ class MyPostDetails extends Component {
                         fontSize: 12,
                         opacity: 0.5,
                         textAlignVertical: 'center',
+                        fontFamily:'Poppins-Medium'
                       }}>
                       {this.props.route.params.status == "completed" ? 'Update at' : 'Cancel at'}
-                    </Text>
+                    </Text>: null} 
 
                     {this.props.route.params.status == "completed" ? (<Text numberOfLines={1} 
                           ellipsizeMode='tail' 

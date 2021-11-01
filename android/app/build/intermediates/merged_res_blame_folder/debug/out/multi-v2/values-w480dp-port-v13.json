@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\vasim-socket\\01112021\\buyer_app\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
+            "outputFile": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\c4f164e6311e6235632873f3c928d514\\material-1.1.0\\res\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",

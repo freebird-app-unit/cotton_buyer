@@ -9,29 +9,29 @@
 9        android:targetSdkVersion="29" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->D:\vasim-socket\01112021\buyer_app\android\app\src\debug\AndroidManifest.xml:5:5-77
-11-->D:\vasim-socket\01112021\buyer_app\android\app\src\debug\AndroidManifest.xml:5:22-75
+11-->D:\Github_Projects\cotton_buyer\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->D:\Github_Projects\cotton_buyer\android\app\src\debug\AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.INTERNET" />
-12-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:4:5-67
-12-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:4:22-64
+12-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:4:5-67
+12-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:4:22-64
 13    <uses-permission android:name="android.permission.CAMERA" />
-13-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:5:5-7:7
-13-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:6:7-47
+13-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:5:5-7:7
+13-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:6:7-47
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:8:5-10:7
-14-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:9:7-63
+14-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:8:5-10:7
+14-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:9:7-63
 15    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 15-->[com.facebook.flipper:flipper:0.75.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ce1147b3e4e04fe87f556bced63a10fa\jetified-flipper-0.75.1\AndroidManifest.xml:16:5-76
 15-->[com.facebook.flipper:flipper:0.75.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ce1147b3e4e04fe87f556bced63a10fa\jetified-flipper-0.75.1\AndroidManifest.xml:16:22-73
 16    <uses-permission android:name="android.permission.WAKE_LOCK" />
-16-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-68
-16-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-65
+16-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-68
+16-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-65
 17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Required to access Google Play Licensing -->
-17-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-79
-17-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:22-76
+17-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:5-79
+17-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:22-76
 18    <uses-permission android:name="com.android.vending.CHECK_LICENSE" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-18-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-73
-18-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-70
+18-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-73
+18-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-70
 19    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 19-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:25:5-82
 19-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:25:22-79
@@ -49,139 +49,139 @@
 23-->[app.notifee:core:202108261754] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ea13b007494d64649348ca83b9c3bcbd\jetified-core-202108261754\AndroidManifest.xml:15:22-78
 24
 25    <application
-25-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:12:5-35:19
+25-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:12:5-35:19
 26        android:name="com.cottonbid.MainApplication"
-26-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:13:7-38
+26-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:13:7-38
 27        android:allowBackup="false"
-27-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:16:7-34
+27-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:16:7-34
 28        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 28-->[androidx.core:core:1.3.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\47641c1038212c127f26e98ebaa64661\core-1.3.1\AndroidManifest.xml:24:18-86
 29        android:debuggable="true"
 30        android:icon="@mipmap/ic_launcher"
-30-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:15:7-41
+30-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:15:7-41
 31        android:label="@string/app_name"
-31-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:14:7-39
+31-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:14:7-39
 32        android:theme="@style/AppTheme"
-32-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:17:7-38
+32-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:17:7-38
 33        android:usesCleartextTraffic="true" >
-33-->D:\vasim-socket\01112021\buyer_app\android\app\src\debug\AndroidManifest.xml:8:9-44
+33-->D:\Github_Projects\cotton_buyer\android\app\src\debug\AndroidManifest.xml:8:9-44
 34        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
-34-->D:\vasim-socket\01112021\buyer_app\android\app\src\debug\AndroidManifest.xml:11:9-86
-34-->D:\vasim-socket\01112021\buyer_app\android\app\src\debug\AndroidManifest.xml:11:19-83
+34-->D:\Github_Projects\cotton_buyer\android\app\src\debug\AndroidManifest.xml:11:9-86
+34-->D:\Github_Projects\cotton_buyer\android\app\src\debug\AndroidManifest.xml:11:19-83
 35        <activity
-35-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:18:7-28:18
+35-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:18:7-28:18
 36            android:name="com.cottonbid.MainActivity"
-36-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:19:9-37
+36-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:19:9-37
 37            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-37-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:21:9-86
+37-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:21:9-86
 38            android:label="@string/app_name"
-38-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:20:9-41
+38-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:20:9-41
 39            android:launchMode="singleTask"
-39-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:22:9-40
+39-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:22:9-40
 40            android:windowSoftInputMode="adjustResize" >
-40-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:23:9-51
+40-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:23:9-51
 41            <intent-filter>
-41-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:24:9-27:25
+41-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:24:9-27:25
 42                <action android:name="android.intent.action.MAIN" />
-42-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:25:13-65
-42-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:25:21-62
+42-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:25:13-65
+42-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:25:21-62
 43
 44                <category android:name="android.intent.category.LAUNCHER" />
-44-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:26:13-73
-44-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:26:23-70
+44-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:26:13-73
+44-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:26:23-70
 45            </intent-filter>
 46        </activity>
 47
 48        <meta-data
-48-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:29:9-31:54
+48-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:29:9-31:54
 49            android:name="com.google.firebase.messaging.default_notification_icon"
-49-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:30:13-83
+49-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:30:13-83
 50            android:resource="@mipmap/ic_launcher" />
-50-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:31:13-51
+50-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:31:13-51
 51        <meta-data
-51-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:32:9-34:47
+51-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:32:9-34:47
 52            android:name="com.google.firebase.messaging.default_notification_color"
-52-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:33:13-84
+52-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:33:13-84
 53            android:resource="@color/white" />
-53-->D:\vasim-socket\01112021\buyer_app\android\app\src\main\AndroidManifest.xml:34:13-44
+53-->D:\Github_Projects\cotton_buyer\android\app\src\main\AndroidManifest.xml:34:13-44
 54
 55        <provider
-55-->[:notifee_react-native] D:\vasim-socket\01112021\buyer_app\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-16:40
+55-->[:notifee_react-native] D:\Github_Projects\cotton_buyer\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-16:40
 56            android:name="io.invertase.notifee.NotifeeInitProvider"
-56-->[:notifee_react-native] D:\vasim-socket\01112021\buyer_app\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-68
+56-->[:notifee_react-native] D:\Github_Projects\cotton_buyer\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-68
 57            android:authorities="com.cottonbid.notifee-init-provider"
-57-->[:notifee_react-native] D:\vasim-socket\01112021\buyer_app\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-73
+57-->[:notifee_react-native] D:\Github_Projects\cotton_buyer\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-73
 58            android:exported="false"
-58-->[:notifee_react-native] D:\vasim-socket\01112021\buyer_app\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+58-->[:notifee_react-native] D:\Github_Projects\cotton_buyer\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
 59            android:initOrder="-100" />
-59-->[:notifee_react-native] D:\vasim-socket\01112021\buyer_app\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-37
+59-->[:notifee_react-native] D:\Github_Projects\cotton_buyer\node_modules\@notifee\react-native\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-37
 60
 61        <service android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingHeadlessService" />
-61-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-111
-61-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:18-108
+61-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-111
+61-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:18-108
 62        <service
-62-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-23:19
+62-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:9-23:19
 63            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingService"
-63-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-95
+63-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:13-95
 64            android:exported="false" >
-64-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-37
+64-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:13-37
 65            <intent-filter>
-65-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-22:29
+65-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-22:29
 66                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-66-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:17-78
-66-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:25-75
+66-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:17-78
+66-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:25-75
 67            </intent-filter>
 68        </service>
 69
 70        <receiver
-70-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:9-32:20
+70-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:9-32:20
 71            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingReceiver"
-71-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-96
+71-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-96
 72            android:exported="true"
-72-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-36
+72-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-36
 73            android:permission="com.google.android.c2dm.permission.SEND" >
-73-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-73
+73-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-73
 74            <intent-filter>
-74-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
+74-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
 75                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-75-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:17-81
-75-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:25-78
+75-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:17-81
+75-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:25-78
 76            </intent-filter>
 77        </receiver>
 78
 79        <meta-data
-79-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:9-36:36
+79-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:9-36:36
 80            android:name="firebase_messaging_auto_init_enabled"
-80-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:13-64
+80-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:13-64
 81            android:value="true" />
-81-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:13-33
+81-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:13-33
 82        <meta-data
-82-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:9-39:32
+82-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:9-39:32
 83            android:name="com.google.firebase.messaging.default_notification_channel_id"
-83-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-89
+83-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-89
 84            android:value="" />
-84-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:13-29
+84-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:13-29
 85        <meta-data
-85-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-14:36
+85-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-14:36
 86            android:name="app_data_collection_default_enabled"
-86-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
+86-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
 87            android:value="true" />
-87-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-33
+87-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-33
 88
 89        <service
-89-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-20:19
+89-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:9-20:19
 90            android:name="com.google.firebase.components.ComponentDiscoveryService"
-90-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:18-89
+90-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:18-89
 91            android:directBootAware="true"
 91-->[com.google.firebase:firebase-common:20.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\cf44503f512bd01edbb9a42565c54f02\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
 92            android:exported="false" >
 92-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:51:13-37
 93            <meta-data
-93-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:85
+93-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:85
 94                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
-94-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-120
+94-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-120
 95                android:value="com.google.firebase.components.ComponentRegistrar" />
-95-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-82
+95-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-82
 96            <meta-data
 96-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
 97                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
@@ -203,48 +203,48 @@
 105        </service>
 106
 107        <provider
-107-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-26:38
+107-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:22:9-26:38
 108            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
-108-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-88
+108-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:23:13-88
 109            android:authorities="com.cottonbid.reactnativefirebaseappinitprovider"
-109-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-86
+109-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:13-86
 110            android:exported="false"
-110-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-37
+110-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-37
 111            android:initOrder="99" />
-111-->[:react-native-firebase_app] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-35
+111-->[:react-native-firebase_app] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\app\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-35
 112        <provider
-112-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
+112-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
 113            android:name="com.imagepicker.ImagePickerProvider"
-113-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
+113-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-63
 114            android:authorities="com.cottonbid.imagepickerprovider"
-114-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-71
+114-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-71
 115            android:exported="false"
-115-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+115-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
 116            android:grantUriPermissions="true" >
-116-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+116-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
 117            <meta-data
-117-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:70
+117-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:70
 118                android:name="android.support.FILE_PROVIDER_PATHS"
-118-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67
+118-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67
 119                android:resource="@xml/imagepicker_provider_paths" />
-119-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-67
+119-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-67
 120        </provider>
 121        <provider
-121-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:9-44:20
+121-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:9-44:20
 122            android:name="com.RNFetchBlob.Utils.FileProvider"
-122-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:13-62
+122-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:13-62
 123            android:authorities="com.cottonbid.provider"
-123-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-60
+123-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-60
 124            android:exported="false"
-124-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:13-37
+124-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:13-37
 125            android:grantUriPermissions="true" >
-125-->[:rn-fetch-blob] D:\vasim-socket\01112021\buyer_app\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:40:13-47
+125-->[:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:40:13-47
 126            <meta-data
-126-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:70
+126-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:17:13-19:70
 127                android:name="android.support.FILE_PROVIDER_PATHS"
-127-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67
+127-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:18:17-67
 128                android:resource="@xml/provider_paths" />
-128-->[:react-native-image-picker] D:\vasim-socket\01112021\buyer_app\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-67
+128-->[:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:19:17-67
 129        </provider>
 130
 131        <receiver
@@ -256,10 +256,10 @@
 134            android:permission="com.google.android.c2dm.permission.SEND" >
 134-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
 135            <intent-filter>
-135-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
+135-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
 136                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-136-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:17-81
-136-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:25-78
+136-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:17-81
+136-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:25-78
 137            </intent-filter>
 138        </receiver>
 139        <!--
@@ -275,10 +275,10 @@
 146            android:exported="false" >
 146-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
 147            <intent-filter android:priority="-500" >
-147-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-22:29
+147-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:20:13-22:29
 148                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-148-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:17-78
-148-->[:react-native-firebase_messaging] D:\vasim-socket\01112021\buyer_app\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:25-75
+148-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:17-78
+148-->[:react-native-firebase_messaging] D:\Github_Projects\cotton_buyer\node_modules\@react-native-firebase\messaging\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:25-75
 149            </intent-filter>
 150        </service>
 151        <service

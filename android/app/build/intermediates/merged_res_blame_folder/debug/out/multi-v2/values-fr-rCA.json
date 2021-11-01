@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\vasim-socket\\01112021\\buyer_app\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
+            "outputFile": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr-rCA\\values-fr-rCA.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\659420486e587c7496744d9234de768f\\jetified-firebase-messaging-22.0.0\\res\\values-fr-rCA\\values.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\vasim-socket\\01112021\\buyer_app\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu\\values-eu.xml",
+            "outputFile": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-eu\\values-eu.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\a4af859e11852ee18dca6d122327c0ac\\jetified-play-services-basement-17.6.0\\res\\values-eu\\values.xml",

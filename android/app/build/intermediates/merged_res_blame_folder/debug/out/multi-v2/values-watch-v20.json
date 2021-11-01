@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\vasim-socket\\01112021\\buyer_app\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\hp\\.gradle\\caches\\transforms-2\\files-2.1\\e592dcb5d78b81f339f88c9c32d0e5e6\\jetified-play-services-auth-19.2.0\\res\\values-watch-v20\\values.xml",

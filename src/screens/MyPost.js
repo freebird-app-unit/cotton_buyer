@@ -472,7 +472,7 @@ class App extends Component {
                 if (this.state.myActivePost.length > 0) {
                     return this.state.myActivePost.map((el, i) => (
                         <TouchableOpacity
-                            onPress={() => this.onClickMyPostDetails(el, 'completed')}>
+                            onPress={() => this.onClickMyPostDetails(el, el.status)}>
                             <View>
                                 <View
                                     style={{
