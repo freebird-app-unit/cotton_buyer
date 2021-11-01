@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "85357792294",
+    "project_id": "cotton-buyer",
+    "storage_bucket": "cotton-buyer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85357792294:android:9e9aa8f0a5b1614daeeae7",
+        "android_client_info": {
+          "package_name": "com.cottonbid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85357792294-a6qlhckfjllp6c53urmnrgdeffr7nl14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cottonbid",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "85357792294-dthr9qsa3433b6b4gjehjl876r0bf954.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK0Jype8oB6v9hFhk_2ykTfa-YyuVLmic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85357792294-dthr9qsa3433b6b4gjehjl876r0bf954.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
