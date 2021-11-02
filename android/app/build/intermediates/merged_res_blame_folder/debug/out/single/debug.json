@@ -1,11 +1,11 @@
 [
     {
-        "merged": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
-        "source": "D:\\Github_Projects\\cotton_buyer\\android\\app\\src\\main\\res\\drawable-xhdpi\\node_modules_reactnativecalendars_src_calendar_img_next.png"
-    },
-    {
         "merged": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
         "source": "D:\\Github_Projects\\cotton_buyer\\android\\app\\src\\main\\res\\drawable-xhdpi\\node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "D:\\Github_Projects\\cotton_buyer\\android\\app\\src\\main\\res\\drawable-xhdpi\\node_modules_reactnativecalendars_src_calendar_img_next.png"
     },
     {
         "merged": "D:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_node_modules_reactnativedropdownpicker_src_themes_light_icons_arrowdown.png.flat",

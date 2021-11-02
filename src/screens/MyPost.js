@@ -1287,10 +1287,11 @@ class App extends Component {
     };
 
     onClickMyPostDetails = (obj, status) => {
-        console.log('MypostDetails -' + JSON.stringify(obj));
+        console.log('MypostDetails -' + obj.type);
         this.props.navigation.navigate('MyPostDetails', {
             data: obj,
             status: status,
+            type: obj.type
         });
     };
 

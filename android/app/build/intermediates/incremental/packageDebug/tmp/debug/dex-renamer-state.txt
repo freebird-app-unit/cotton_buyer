@@ -1,8 +1,11 @@
-#Mon Nov 01 19:50:27 IST 2021
+#Tue Nov 02 19:06:13 IST 2021
 base.2=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 base.1=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
 base.0=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.21=classes22.dex
 renamed.20=classes21.dex
+path.21=classes_18.dex
+base.21=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_18.dex
 path.20=classes_9.dex
 base.20=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_9.dex
 path.9=classes_14.dex

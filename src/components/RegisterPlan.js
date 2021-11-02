@@ -9,6 +9,8 @@ import Swiper from 'react-native-swiper';
 import { GenericStyles } from '../styles/GenericStyles';
 import colors from '../common/colors';
 import EncryptedStorage from 'react-native-encrypted-storage';
+import { RazorpayApiKey  } from "../Api/Razorpayconfig";
+import RazorpayCheckout from 'react-native-razorpay';
 
 import {
     FullButtonComponent,
@@ -30,6 +32,22 @@ const RegisterPlan = ({ navigation }) => {
     // console.log('props>>', navigation)
 
     const [Plan, setPlan] = useState([])
+    // const 
+
+    // const [options,setOption] = useState({
+    //     name:'',
+    //     image:'',
+    //     description:'',
+    //     amount:'',
+    //     order_id: '',
+    //     key: RazorpayApiKey,
+    //     prefill: {
+    //         email: '',
+    //         contact: '',
+    //         name: '',
+    //     },
+    //     theme: { color: theme.colors.primary },
+    // });
 
 
     const [itemChecked, setItemChecked] = useState(false);
@@ -48,7 +66,7 @@ const RegisterPlan = ({ navigation }) => {
 
     };
     const [spinner, setSpinner] = useState(false)
-    const [IdSelected, setIdSelected] = useState('')
+    const [IdSelected, setIdSelected] = useState({})
 
 
     useEffect(() => {
@@ -104,21 +122,22 @@ const RegisterPlan = ({ navigation }) => {
 
     }, [])
 
-    const  onSubmitButtonPress = async() => {
 
+    const PaymentDone = async (RazorPayId) => {
         console.log('avigay')
         try {
             setSpinner(true)
             let data = {
 
                 "user_id": await EncryptedStorage.getItem('user_id'),
-                 "user_type" : "buyer",
-                  "plan_id" : IdSelected.id
+                "user_type": "buyer",
+                "plan_id": IdSelected.id,
+                'razorpay_payment_id': RazorPayId
             };
 
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
-console.log('data',data);
+            console.log('data', data);
             axios({
                 url: api_config.BASE_URL + api_config.ADD_USER_PLAN,
                 method: 'POST',
@@ -134,7 +153,7 @@ console.log('data',data);
                 console.log('res>>>', response.data)
                 if (response.data.status == 200) {
                     alert(response.data.message)
-        navigation.navigate('HomeScreen')
+                    navigation.navigate('HomeScreen')
 
                 } else {
                     console.log(response.data.message);
@@ -148,6 +167,58 @@ console.log('data',data);
         } catch (error) {
             console.log(Json.stringify(error));
         }
+    }
+
+    const  onSubmitButtonPress = async() => {
+        //  test with upi failure@razorpay
+        //  test with upi success@razorpay
+        if (IdSelected)
+        {
+      try {
+          var today = new Date();
+          var time = today.getHours() + today.getMinutes() + today.getSeconds();
+
+          let user_data = JSON.parse(await EncryptedStorage.getItem('user_data'))
+
+          console.log('IdSelected.price', IdSelected.price)
+       let op = {
+           name: 'Buyer ' + await EncryptedStorage.getItem('user_id'),
+           image: require('../assets/ic_launcher.png'),
+           description: `Payment of ${IdSelected.name} with ${IdSelected.validity} days validity`,
+           key: RazorpayApiKey,
+           currency: 'INR',
+           amount: JSON.stringify(IdSelected.price) + '00',
+           prefill: {
+               email: '',
+               contact: user_data.user_mobile,
+               name: '',
+           },
+           theme: { color: theme.colors.primary }
+       }
+
+    //    setOption(op);
+          console.log('option',op)
+
+          RazorpayCheckout.open(op)
+              .then(res => {
+                  console.log('res',res)
+                  if (res.hasOwnProperty('razorpay_payment_id'))
+                            PaymentDone(res.razorpay_payment_id)
+                            else
+                            alert('please check your network')
+                 
+             })
+              .catch(err => {console.log(JSON.stringify(err))
+                  alert('please check your network') });
+
+      }
+        catch (error) {
+        console.log(JSON.stringify(error));
+    }
+}
+else {
+    alert('Please Select the Plan')
+}
 
     }
 
@@ -274,8 +345,9 @@ console.log('data',data);
                         flex: 1, width: wp(100),
                         flexDirection: 'column', backgroundColor: '#fff', paddingHorizontal: wp(5)
                     }}>
+                        {/*  okay */}
 
-                        <View style={{minHeight:hp(70) }}>
+                        <View style={{height:hp(65) }}>
                             <FlatList
                                 data={Plan}
                                 numColumns={2}
@@ -285,9 +357,9 @@ console.log('data',data);
                         </View>
                         <FullButtonComponent
                             type={'fill'}
-                            text={'Done'}
+                            text={'Buy'}
                             textStyle={styles.submitButtonText}
-                            buttonStyle={GenericStyles.mt24}
+                            // buttonStyle={GenericStyles.mt24}
                             onPress={onSubmitButtonPress}
                             // disabled={submittingOtp}
                         />

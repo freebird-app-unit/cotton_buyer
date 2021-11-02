@@ -33,6 +33,8 @@ import com.imagepicker.ImagePickerPackage;
 import com.faizal.OtpVerify.RNOtpVerifyPackage;
 // react-native-pager-view
 import com.reactnativepagerview.PagerViewPackage;
+// react-native-razorpay
+import com.razorpay.rn.RazorpayPackage;
 // react-native-reanimated
 import com.swmansion.reanimated.ReanimatedPackage;
 // react-native-safe-area-context
@@ -103,6 +105,7 @@ public class PackageList {
       new ImagePickerPackage(),
       new RNOtpVerifyPackage(),
       new PagerViewPackage(),
+      new RazorpayPackage(),
       new ReanimatedPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage(),

@@ -297,7 +297,7 @@ const LoginScreen = ({route, navigation}) => {
       </View>
 
       
-
+<ScrollView>
         <View
           style={{
           backgroundColor: '#fff',
@@ -356,6 +356,7 @@ const LoginScreen = ({route, navigation}) => {
           </TouchableOpacity>
           <View style={{alignItems:'center'}}><Text>Version: {defaultMessages.en.versionNumber}</Text></View>
         </View>
+        </ScrollView>
     </View>
      
   );

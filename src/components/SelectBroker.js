@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { theme } from "../core/theme";
+import colors from '../common/colors';
+
 import Button from "../components/Button";
 import Swiper from "react-native-swiper";
 import axios from "axios";
@@ -22,7 +24,10 @@ import Search from "../assets/Search";
 import Unchecked from "../assets/Unchecked";
 import defaultMessages from "../helpers/defaultMessages";
 import NoRecordsFound_Icon from '../assets/NoRecodsFound';
-
+import {
+  
+  FullButtonComponent,
+} from '../lib';
 import EncryptedStorage from "react-native-encrypted-storage";
 import {
   widthPercentageToDP as wp,
@@ -33,27 +38,29 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 
 const SelectBroker = ({ navigation }) => {
 
+  const [submittingOtp, setSubmittingOtp] = useState(true);
 
   const districtRef = useRef()
   const StationRef = useRef()
   // console.log('props>>', navigation)
   const [loading, setLoading] = useState(false);
 
-  const ListBroker = async () => {
+  const ListBroker = async (station) => {
     console.log("valueState", valueState, valueDistrict, valueStation);
     try {
       setLoading(true);
       let token = await EncryptedStorage.getItem("user_data");
       token = JSON.parse(token);
-      let data = {
+      let data = {}
+      data = {
         country_id: "1",
         state_id: valueState,
         city_id: valueDistrict,
-        station_id: valueStation,
-        buyer_id: await EncryptedStorage.getItem('user_id')
+        station_id: station,
+        buyer_id: await EncryptedStorage.getItem("user_id")
       };
       // console.log("getNegotiationListData");
-      console.log('Negotiation Request Param: ' + JSON.stringify(data));
+      console.log('Negotiation Request Param: ' , data);
       const formData = new FormData();
       formData.append("data", JSON.stringify(data));
 
@@ -65,18 +72,21 @@ const SelectBroker = ({ navigation }) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "multipart/form-data",
-          Authorization: "Bearer " + token.api_token,
+          // Authorization: "Bearer " + token.api_token,
         },
       })
         .then(function (response) {
           setLoading(false);
           console.log('loading',loading)
 
-          console.log("broker list"+ JSON.stringify(response.data.data));
+          console.log("broker list"+ JSON.stringify(response.data));
           if (response.data.status == 200) {
             // setLoading(false);
             setBroker(response.data.data);
+            
+            setSubmittingOtp(response.data.data.length > 0 ? false : true)
           } else {
+            setSubmittingOtp(response.data.data.length > 0 ? false : true)
             setBroker(response.data.data);
             console.log("hi_______>>>", response.data.message);
           }
@@ -152,22 +162,22 @@ const SelectBroker = ({ navigation }) => {
   };
 
   useEffect(() => {
-    ListBroker();
+    // ListBroker();
   }, []);
 
-  const [valueState, setValueState] = useState(1);
+  const [valueState, setValueState] = useState();
   const [StateError, setStateError] = useState(null);
-  const [itemsState, setItemsState] = useState([{label : 'Gujarat' , value : 1}]);
+  const [itemsState, setItemsState] = useState([]);
 
   const [openDistrict, setOpenDistrict] = useState(false);
-  const [valueDistrict, setValueDistrict] = useState(1);
+  const [valueDistrict, setValueDistrict] = useState();
   const [DistrictError, setDistrictError] = useState(null);
-  const [itemsDistrict, setItemsDistrict] = useState([{label : 'Rajkot' , value : 1}]);
+  const [itemsDistrict, setItemsDistrict] = useState([]);
 
   const [openStation, setOpenStation] = useState(false);
-  const [valueStation, setValueStation] = useState(1);
+  const [valueStation, setValueStation] = useState();
   const [StationError, setStationError] = useState(null);
-  const [itemsStation, setItemsStation] = useState([{label : 'Sapar' , value : 1}]);
+  const [itemsStation, setItemsStation] = useState([]);
 
   const [itemChecked, setItemChecked] = useState(false);
   const [selectedBroker, setselectedBroker] = useState([]);
@@ -531,7 +541,7 @@ const SelectBroker = ({ navigation }) => {
             return (
               <View style={styles.dropdown3BtnChildStyle}>
                 <Text style={styles.dropdown3BtnTxt}>
-                  {selectedItem ? selectedItem.label : itemsState[0].label ||  "State"}
+                  {selectedItem ? selectedItem.label : "State"}
                 </Text>
               </View>
             );
@@ -588,7 +598,7 @@ const SelectBroker = ({ navigation }) => {
             return (
               <View style={styles.dropdown3BtnChildStyle}>
                 <Text style={styles.dropdown3BtnTxt}>
-                  {selectedItem ? selectedItem.label : itemsDistrict[0].label ||  "District"}
+                  {selectedItem ? selectedItem.label : "District"}
                 </Text>
               </View>
             );
@@ -637,14 +647,14 @@ const SelectBroker = ({ navigation }) => {
             console.log(selectedItem, index);
             setStationError(null);
             setValueStation(selectedItem.value);
-            ListBroker();
+            ListBroker(selectedItem.value);
           }}
           buttonStyle={styles.dropdown3BtnStyle}
           renderCustomizedButtonChild={(selectedItem, index) => {
             return (
               <View style={styles.dropdown3BtnChildStyle}>
                 <Text style={styles.dropdown3BtnTxt}>
-                  {selectedItem ? selectedItem.label : itemsStation[0].label ||  "Station Name"}
+                  {selectedItem ? selectedItem.label : "Station Name"}
                 </Text>
               </View>
             );
@@ -736,8 +746,15 @@ const SelectBroker = ({ navigation }) => {
           <Text>Sorry, no records available</Text>
         </View> )}
        
-
-        <View
+        <FullButtonComponent
+          type={'fill'}
+          text={'Add'}
+          textStyle={styles.submitButtonText}
+          buttonStyle={{marginBottom:hp(2)}}
+          onPress={AddBroker}
+          disabled={submittingOtp}
+        />
+        {/* <View
           style={{
             flexDirection: "row",
             marginTop: 15,
@@ -745,6 +762,7 @@ const SelectBroker = ({ navigation }) => {
             marginRight: 15,
           }}
         >
+
           <Button
             mode="contained"
             onPress={() => AddBroker()}
@@ -753,7 +771,7 @@ const SelectBroker = ({ navigation }) => {
           >
             Add
           </Button>
-        </View>
+        </View> */}
       </View>
     </View>
   );
@@ -791,6 +809,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: 0,
+  },
+  submitButtonText: {
+    color: colors.WHITE,
+    //backgroundColor:colors.GREEN,
+    fontFamily: 'popins',
+    fontSize: 18,
+    alignItems: 'center',
   },
   dropdown3RowTxt: {
     color: "#000",

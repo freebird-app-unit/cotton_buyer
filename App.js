@@ -76,6 +76,14 @@ const App = (props) => {
         type: remoteMessage.data.type,
         prevScrName: 'Dashboard',
       });
+    } else {
+      RootNavigation.navigate("DealDetails", {
+        data: remoteMessage.data,
+        cameFrom: 'Negotiation',
+        Title: remoteMessage.data.product_name,
+        type: remoteMessage.data.type,
+        prevScrName: 'Dashboard',
+      });
     }
   }
 
