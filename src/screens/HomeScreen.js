@@ -249,8 +249,8 @@ class Dashboard extends Component {
       });
 
       this.getNegotiationListData();
+      this.getNotificationListData();
     });
-    // this.getNegotiationListData()
   }
 
   onClickNotificationView = el => {
