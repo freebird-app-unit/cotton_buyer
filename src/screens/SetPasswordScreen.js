@@ -30,6 +30,8 @@ const SetPasswordScreen = ({ navigation }) => {
   const [mobileNumber, setMobileNumber] = useState('');
   const [password, setPassword] = useState({value: '', error: ''});
   const [confirmPassword, setConfirmPassword] = useState({value: '', error: ''});
+  const [hideNewPass, setHideNewPass] = useState(true);
+  const [hideConfirmPass, setHideConfirmPass] = useState(true);
 
   const sendOTP = () => {
     const passwordError = nameValidator(password.value)
@@ -140,7 +142,11 @@ const SetPasswordScreen = ({ navigation }) => {
         error={!!password.error}
         errorText={password.error}
         autoCapitalize="none"
-        secureTextEntry
+        rightOnpress={() => setHideNewPass(!hideNewPass)}
+        secureTextEntry={hideNewPass ? true : false}
+        pass={true}
+        show={hideNewPass}
+        rightOnpress={() => setHideNewPass(!hideNewPass)}
       />
 
        <TextInput
@@ -151,7 +157,10 @@ const SetPasswordScreen = ({ navigation }) => {
         error={!!confirmPassword.error}
         errorText={confirmPassword.error}
         autoCapitalize="none"
-        secureTextEntry
+        secureTextEntry={hideConfirmPass ? true : false}
+        pass={true}
+        show={hideConfirmPass}
+        rightOnpress={() => setHideConfirmPass(!hideConfirmPass)}
       />
 
       <Button

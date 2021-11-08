@@ -1358,8 +1358,12 @@ class App extends Component {
         this.setState({
             refreshing: true
         })
-        this.getMyActivePost();
-        this.getMyCompletedPost
+        if(this.state.isMyPostActiveClicked) {
+            this.getMyActivePost();
+        } else {
+            this.getMyCompletedPost();
+        }
+       
         // getCallNews(1);
 
     }

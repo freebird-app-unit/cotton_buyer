@@ -36,6 +36,9 @@ const ChangePasswordScreen = ({ navigation }) => {
   const [currentPassword, setCurrentPassword] = useState({value: '', error: ''});
   const [password, setPassword] = useState({value: '', error: ''});
   const [confirmPassword, setConfirmPassword] = useState({value: '', error: ''});
+  const [hideCurrentPass, setHideCurrentPass] = useState(true);
+  const [hideNewPass, setHideNewPass] = useState(true);
+  const [hideConfirmPass, setHideConfirmPass] = useState(true);
 
   const sendOTP = () => {
     const passwordError = nameValidator(password.value)
@@ -170,7 +173,11 @@ const ChangePasswordScreen = ({ navigation }) => {
         error={!!currentPassword.error}
         errorText={currentPassword.error}
         autoCapitalize="none"
-        secureTextEntry
+        rightOnpress={() => setHideCurrentPass(!hideCurrentPass)}
+        secureTextEntry={hideCurrentPass ? true : false}
+        pass={true}
+        show={hideCurrentPass}
+        rightOnpress={() => setHideCurrentPass(!hideCurrentPass)}
       />
 
       <TextInput
@@ -181,7 +188,11 @@ const ChangePasswordScreen = ({ navigation }) => {
         error={!!password.error}
         errorText={password.error}
         autoCapitalize="none"
-        secureTextEntry
+        rightOnpress={() => setHideNewPass(!hideNewPass)}
+        secureTextEntry={hideNewPass ? true : false}
+        pass={true}
+        show={hideNewPass}
+        rightOnpress={() => setHideNewPass(!hideNewPass)}
       />
 
        <TextInput
@@ -192,7 +203,10 @@ const ChangePasswordScreen = ({ navigation }) => {
         error={!!confirmPassword.error}
         errorText={confirmPassword.error}
         autoCapitalize="none"
-        secureTextEntry
+        secureTextEntry={hideConfirmPass ? true : false}
+        pass={true}
+        show={hideConfirmPass}
+        rightOnpress={() => setHideConfirmPass(!hideConfirmPass)}
       />
 
       <Button
