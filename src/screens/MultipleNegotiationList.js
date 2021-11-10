@@ -144,7 +144,8 @@ class MultipleNegotiationList extends Component {
         console.log('findDat + data', find_seller)
 
               let temp = JSON.parse(JSON.stringify(find_seller))
-             
+
+              temp.broker_name = content.data.negotiationMultipleBuyer.broker_name;
               temp.current_price = content.data.negotiationMultipleBuyer.current_price;
               temp.seller_name = content.data.negotiationMultipleBuyer.seller_name;
               temp.negotiation_by = content.data.negotiationMultipleBuyer.negotiation_by;
@@ -165,14 +166,14 @@ class MultipleNegotiationList extends Component {
 
             }else{
               let temp = content.data.negotiationMultipleBuyer ;
+
+             
               temp.prev_no_of_bales = content.data.negotiationMultipleBuyer.prev_bales;
                   temp.current_no_of_bales = content.data.negotiationMultipleBuyer.current_bales;
                   console.log('temp =======>>>>>>',temp)
               self.setState({
                 arrNegotiationList:[temp , ...self.state.arrNegotiationList]
               });
-
-
        
             }
         }

@@ -589,7 +589,8 @@ class Dashboard extends Component {
                 find.best_bales = content.data.negotiationBuyer.best_bales;
 
                 sellerIndex = content.data.negotiationBuyer;
-
+               
+                sellerIndex.broker_name = content.data.negotiationBuyer.broker_name;
                 sellerIndex.prev_price =
                   content.data.negotiationBuyer.prev_price;
                 sellerIndex.current_price =
@@ -610,6 +611,8 @@ class Dashboard extends Component {
                 find.best_bales = content.data.negotiationBuyer.best_bales;
 
                 newSeller = content.data.negotiationBuyer;
+
+                newSeller.broker_name = content.data.negotiationBuyer.broker_name;
 
                 newSeller.prev_price = content.data.negotiationBuyer.prev_price;
                 newSeller.current_price =
@@ -632,6 +635,7 @@ class Dashboard extends Component {
 
               sellerIndex = content.data.negotiationBuyer;
 
+              sellerIndex.broker_name = content.data.negotiationBuyer.broker_name;
               sellerIndex.prev_price = content.data.negotiationBuyer.prev_price;
               sellerIndex.current_price =
                 content.data.negotiationBuyer.new_price;

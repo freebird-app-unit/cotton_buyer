@@ -170,9 +170,21 @@ const App = ({ navigation }) => {
         }
     }
 
-    useEffect(() => {
-        console.log('hi')
-        ListTransaction()
+    // useEffect(() => {
+    //     console.log('hi')
+    //     ListTransaction()
+    // }, [])
+
+    useEffect(async () => {
+
+        const willFocusSubscription = navigation.addListener('focus', () => {
+            ListTransaction();
+        });
+
+        return willFocusSubscription;
+
+
+
     }, [])
 
 
@@ -277,7 +289,7 @@ const App = ({ navigation }) => {
                                 color: theme.colors.text,
                                 fontWeight: 'bold',
                             }}>{availabeBalance}</Text></View>
-                        <TouchableOpacity onPress={() => navigation.navigate('Plan')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('Plan', availabeBalance)}>
                             <View style={{
                                 height: hp(5), paddingHorizontal: wp(2), paddingVertical: hp(1), borderRadius: 5, justifyContent: 'center',
                                 alignItems: 'center', borderWidth: wp(0.3), borderColor: theme.colors.primary
