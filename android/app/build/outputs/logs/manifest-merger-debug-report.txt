@@ -25,6 +25,7 @@ MERGED from [:react-native-screens] D:\Github_Projects\cotton_buyer\node_modules
 MERGED from [:react-native-simple-crypto] D:\Github_Projects\cotton_buyer\node_modules\react-native-simple-crypto\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:react-native-svg] D:\Github_Projects\cotton_buyer\node_modules\react-native-svg\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:react-native-vector-icons] D:\Github_Projects\cotton_buyer\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-11:12
+MERGED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-23:12
 MERGED from [:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-47:12
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\211c4d7460bebcded6694ba81e5368cf\jetified-react-native-0.64.2\AndroidManifest.xml:2:1-13:12
 MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\659420486e587c7496744d9234de768f\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:17:1-58:12
@@ -80,6 +81,7 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users
 MERGED from [com.google.android.gms:play-services-basement:17.6.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\a4af859e11852ee18dca6d122327c0ac\jetified-play-services-basement-17.6.0\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.fragment:fragment:1.2.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\7621a416f8e1e36cfcdf867c10a52d56\fragment-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\3e17a49f65bdaba7b99d798198610624\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.webkit:webkit:1.4.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ef016ad14895fb64f586f6021646445d\webkit-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2e551a15ca8c06ffcef27e1c66837591\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\9ed9fe58b8a5ad9e87c279c74ba1a45d\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\af5679c295209f42d0b9930a9a5f7ad3\loader-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -179,6 +181,8 @@ MERGED from [:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_mo
 MERGED from [:react-native-image-picker] D:\Github_Projects\cotton_buyer\node_modules\react-native-image-picker\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
 MERGED from [:react-native-razorpay] D:\Github_Projects\cotton_buyer\node_modules\react-native-razorpay\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-15:19
 MERGED from [:react-native-razorpay] D:\Github_Projects\cotton_buyer\node_modules\react-native-razorpay\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-15:19
+MERGED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
+MERGED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-21:19
 MERGED from [:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:5-45:19
 MERGED from [:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:5-45:19
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\211c4d7460bebcded6694ba81e5368cf\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
@@ -332,6 +336,8 @@ MERGED from [:react-native-svg] D:\Github_Projects\cotton_buyer\node_modules\rea
 MERGED from [:react-native-svg] D:\Github_Projects\cotton_buyer\node_modules\react-native-svg\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:react-native-vector-icons] D:\Github_Projects\cotton_buyer\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:react-native-vector-icons] D:\Github_Projects\cotton_buyer\node_modules\react-native-vector-icons\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
 MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\211c4d7460bebcded6694ba81e5368cf\jetified-react-native-0.64.2\AndroidManifest.xml:7:5-9:41
@@ -442,6 +448,8 @@ MERGED from [androidx.fragment:fragment:1.2.1] C:\Users\hp\.gradle\caches\transf
 MERGED from [androidx.fragment:fragment:1.2.1] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\7621a416f8e1e36cfcdf867c10a52d56\fragment-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\3e17a49f65bdaba7b99d798198610624\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\3e17a49f65bdaba7b99d798198610624\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ef016ad14895fb64f586f6021646445d\webkit-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.webkit:webkit:1.4.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\ef016ad14895fb64f586f6021646445d\webkit-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2e551a15ca8c06ffcef27e1c66837591\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\2e551a15ca8c06ffcef27e1c66837591\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\9ed9fe58b8a5ad9e87c279c74ba1a45d\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
@@ -680,6 +688,16 @@ MERGED from [com.razorpay:checkout:1.6.15] C:\Users\hp\.gradle\caches\transforms
 		ADDED from [com.razorpay:checkout:1.6.15] C:\Users\hp\.gradle\caches\transforms-2\files-2.1\4fc1ddc9cc320e26bd27b56a11e6ebc0\jetified-checkout-1.6.15\AndroidManifest.xml:21:13-49
 	android:name
 		ADDED from [:react-native-razorpay] D:\Github_Projects\cotton_buyer\node_modules\react-native-razorpay\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-57
+provider#com.reactnativecommunity.webview.RNCWebViewFileProvider
+ADDED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-20:20
+	android:grantUriPermissions
+		ADDED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:16:13-47
+	android:authorities
+		ADDED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:14:13-64
+	android:exported
+		ADDED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [:react-native-webview] D:\Github_Projects\cotton_buyer\node_modules\react-native-webview\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:13:13-83
 uses-permission#com.android.vending.CHECK_LICENSE
 ADDED from [:rn-fetch-blob] D:\Github_Projects\cotton_buyer\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-73
 	android:name

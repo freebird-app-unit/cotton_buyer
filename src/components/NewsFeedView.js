@@ -191,7 +191,7 @@ export default function NewsFeedView({ navigation,Props }) {
                 key={News.length}
                 activeDotColor={theme.colors.primary}
                 scrollEnabled={true}
-                loadMinimalSize={2}
+                // loadMinimalSize={2}
                 removeClippedSubviews
 
                 onIndexChanged={(index) =>

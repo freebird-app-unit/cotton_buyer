@@ -39,6 +39,8 @@ import EditProfile from './components/EditProfile'
 import SelectBroker from './components/SelectBroker'
 import Brokers from './components/Brokers'
 import RegisterPlan from './components/RegisterPlan'
+import MCXScreen from './components/MCXScreen'
+
 
 import { FirstRoute, SecondRoute, ThirdRoute } from './components/CalculatorView'
 
@@ -181,6 +183,19 @@ const home = ({ navigation, route }) => {
             <View
                 style={styles.flex}>
                 <HomeScreen navigation={navigation} route={route} />
+            </View>
+        </View>
+    )
+}
+
+const mcxScreenFunction = ({ navigation, route }) => {
+    // console.log('navigation>', navigation)
+    return (
+        <View style={{ flex: 1, backgroundColor: '#333' }}>
+            <AppHeading title={'MCX'} menu leftPress={() => navigation.navigate('MenuScreen')} />
+            <View
+                style={styles.flex}>
+                <MCXScreen navigation={navigation} route={route} />
             </View>
         </View>
     )
@@ -566,7 +581,9 @@ const App = () => {
                     <Stack.Screen name="Profile" component={ProfileFunction} />
                     <Stack.Screen name="Brokers" component={BrokerFunction} />
                     <Stack.Screen name="RegisterPlan" component={RegisterPlanFunction} />
+                    <Stack.Screen name="McxScreen" component={mcxScreenFunction} />
 
+                    
                     
 
 

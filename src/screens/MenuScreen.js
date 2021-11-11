@@ -138,7 +138,7 @@ const Data = [
         Icon: <Newsfeed_Icon />
     },
     {
-        label: 'HomeScreen',
+        label: 'McxScreen',
         Title: ' MCX',
         Icon: <MCX_Icon />
     },
