@@ -251,7 +251,7 @@ const App = ({ navigation }) => {
                     </View>
                     <View style={{ flexDirection: 'row', marginTop: hp(1), justifyContent: 'space-between', alignItems: 'center' }}>
                         <Text style={styles.time}>09:09 pm</Text>
-                        <Text style={styles.time}>closing balance {availabeBalance}</Text>
+                        {/* <Text style={styles.time}>closing balance {availabeBalance}</Text> */}
                     </View>
                 </View>
                 <View style={{ alignItems: 'flex-end', justifyContent: 'center', width: wp(10) }}>
