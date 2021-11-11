@@ -162,7 +162,7 @@ const Plan = ({ navigation,route }) => {
         //  test with upi failure@razorpay
         //  test with upi success@razorpay
 
-        if (balance >= parseInt(IdSelected.price)) {
+      
 
         if (IdSelected) {
             try {
@@ -212,11 +212,6 @@ const Plan = ({ navigation,route }) => {
         else {
             alert('Please Select the Plan')
         }
-    }
-    else {
-            alert(`You don't have sufficient balance`)
-    }
-
     }
 
     const [submittingOtp, setSubmittingOtp] = useState(true);
