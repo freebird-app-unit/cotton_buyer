@@ -491,7 +491,7 @@ const DealDetailsFunction = ({ navigation, route }) => {
 
 
 const NotificationSelectSellerFunction = ({ navigation, route }) => <View style={{ flex: 1, backgroundColor: '#333' }}>
-    <AppHeading title={'Select Buyer'} leftPress={() => navigation.goBack()} />
+    <AppHeading title={'Select Seller'} leftPress={() => navigation.goBack()} />
     <View
         style={styles.flex}>
         <NotificationSelectSeller navigation={navigation} route={route} />

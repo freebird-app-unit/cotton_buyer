@@ -670,6 +670,7 @@ let d = []
                         label: "No station avilable", value: 0
                     })
                     setItemsStation(d);
+                    setSelectedValueStation({label: d[0].label, value: parseInt(d[0].value)})
                     setLoading(false);
                 }
                 
