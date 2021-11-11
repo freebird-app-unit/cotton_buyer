@@ -33,6 +33,7 @@ import Plus from '../assets/Plus';
 import Bell_Icon from '../assets/Bell';
 import History_Icon from '../assets/History';
 import Newsfeed_Icon from '../assets/NewsFeed';
+import Wallet_Icon from '../assets/Wallet';
 import MCX_Icon from '../assets/MCX';
 import Calculator_Icon from '../assets/Calculator';
 import ChangePassword_Icon from '../assets/ChangePassword';
@@ -150,7 +151,7 @@ const Data = [
     {
         label: 'Wallet',
         Title: 'Wallet',
-        Icon: <Profile_Icon />
+        Icon: <Wallet_Icon />
     },
     {
         label: 'Profile',
