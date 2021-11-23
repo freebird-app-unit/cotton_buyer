@@ -272,7 +272,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    // console.log('response :>>>>>>>>>.buyer', response.data);
+                    console.log('response :>>>>>>>>>.buyer', response.data);
                     if (response.data.status == 200 && response.data.data.length > 0) {
                         let productList = response.data.data;
                         var arrProductList = [];
@@ -280,8 +280,8 @@ function Contract({navigation}) {
                         for (let i = 0; i < productList.length; i++) {
 
                             arrProductList.push({
-                                label: productList[i].buyer_name,
-                                value: productList[i].buyer_id,
+                                label: productList[i].seller_name,
+                                value: productList[i].seller_id,
                             });
                         }
                         let obj = {
