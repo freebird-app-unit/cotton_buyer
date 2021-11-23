@@ -69,6 +69,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import NewsFeedView from '../components/NewsFeedView';
 import Profile from '../components/Profile'
 import Wallet from '../components/Wallet';
+import Wallet_Icon from '../assets/Wallet'
 import CalculatorView from '../components/CalculatorView';
 import io from "socket.io-client";
 import styles from './Styles'
@@ -121,18 +122,21 @@ const Data = [
         Icon: <MyContracts_Icon />
     },
     {
-        label: 'HomeScreen',
+        label: 'ReportScreen',
         Title: 'Reports',
         Icon: <Reports_Icon />
-    },{
-        label: 'HomeScreen',
-        Title: 'Transaction Tracking',
-        Icon: <TransactionTracking_Icon />
-    },{
-        label: 'HomeScreen',
-        Title: 'History',
-        Icon: <History_Icon />
-    },{
+    },
+    // {
+    //     label: 'HomeScreen',
+    //     Title: 'Transaction Tracking',
+    //     Icon: <TransactionTracking_Icon />
+    // },
+    // {
+    //     label: 'HomeScreen',
+    //     Title: 'History',
+    //     Icon: <History_Icon />
+    // },
+    {
         label: 'NewsFeed',
         Title: 'News Feed',
         Icon: <Newsfeed_Icon />
@@ -150,7 +154,7 @@ const Data = [
     {
         label: 'Wallet',
         Title: 'Wallet',
-        Icon: <Profile_Icon />
+        Icon: <Wallet_Icon />
     },
     {
         label: 'Profile',

@@ -2,7 +2,7 @@ export function UpdateProfile_api(id,buyerType, buyerName, password, postalAddre
     let update_param = {
         id,
         // user_type: "buyer",
-        seller_buyer_type: 'buyer',
+        seller_buyer_type: buyerType,
         device_type: "android",
         name: buyerName,
         password: password,
@@ -25,8 +25,10 @@ export function UpdateProfile_api(id,buyerType, buyerName, password, postalAddre
         // pan_no_of_buyer: panNo,
         country_id: "1",
         state_id: stateID,
-        city_id: districtID,
-        station_id: stationID,
+        // city_id: stationID,
+        district_id: districtID,
+        
+        city_id: stationID,
         // bank_name: bankName,
         // account_holder_name: accountHolderName,
         // branch_address: branchAddress,

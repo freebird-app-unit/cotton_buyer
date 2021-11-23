@@ -323,7 +323,10 @@ import LineGreen from '../assets/LineWithCircleGreen';
 const UpdateScreen = ({ navigation, ref, route }) => {
 
     const data = route.params.data;
-    console.log('ref', data)
+    // console.log('ref>>>>>>>>', data)
+
+  
+
 
     const [sellerNameFocus, setSellerNameFocus] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -397,22 +400,28 @@ const UpdateScreen = ({ navigation, ref, route }) => {
     const [valueState, setValueState] = useState(data.state_id);
     const [StateError, setStateError] = useState(null);
     const [itemsState, setItemsState] = useState([{ label: data.state, value: data.state_id}]);
-    const [selectedValueState, setSelectedValueState] = useState(null);
+    const [selectedValueState, setSelectedValueState] = useState([{ label: data.state, value: data.state_id }]);
 
     const [openDistrict, setOpenDistrict] = useState(false);
-    const [valueDistrict, setValueDistrict] = useState(data.city_id);
+    const [valueDistrict, setValueDistrict] = useState(data.district_id);
     const [DistrictError, setDistrictError] = useState(null);
-    const [itemsDistrict, setItemsDistrict] = useState([{ label: data.city, value: data.city_id}]);
-    const [selectedValueCity, setSelectedValueCity] = useState(null);
+    const [itemsDistrict, setItemsDistrict] = useState([{ label: data.district, value: data.district_id}]);
+    const [selectedValueDistrict, setSelectedValueDistrict] = useState([{ label: data.district, value: data.district_id }]);
+
+    const [openCity, setOpenCity] = useState(false);
+    const [valueCity, setValueCity] = useState(data.city_id);
+    const [CityError, setCityError] = useState(null);
+    const [itemsCity, setItemsCity] = useState([{ label: data.city, value: data.city_id }]);
+    const [selectedValueCity, setSelectedValueCity] = useState([{ label: data.city, value: data.city_id }]);
 
     const [openStation, setOpenStation] = useState(false);
     const [valueStation, setValueStation] = useState(data.station_id);
     const [StationError, setStationError] = useState(null);
     const [itemsStation, setItemsStation] = useState([{ label: data.station, value: data.station_id }]);
-    const [selectedValueStation, setSelectedValueStation] = useState(null);
+    const [selectedValueStation, setSelectedValueStation] = useState([{ label: data.station, value: data.station_id }]);
 
     const [openSellerType, setOpenSellerType] = useState(false);
-    const [valueSellerType, setValueSellerType] = useState(null);
+    const [valueSellerType, setValueSellerType] = useState(data.seller_buyer_type);
     const [sellerTypeError, setSellerTypeError] = useState(null);
     const [itemsSellerType, setItemsSellerType] = useState([]);
 
@@ -458,6 +467,11 @@ const UpdateScreen = ({ navigation, ref, route }) => {
     const [stampImageError, setStampImageError] = useState(null);
     let actionSheet = useRef();
     var optionArray = ['Choose image', 'Capture image', 'Cancel'];
+
+
+    const districtRef = useRef(null)
+    const StationRef= useRef(null)
+
 
     useEffect(async () => {
         try {
@@ -572,9 +586,13 @@ let d = []
                     // ]);
                 }
                 setItemsState(d);
-                setSelectedValueState({ label: route.params.data.state, value: parseInt(route.params.data.state_id)})
+                setSelectedValueState([{ label: route.params.data.state, value: parseInt(route.params.data.state_id)}])
                 getDistrictList(parseInt(route.params.data.state_id))
-                //setLoading(false)
+                // console.log('disctrict',districtRef)
+                // setSelectedValueCity({ label: 'Select District', value: '' })
+
+
+                setLoading(false)
             })
             .catch(function (error) {
                 alert(defaultMessages.en.serverNotRespondingMsg);
@@ -582,6 +600,9 @@ let d = []
     };
 
     const getDistrictList = stateID => {
+
+        setItemsDistrict([]);
+
         setLoading(true);
         setStateError(null);
         setValueState(stateID);
@@ -611,35 +632,61 @@ let d = []
                         d.push({
                             label: districtListData[i].name, value: districtListData[i].id
                         })
-                        
                     }
                     setItemsDistrict(d);
-                    setSelectedValueCity({label: route.params.data.city, value: parseInt(route.params.data.city_id)})
-                    getStationName(parseInt(route.params.data.city_id))
+                    valueSellerType != 'Spinner' && getStationName(parseInt(route.params.data.district_id))
+                    
+                    setSelectedValueDistrict([{ label: route.params.data.district, value: parseInt(route.params.data.district_id) }])
+
+                    // StationRef.current.openDropdown()
+
                 } else {
                     let d =[]
                     d.push({
                         label: "No district avilable", value: 0
                     })
+                    let de = []
+                    de.push({
+                        label: "No city avilable", value: 0
+                    })
+
+                    setSelectedValueDistrict(d)
                     setItemsDistrict(d);
+                    valueDistrict
+                    // valueSellerType != 'Spinner' && getStationName(parseInt(route.params.data.district_id))
+                    // getStationName(parseInt(route.params.data.city_id))
+                    districtRef.current.closeDropdown()
+                    setItemsCity(de);
+                    setValueDistrict(0);
+                    setValueCity(0);
+
+
+                    valueSellerType != 'Spinner' &&  StationRef.current.closeDropdown()
+                    // StationRef.current.closeDropdown()
+                    setSelectedValueCity(de)
+
                     setLoading(false);
                 }
             })
             .catch(function (error) {
+                console.log('error',error)
                 alert(defaultMessages.en.serverNotRespondingMsg);
             });
     };
 
     const getStationName = districtID => {
+        let d = []
+        setItemsCity(d);
+
         setLoading(true);
         setValueDistrict(districtID);
-        let data = { city_id: districtID };
+        let data = { district_id: districtID };
 
         const formData = new FormData();
         formData.append('data', JSON.stringify(data));
 
         axios({
-            url: api_config.BASE_URL + api_config.GET_STATIONNAME,
+            url: api_config.BASE_URL + api_config.GET_CITY,
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -648,6 +695,7 @@ let d = []
             data: formData,
         })
             .then(function (response) {
+                console.log('response>>>>>>>>>>>>>>>>',response.data)
                 if (response.data.status == 200) {
                     let stationListData = response.data.data;
                     // setItemsStation([]);
@@ -662,14 +710,25 @@ let d = []
                         //     { label: stationListData[i].name, value: stationListData[i].id },
                         // ]);
                     }
-                    setItemsStation(d);
-                    setSelectedValueStation({label: route.params.data.station, value: parseInt(route.params.data.station_id)})
+                    setItemsCity(d);
+                    setSelectedValueCity([{label: route.params.data.city, value: parseInt(route.params.data.city_id)}])
                 } else {
+                    StationRef.current.reset()
+
                     let d =[]
+                    // setItemsCity(d);
+
                     d.push({
-                        label: "No station avilable", value: 0
+                        label: "No city avilable", value: 0
                     })
-                    setItemsStation(d);
+                    setItemsCity(d);
+                    setValueCity(0);
+
+                    setSelectedValueCity(d)
+                    console.log('hmmm',StationRef.current,itemsCity)
+                    StationRef.current.closeDropdown()
+
+                    // setItemsCity(d);
                     setLoading(false);
                 }
                 
@@ -995,7 +1054,20 @@ let d = []
         // }
         console.log('updated', id)
 
-        callUpdate(id);
+        if (valueDistrict == 0)
+            alert('please select the available district')
+
+       
+
+        if (valueCity == 0)
+            alert('please select the available city')
+
+
+        if (valueDistrict != 0 && valueCity != 0)
+            callUpdate(id);
+
+
+        // callUpdate(id);
 
     };
 
@@ -1034,7 +1106,7 @@ let d = []
             panNo.value,
             valueState,
             valueDistrict,
-            valueStation,
+            valueCity,
             bankName.value,
             accountHolderName.value,
             branchAddress.value,
@@ -1731,7 +1803,15 @@ let d = []
                                     console.log(selectedItem, index);
                                     console.log(selectedItem.value);
                                     //setValueState(selectedItem.value)
+                                   setLoading(true)
                                     getDistrictList(selectedItem.value);
+
+                                    setTimeout(() => {
+                                       setLoading(false)
+                                        districtRef.current.openDropdown()
+
+                                    }, 200);
+
                                 }}
                                 defaultValue={selectedValueState}
                                 buttonStyle={styles.dropdown3BtnStyle}
@@ -1739,7 +1819,7 @@ let d = []
                                     return (
                                         <View style={styles.dropdown3BtnChildStyle}>
                                             <Text style={styles.dropdown3BtnTxt}>
-                                                {selectedItem ? selectedItem.label : itemsState[0].label ||  'State'}
+                                                {selectedItem ? selectedItem.label : selectedValueState[0].label ||  'State'}
                                             </Text>
                                         </View>
                                     );
@@ -1782,18 +1862,30 @@ let d = []
                 </Text>
                             <SelectDropdown
                                 data={itemsDistrict}
+                                ref={districtRef}
+
                                 onSelect={(selectedItem, index) => {
                                     console.log(JSON.stringify(selectedItem));
                                     setDistrictError(null);
-                                    getStationName(selectedItem.value);
+
+                                    setLoading(true)
+
+                                    valueSellerType != 'Spinner' &&  getStationName(selectedItem.value);
+
+                                    
+                                    valueSellerType != 'Spinner' && StationRef.current.reset()
+
+                                        setLoading(false)
+                                    valueSellerType != 'Spinner' && StationRef.current.openDropdown()
+                                
                                 }}
-                                defaultValue={selectedValueCity}
+                                defaultValue={selectedValueDistrict}
                                 buttonStyle={styles.dropdown3BtnStyle}
                                 renderCustomizedButtonChild={(selectedItem, index) => {
                                     return (
                                         <View style={styles.dropdown3BtnChildStyle}>
                                             <Text style={styles.dropdown3BtnTxt}>
-                                                {selectedItem ? selectedItem.label : itemsDistrict[0].label || 'District'}
+                                                {selectedItem ? selectedItem.label : selectedValueDistrict[0].label || 'District'}
                                             </Text>
                                         </View>
                                     );
@@ -1824,7 +1916,7 @@ let d = []
                                     <Text style={styles.error}>{DistrictError}</Text>
                                 ) : null}
                             </View>
-                            <Text
+                            {valueSellerType != 'Spinner' ? (<><Text
                                 style={{
                                     fontSize: 14,
                                     fontWeight: 'bold',
@@ -1832,53 +1924,57 @@ let d = []
                                     marginLeft: 20,
                                     marginBottom: 5,
                                 }}>
-                                Station Name
-                </Text>
-                            <SelectDropdown
-                                data={itemsStation}
-                                onSelect={(selectedItem, index) => {
-                                    console.log(selectedItem, index);
-                                    setStationError(null);
-                                    setValueStation(selectedItem.value);
-                                }}
-                                defaultValue={selectedValueStation}
-                                buttonStyle={styles.dropdown3BtnStyle}
-                                renderCustomizedButtonChild={(selectedItem, index) => {
-                                    return (
-                                        <View style={styles.dropdown3BtnChildStyle}>
-                                            <Text style={styles.dropdown3BtnTxt}>
-                                                {selectedItem ? selectedItem.label : itemsStation[0].label || 'Station Name'}
-                                            </Text>
-                                        </View>
-                                    );
-                                }}
-                                renderDropdownIcon={() => {
-                                    return (
-                                        <FontAwesome
-                                            name="chevron-down"
-                                            color={'black'}
-                                            size={14}
-                                            style={{ marginRight: 20 }}
-                                        />
-                                    );
-                                }}
-                                dropdownIconPosition={'right'}
-                                dropdownStyle={styles.dropdown3DropdownStyle}
-                                rowStyle={styles.dropdown3RowStyle}
-                                renderCustomizedRowChild={(item, index) => {
-                                    return (
-                                        <View style={styles.dropdown3RowChildStyle}>
-                                            <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
-                                        </View>
-                                    );
-                                }}
-                            />
-                            <View style={styles.container}>
-                                {StationError != null ? (
-                                    <Text style={styles.error}>{StationError}</Text>
-                                ) : null}
-                            </View>
+                                City
+                            </Text>
+                                <SelectDropdown
+                                    data={itemsCity}
+                                    ref={StationRef}
+
+                                    onSelect={(selectedItem, index) => {
+                                        console.log(selectedItem, index);
+                                        setCityError(null);
+                                        setValueCity(selectedItem.value);
+                                    }}
+                                    // defaultValue={selectedValueCity}
+
+                                    buttonStyle={styles.dropdown3BtnStyle}
+                                    renderCustomizedButtonChild={(selectedItem, index) => {
+                                        return (
+                                            <View style={styles.dropdown3BtnChildStyle}>
+                                                <Text style={styles.dropdown3BtnTxt}>
+                                                    {selectedItem ? selectedItem.label : selectedValueCity[0].label || 'City Name'}
+                                                </Text>
+                                            </View>
+                                        );
+                                    }}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                            <FontAwesome
+                                                name="chevron-down"
+                                                color={'black'}
+                                                size={14}
+                                                style={{ marginRight: 20 }}
+                                            />
+                                        );
+                                    }}
+                                    dropdownIconPosition={'right'}
+                                    dropdownStyle={styles.dropdown3DropdownStyle}
+                                    rowStyle={styles.dropdown3RowStyle}
+                                    renderCustomizedRowChild={(item, index) => {
+                                        return (
+                                            <View style={styles.dropdown3RowChildStyle}>
+                                                <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                                            </View>
+                                        );
+                                    }}
+                                />
+                                <View style={styles.container}>
+                                    {CityError != null ? (
+                                        <Text style={styles.error}>{CityError}</Text>
+                                    ) : null}
+                                </View></>) : null}
                         </View>
+            
 
                         <View>
                             {/* <TextInput

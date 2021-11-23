@@ -1,4 +1,4 @@
-export function registration_api(sellerType,sellerName,password,postalAddress,contactPerson,contactNumber,email,propriterShipValue,millRegNo,millRegistrationDate,valueRMSME,firstFYTurnOver,firstFYTurnOverYear,secondFYTurnOver,secondFYTurnOverYear,thirdFYTurnOver,thirdFYTurnOverYear,cottonTradeExperience,gstNo,panNo,stateID,districtID,stationID,bankName,accountHolderName,branchAddress,ifscCode,referralCode,fcmToken) {
+export function registration_api(sellerType,sellerName,password,postalAddress,contactPerson,contactNumber,email,propriterShipValue,millRegNo,millRegistrationDate,valueRMSME,firstFYTurnOver,firstFYTurnOverYear,secondFYTurnOver,secondFYTurnOverYear,thirdFYTurnOver,thirdFYTurnOverYear,cottonTradeExperience,gstNo,panNo,stateID,districtID,cityID,stationID,bankName,accountHolderName,branchAddress,ifscCode,referralCode,fcmToken) {
   let registration_param = {
     user_type:"buyer",
     seller_buyer_type:sellerType,
@@ -24,8 +24,9 @@ export function registration_api(sellerType,sellerName,password,postalAddress,co
     pan_no_of_buyer:panNo,
     country_id:"1",
     state_id:stateID,
-    city_id:districtID,
-    station_id:stationID,
+    district_id:districtID,
+    city_id:cityID,
+    // city_id:stationID,
     bank_name:bankName,
     account_holder_name:accountHolderName,
     branch_address:branchAddress,

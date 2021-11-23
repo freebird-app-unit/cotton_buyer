@@ -1,7 +1,7 @@
 const api_config = {
   //Development URL
   //BASE_URL: 'http://cottontradecentre.com/development/cotton_bid_v1/api/',
-  BASE_URL: 'http://cottontradecentre.com/development/cotton_bid_v2/api/',
+  BASE_URL: 'http://cottontradecentre.com/development/cotton_bid_v3/api/',
   //BASE_URL: 'http://cottontradecentre.com/development/cotton_bid_v1/api/',
   
   //Production URL
@@ -13,8 +13,9 @@ const api_config = {
   GET_BUSINESS_TYPE: 'business_type',
   GET_REGISTRATION_AS: 'registration_as',
   GET_STATE: 'state_list',
-  GET_DISTRICT: 'city_list',
+  GET_DISTRICT: 'district_list',
   GET_STATIONNAME: 'station_list',
+  GET_CITY:'city_list',
   LOGIN_BUYER: 'login_buyer',
   RESEND_OTP: 'resend_otp_buyer',
   VERIFY_OTP: 'otp_verify_buyer',
@@ -32,6 +33,7 @@ const api_config = {
   SEARCH_TO_BUY: 'search_to_buy_new',
   SEARCH_SELLER:'search_seller',
   NOTIFICATION_TO_SELLER:'notification_to_seller',
+  NOTIFICATION_TO_SELLER_LIST: 'notification_to_seller_list',
   REGISTRATION_SCREEN_DROPDOWN_DATA:'sellertype_buyertype_businesstype_registrationas',
   NOTIFICATION_LIST:'notification_to_buy_list',
   //NEGOTIATION_LIST: 'negotiation_list_buyer',
@@ -67,7 +69,16 @@ const api_config = {
   MAKE_DEAL_OTP_VERIFY:'make_deal_otp_verify',
   TRANSACTION_HISTORY:'transaction_history',
   RESEND_DEAL_OTP:'resend_deal_otp',
-  ADD_USER_PLAN:'add_user_plan'
+  ADD_USER_PLAN:'add_user_plan',
+  GET_MCX_DATA: "get_mcx_data",
+PARTY_WISE_CONTRACT_REPORT: 'party_wise_contract_report',
+  PRODUCT_WISE_CONTRACT_REPORT: 'product_wise_contract_report',
+  BROKER_WISE_CONTRACT_REPORT: 'broker_wise_contract_report',
+  POST_REPORT : 'post_report',
+  CONTRACT_PRODUCT_LIST : 'contract_product_list',
+  CONTRACT_BROKER_LIST: 'contract_broker_list',
+  CONTRACT_PARTY_LIST: 'contract_party_list'
+
 
 
   // nileshbavliya@gmail.com

@@ -21,6 +21,7 @@ import Background from './Background';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Search from '../assets/Search';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+// import RNGestureHandlerButton from 'react-native-gesture-handler/lib/typescript/components/GestureHandlerButton';
 
 //svgs
 
@@ -38,12 +39,24 @@ class MyContractFilter extends Component {
             markedDates: {},
             isStartDatePicked: false,
             isEndDatePicked: false,
-            startDate: ''
+            startDate: '',
+            SendFromDate: moment(new Date()).format('YYYY-MM-DD'),
+            SendEndDate: moment(new Date()).format('YYYY-MM-DD')
         };
 
     }
 
-
+    goBack = () => {
+        const { navigation, route } = this.props;
+        navigation.goBack();
+        // console.log('this,.propsd',this.props.route)
+        let obj = {
+            from: this.state.SendFromDate,
+            to: this.state.SendEndDate,
+            GoingTo: route.params.comingFrom
+        }
+        route.params.onSelect({ obj });
+    }
 
 
     onDayPress = (day) => {
@@ -51,28 +64,40 @@ class MyContractFilter extends Component {
         console.log('day', day);
         if (this.state.isStartDatePicked == false) {
             let markedDates = {}
-            markedDates[day.dateString] = { startingDay: true, color: theme.colors.primary, textColor: '#FFFFFF' };
+            markedDates[day.dateString] = { startingDay: true, color: theme.colors.primary,borderRadius:50, textColor: '#FFFFFF' };
             this.setState({
                 markedDates: markedDates,
                 isStartDatePicked: true,
                 isEndDatePicked: false,
                 startDate: day.dateString,
+                SendFromDate: moment(new Date(day.dateString)).format('YYYY-MM-DD')
             });
         } else {
             let markedDates = this.state.markedDates
             let startDate = moment(this.state.startDate);
             let endDate = moment(day.dateString);
+            let SendFromDate = moment(new Date(this.state.startDate)).format('YYYY-MM-DD')
+            let SendEndDate = moment(new Date(endDate)).format('YYYY-MM-DD')
+
+            this.setState({
+
+                SendEndDate
+            });
+
+            console.log('dats', SendFromDate, SendEndDate)
             let range = endDate.diff(startDate, 'days')
             if (range > 0) {
                 for (let i = 1; i <= range; i++) {
                     let tempDate = startDate.add(1, 'day');
                     tempDate = moment(tempDate).format('YYYY-MM-DD')
                     if (i < range) {
-                        markedDates[tempDate] = { color: theme.colors.primary, textColor: '#FFFFFF' };
+                        markedDates[tempDate] = {color: 'rgba(105, 186, 83,0.15)', textColor: '#333', };
                     } else {
                         markedDates[tempDate] = { endingDay: true, color: theme.colors.primary, textColor: '#FFFFFF' };
                     }
                 }
+
+
                 this.setState({
                     markedDates: markedDates,
                     isStartDatePicked: false,
@@ -168,18 +193,18 @@ class MyContractFilter extends Component {
 
                             backgroundColor: 'transparent',
                             flex: 1,
-                            marginTop:hp(2)
 
                         }}>
-                        {/* <View style={{
+                        <View style={{
                             flexDirection: 'row', paddingHorizontal: wp(5),
-                            marginTop: hp(8), height: hp(5), alignItems: 'center', justifyContent: 'space-between'
+                            marginTop: hp(9), height: hp(5), alignItems: 'center', justifyContent: 'space-between'
                         }}>
-                            <Ionicons name='chevron-back-outline' size={hp(3)} color='#333' style={{ width: wp(30) }} onPress={() => this.props.navigation.goBack()} />
+                            <Ionicons name='chevron-back-outline' size={hp(3)} color='#333' style={{ width: wp(30) }}
+                                onPress={() => this.goBack()} />
                             <Text style={{ alignSelf: 'center', color: '#333', fontSize: hp(3), fontFamily: 'Poppins - Regular' }}>Custom</Text>
                             <View style={{ width: wp(30) }} />
 
-                        </View> */}
+                        </View>
                         <CalendarList
                             minDate={minimumDate}
                             monthFormat={"MMMM yyyy"}

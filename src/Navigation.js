@@ -43,6 +43,7 @@ import MCXScreen from './components/MCXScreen'
 
 
 import { FirstRoute, SecondRoute, ThirdRoute } from './components/CalculatorView'
+import { Post, Contract } from './screens/ReportScreen'
 
 // import firebase from '@react-native-firebase/app';
 // import messaging from '@react-native-firebase/messaging';
@@ -92,6 +93,43 @@ const tabnavi = ({ navigation }) => {
     );
 }
 
+const ReportTab = ({ navigation }) => {
+    // console.log('nabvi', navigation)
+    return (
+        <View style={{ flex: 1, backgroundColor: '#333', }}>
+            <View style={{
+                flexDirection: 'row', paddingHorizontal: wp(5),
+                marginTop: hp(4), height: hp(9), alignItems: 'center', justifyContent: 'space-between'
+            }}>
+                <Ionicons name='chevron-back-outline' size={hp(3)} color='#fff' style={{ width: wp(30) }} onPress={() => navigation.goBack()} />
+                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins - Regular' }}>Report</Text>
+                <View style={{ width: wp(30) }} />
+
+            </View>
+            <View style={{
+                flex: 1,
+                width: '100%',
+                // height: hp(86),
+                paddingBottom: 30,
+                paddingTop: hp(3),
+                marginTop: hp(2),
+                backgroundColor: 'white',
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+            }}>
+                <Tab.Navigator tabBarOptions={{
+                    labelStyle: { fontSize: hp(2), fontFamily: 'Poppins-Regular' },
+                    activeTintColor: theme.colors.primary,
+                    inactiveTintColor: '#afafaf',
+                    indicatorStyle: { backgroundColor: theme.colors.primary }
+                }}>
+                    <Tab.Screen name="Post" component={Post} />
+                    <Tab.Screen name="Contract" component={Contract} />
+                </Tab.Navigator>
+            </View>
+        </View>
+    );
+}
 
 const AppHeading = (props) => {
     console.log('props', props)
@@ -100,24 +138,26 @@ const AppHeading = (props) => {
             <Appbar.Header style={{ backgroundColor: 'transparent' }}>
                 {props.menu ? <Appbar.Action
                     icon="menu"
-                    color="white"
+                    color={props.color ? props.color : "white"}
                     onPress={props.leftPress}
                 /> :
                     <Appbar.Action
-                        icon={() => <Ionicons name='chevron-back-outline' size={hp(3)} color='#fff' />}
-                        color="white"
+                        icon={() => <Ionicons name='chevron-back-outline' size={hp(3)} color={props.color ? props.color : "white"} />}
+                        color={props.color ? props.color : "white"}
+
                         onPress={props.leftPress}
                     />}
                 <Appbar.Content
                     style={{ alignItems: 'center' }}
-                    color="white"
+                    color={props.color ? props.color : "white"}
                     title={props.title}
                     titleStyle={{ fontSize: hp(2.5), fontFamily: "Poppins-SemiBold" }}
                 />
                
                 {props.filter ? <Appbar.Action
                     icon="notification-clear-all"
-                    color={"white"}
+                    color={props.color ? props.color : "white"}
+
                     onPress={
                         props.rightPress
                         // this.setState({ isFilterShow: true });
@@ -174,6 +214,16 @@ const AppHeadingProfile = (props) => {
         </View>
     )
 }
+
+const RegisterScreenFunction = ({ navigation, route }) => 
+<View style={{ flex: 1, backgroundColor: '#f4fafe' }}>
+    <AppHeading color='#333' title={'Create an account'}
+     leftPress={() => navigation.goBack()} />
+    <View
+        style={styles.flex}>
+        <RegisterScreen navigation={navigation} route={route} />
+    </View>
+</View>
 
 const home = ({ navigation, route }) => {
     console.log('navigation>', navigation)
@@ -315,6 +365,8 @@ const ParticipantFunction = ({ navigation, route }) => <View style={{ flex: 1, b
         <Participant navigation={navigation} route={route} />
     </View>
 </View>
+
+
 
 const CustomFunction = ({ navigation, route }) => <View style={{ flex: 1, backgroundColor: '#fff' }}>
 
@@ -491,7 +543,7 @@ const DealDetailsFunction = ({ navigation, route }) => {
 
 
 const NotificationSelectSellerFunction = ({ navigation, route }) => <View style={{ flex: 1, backgroundColor: '#333' }}>
-    <AppHeading title={'Select Buyer'} leftPress={() => navigation.goBack()} />
+    <AppHeading title={'Select Seller'} leftPress={() => navigation.goBack()} />
     <View
         style={styles.flex}>
         <NotificationSelectSeller navigation={navigation} route={route} />
@@ -558,7 +610,8 @@ const App = () => {
                 >
 
                     <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                    <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+                    <Stack.Screen name="RegisterScreen" component={RegisterScreenFunction} />
+
                     <Stack.Screen
                         name="ForgotPasswordScreen"
                         component={ForgotPasswordScreen} />
@@ -582,6 +635,7 @@ const App = () => {
                     <Stack.Screen name="Brokers" component={BrokerFunction} />
                     <Stack.Screen name="RegisterPlan" component={RegisterPlanFunction} />
                     <Stack.Screen name="McxScreen" component={mcxScreenFunction} />
+                    <Stack.Screen name="ReportScreen" component={ReportTab} />
 
                     
                     
@@ -592,7 +646,7 @@ const App = () => {
 
 
 
-                    <Stack.Screen name="Dashboard" component={Dashboard} />
+                    {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
                     <Stack.Screen name="VerifyOtpScreen" component={VerifyOtpScreen} />
                     <Stack.Screen name="MyContractDetails" component={MyContractDetailsFunction} />
                     <Stack.Screen name="DealDetails" component={DealDetailsFunction} />
@@ -606,7 +660,7 @@ const App = () => {
                     <Stack.Screen name="MultipleNegotiationList" component={MultipleNegotiationListFunction} />
                     <Stack.Screen name="Plan" component={PlanFunction} />
                     <Stack.Screen name="Wallet" component={WalletFunction} />
-                    <Stack.Screen name="Custom" component={CustomFunction} />
+                    <Stack.Screen name="Custom" component={Custom} />
                     <Stack.Screen name="NewsSingle" component={NewsSingle} />
                     <Stack.Screen name="EditProfile" component={EditProfile} />
                     <Stack.Screen name="SelectBroker" component={SelectBroker} />

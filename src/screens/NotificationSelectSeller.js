@@ -60,6 +60,7 @@ class NotificationSelectSeller extends Component {
       appState: AppState.currentState,
       loading: "true",
       spinner: true,
+      
       jsonData: {},
       token: "",
       stateOpenState: false,
@@ -72,12 +73,17 @@ class NotificationSelectSeller extends Component {
       districtDrpDwnPlaceholder: "",
       stationOpenState: false,
       stationValue: null,
+      cityValue: null,
+
       stationlist: [],
+      citylist:[],
+      cityDrpDwnPlaceholder:"",
       stationDrpDwnPlaceholder: "",
       sellerList: [],
       stateId: "",
       districtId: "",
       stationId: "",
+      cityId:'',
     };
 
     this.setStateValue = this.setStateValue.bind(this);
@@ -183,6 +189,11 @@ class NotificationSelectSeller extends Component {
       data: formData,
     })
       .then(function (response) {
+
+        self.setState({
+
+          spinner: false,
+        });
         let stateListData = response.data.data;
         let stateArray = [];
         self.setState({
@@ -208,6 +219,10 @@ class NotificationSelectSeller extends Component {
         });
       })
       .catch(function (error) {
+        self.setState({
+
+          spinner: false,
+        });
         alert(defaultMessages.en.serverNotRespondingMsg);
       });
   };
@@ -217,7 +232,10 @@ class NotificationSelectSeller extends Component {
     var self = this;
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
+    self.setState({
 
+      spinner: true,
+    });
     axios({
       url: api_config.BASE_URL + api_config.GET_DISTRICT,
       method: "POST",
@@ -228,6 +246,11 @@ class NotificationSelectSeller extends Component {
       data: formData,
     })
       .then(function (response) {
+        self.setState({
+
+          spinner: false,
+        });
+        if (response.data.status == 200){
         let districtListData = response.data.data;
         let districtArray = [];
         for (let i = 0; i < districtListData.length; i++) {
@@ -235,7 +258,9 @@ class NotificationSelectSeller extends Component {
             self.setState({
               districtDrpDwnPlaceholder: districtListData[i].name,
             });
-            self.getStationName(districtListData[0].id);
+            // self.getStationName(districtListData[0].id);
+            // self.getCityName(districtListData[0].id);
+
             self.setState({ districtId: districtListData[0].id });
           }
           districtArray.push({
@@ -247,20 +272,38 @@ class NotificationSelectSeller extends Component {
         self.setState({
           districtList: districtArray,
         });
+      }
+        else {
+          let d = []
+          d.push({
+            label: "No district avilable", value: 0
+          })
+          self.setState({
+            districtList: d,
+            spinner: false,
+          });
+        }
         //this.getDistrictList(stateArray[0].id)
       })
       .catch(function (error) {
+        self.setState({
+
+          spinner: false,
+        });
         alert(defaultMessages.en.serverNotRespondingMsg);
       });
   };
 
   getStationName = (districtID) => {
 
-    let data = { city_id: districtID };
+    let data = { district_id: districtID };
     var self = this;
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
-
+    self.setState({
+      
+      spinner: true,
+    });
     axios({
       url: api_config.BASE_URL + api_config.GET_STATIONNAME,
       method: "POST",
@@ -271,8 +314,10 @@ class NotificationSelectSeller extends Component {
       data: formData,
     })
       .then(function (response) {
+        console.log('response',response.data)
         let stationListData = response.data.data;
-
+        if (response.data.status == 200)
+        {
         let stationArray = [];
         for (let i = 0; i < stationListData.length; i++) {
           if (i == 0) {
@@ -280,12 +325,12 @@ class NotificationSelectSeller extends Component {
               stationDrpDwnPlaceholder: stationListData[i].name,
             });
             self.setState({ stationId: stationListData[0].id });
-            self.getSellerList(
-              "1",
-              self.state.stateId,
-              self.state.districtId,
-              stationListData[i].id
-            );
+            // self.getSellerList(
+            //   "1",
+            //   self.state.stateId,
+            //   self.state.districtId,
+            //   stationListData[i].id
+            // );
           }
           stationArray.push({
             label: stationListData[i].name,
@@ -296,8 +341,89 @@ class NotificationSelectSeller extends Component {
           stationlist: stationArray,
           spinner: false,
         });
+      }
+      else {
+          let d = []
+          d.push({
+            label: "No station avilable", value: 0
+          })
+          self.setState({
+            stationlist: d,
+            spinner: false,
+          });
+      }
       })
       .catch(function (error) {
+        self.setState({
+
+          spinner: false,
+        });
+        alert(defaultMessages.en.serverNotRespondingMsg);
+      });
+  };
+
+  getCityName = (districtID) => {
+
+    let data = { district_id: districtID };
+    var self = this;
+    const formData = new FormData();
+    formData.append("data", JSON.stringify(data));
+    self.setState({
+
+      spinner: true,
+    });
+    axios({
+      url: api_config.BASE_URL + api_config.GET_CITY,
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    })
+      .then(function (response) {
+        let stationListData = response.data.data;
+        if (response.data.status == 200){
+        let stationArray = [];
+        for (let i = 0; i < stationListData.length; i++) {
+          if (i == 0) {
+            self.setState({
+              cityDrpDwnPlaceholder: stationListData[i].name,
+            });
+            self.setState({ cityId: stationListData[0].id });
+            self.getSellerList(
+              "1",
+              self.state.stateId,
+              self.state.districtId,
+              stationListData[0].id
+            );
+          }
+          stationArray.push({
+            label: stationListData[i].name,
+            value: stationListData[i].id,
+          });
+        }
+        self.setState({
+          citylist: stationArray,
+          spinner: false,
+        });
+      }
+else {
+        let d = []
+        d.push({
+          label: "No city avilable", value: 0
+        })
+        self.setState({
+          citylist: d,
+          spinner: false,
+        });
+      }
+      })
+      .catch(function (error) {
+        self.setState({
+
+          spinner: false,
+        });
         alert(defaultMessages.en.serverNotRespondingMsg);
       });
   };
@@ -318,12 +444,14 @@ class NotificationSelectSeller extends Component {
       user_type: "buyer",
       country_id: "1",
       state_id: stateID,
-      city_id: districtID,
-      station_id: stationID,
+      district_id: districtID,
+      city_id: stationID,
     };
     var self = this;
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
+
+    console.log('data>>>',data)
 
     axios({
       url: api_config.BASE_URL + api_config.SEARCH_SELLER,
@@ -406,7 +534,7 @@ class NotificationSelectSeller extends Component {
     var spinningMealName = this.props.route.params.dataObj.spinning_meal_name;
     var sId = this.state.stateId;
     var dId = this.state.districtId;
-    var stId = this.state.stationId;
+    var stId = this.props.route.params.dataObj == 'Ginner' ? this.state.stationId : this.state.cityId;
 
     //  {"seller_buyer_id":"1","product_id":"1","price":"50000","no_of_bales":"50","d_e":"export","buy_for":"other","spinning_meal_name":"test","country_id":"1","state_id":"1","city_id":"1","station_id":"1","buyers":[{"id":"1","type":"default"}],"attribute_array":[{"attribute":"uhml","attribute_value":"28.3"},{"attribute":"rd","attribute_value":"21.3"}]}
     let data = {
@@ -419,8 +547,9 @@ class NotificationSelectSeller extends Component {
       spinning_meal_name: spinningMealName,
       country_id: "1",
       state_id: sId,
-      city_id: dId,
-      station_id: stId,
+      city_id: stId,
+      district_id: dId,
+      // station_id: stId,
       sellers: sellerObject,
       attribute_array: attributeArray,
     };
@@ -542,6 +671,9 @@ class NotificationSelectSeller extends Component {
       </TouchableOpacity>
     );
   }
+
+
+  
 
   render() {
     return (
@@ -709,7 +841,11 @@ class NotificationSelectSeller extends Component {
                       })
                       //this.changeState(selectedItem.value)
                       //this.changeDistrict(selectedItem.value);
-                      this.getStationName(selectedItem.value);
+                      console.log('props>>>', this.props.route.params.dataObj.seller_type)
+                      this.props.route.params.dataObj.seller_type == 'Ginner' ?
+                      this.getStationName(selectedItem.value) : 
+                      this.getCityName(selectedItem.value)
+
 
                       setTimeout(() => {
                         this.setState({ spinner: false })
@@ -752,86 +888,135 @@ class NotificationSelectSeller extends Component {
                     }}
                   />
                 </View>
-
-                <View
-                  style={{ marginLeft: "5%", marginTop: 10, marginRight: "5%" }}
-                >
-                  <Text
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                    style={{
-                      flex: 1,
-                      color: theme.colors.textColor,
-                      fontSize: 16,
-                      fontWeight: "bold",
-                      textAlignVertical: "center",
-                    }}
+                {this.props.route.params.dataObj.seller_type == 'Ginner' ? (
+                  <View
+                    style={{ marginLeft: "5%", marginTop: 10, marginRight: "5%" }}
                   >
-                    Station Name
-                  </Text>
-
-                  {/* <DropDownPicker
-                            placeholder={this.state.stationDrpDwnPlaceholder}
-                            open={this.state.stationOpenState}
-                            value={this.state.stationValue}
-                            items={this.state.stationlist}
-                            setOpen={this.setStationOpenState}
-                            setValue={this.setStationValue}
-                            setItems={this.setStationItemsState}
-                            containerStyle={{height: 50,width:'100%',marginTop:10}}
-                            listMode="MODAL"
-                            scrollViewProps={{
-                              decelerationRate: "fast"
-                            }} 
-                          onChangeValue={item => this.changeStation(item)}  
-                            /> */}
-
-                  <SelectDropdown
-                    data={this.state.stationlist}
-                    ref={this.StationRef}
-                    onSelect={(selectedItem, i) => {
-                      this.setState({
-                        stationId: selectedItem.value,
-                      })
-                      //this.changeStation(selectedItem.value);
-                      this.getSellerList(1, this.state.stateId, this.state.districtId, selectedItem.value);
-                    }}
-                    buttonStyle={styles.dropdown3BtnStyle}
-                    renderCustomizedButtonChild={(selectedItem, index) => {
-                      return (
-                        <View style={styles.dropdown3BtnChildStyle}>
-                          <Text style={styles.dropdown3BtnTxt}>
-                            {selectedItem
-                              ? selectedItem.label
-                              : this.state.stationDrpDwnPlaceholder}
-                          </Text>
-                        </View>
-                      );
-                    }}
-                    renderDropdownIcon={() => {
-                      return (
-                        <FontAwesome
-                          name="chevron-down"
-                          color={"black"}
-                          size={14}
-                          style={{ marginRight: 20 }}
-                        />
-                      );
-                    }}
-                    dropdownIconPosition={"right"}
-                    dropdownStyle={styles.dropdown3DropdownStyle}
-                    rowStyle={styles.dropdown3RowStyle}
-                    renderCustomizedRowChild={(item, index) => {
-                      return (
-                        <View style={styles.dropdown3RowChildStyle}>
-                          <Text style={styles.dropdown3RowTxt}>
-                            {item.label}
-                          </Text>
-                        </View>
-                      );
-                    }}
-                  />
-                </View>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={{
+                        flex: 1,
+                        color: theme.colors.textColor,
+                        fontSize: 16,
+                        fontWeight: "bold",
+                        textAlignVertical: "center",
+                      }}
+                    >
+                      Station Name
+                    </Text>
+                    <SelectDropdown
+                      data={this.state.stationlist}
+                      ref={this.StationRef}
+                      onSelect={(selectedItem, i) => {
+                        this.setState({
+                          stationId: selectedItem.value,
+                        })
+                        //this.changeStation(selectedItem.value);
+                        this.getSellerList(1, this.state.stateId, this.state.districtId, selectedItem.value);
+                      }}
+                      buttonStyle={styles.dropdown3BtnStyle}
+                      renderCustomizedButtonChild={(selectedItem, index) => {
+                        return (
+                          <View style={styles.dropdown3BtnChildStyle}>
+                            <Text style={styles.dropdown3BtnTxt}>
+                              {selectedItem
+                                ? selectedItem.label
+                                : this.state.stationDrpDwnPlaceholder}
+                            </Text>
+                          </View>
+                        );
+                      }}
+                      renderDropdownIcon={() => {
+                        return (
+                          <FontAwesome
+                            name="chevron-down"
+                            color={"black"}
+                            size={14}
+                            style={{ marginRight: 20 }}
+                          />
+                        );
+                      }}
+                      dropdownIconPosition={"right"}
+                      dropdownStyle={styles.dropdown3DropdownStyle}
+                      rowStyle={styles.dropdown3RowStyle}
+                      renderCustomizedRowChild={(item, index) => {
+                        return (
+                          <View style={styles.dropdown3RowChildStyle}>
+                            <Text style={styles.dropdown3RowTxt}>
+                              {item.label}
+                            </Text>
+                          </View>
+                        );
+                      }}
+                    />
+                  </View>
+                ) : (
+                    <View
+                      style={{ marginLeft: "5%", marginTop: 10, marginRight: "5%" }}
+                    >
+                      <Text
+                        numberOfLines={1}
+                        ellipsizeMode="tail"
+                        style={{
+                          flex: 1,
+                          color: theme.colors.textColor,
+                          fontSize: 16,
+                          fontWeight: "bold",
+                          textAlignVertical: "center",
+                        }}
+                      >
+                        City Name
+                      </Text>
+                      <SelectDropdown
+                        data={this.state.citylist}
+                        ref={this.StationRef}
+                        onSelect={(selectedItem, i) => {
+                          this.setState({
+                            cityId: selectedItem.value,
+                          })
+                          //this.changeStation(selectedItem.value);
+                          this.getSellerList(1, this.state.stateId, this.state.districtId, selectedItem.value);
+                        }}
+                        buttonStyle={styles.dropdown3BtnStyle}
+                        renderCustomizedButtonChild={(selectedItem, index) => {
+                          return (
+                            <View style={styles.dropdown3BtnChildStyle}>
+                              <Text style={styles.dropdown3BtnTxt}>
+                                {selectedItem
+                                  ? selectedItem.label
+                                  : this.state.cityDrpDwnPlaceholder}
+                              </Text>
+                            </View>
+                          );
+                        }}
+                        renderDropdownIcon={() => {
+                          return (
+                            <FontAwesome
+                              name="chevron-down"
+                              color={"black"}
+                              size={14}
+                              style={{ marginRight: 20 }}
+                            />
+                          );
+                        }}
+                        dropdownIconPosition={"right"}
+                        dropdownStyle={styles.dropdown3DropdownStyle}
+                        rowStyle={styles.dropdown3RowStyle}
+                        renderCustomizedRowChild={(item, index) => {
+                          return (
+                            <View style={styles.dropdown3RowChildStyle}>
+                              <Text style={styles.dropdown3RowTxt}>
+                                {item.label}
+                              </Text>
+                            </View>
+                          );
+                        }}
+                      />
+                    </View>
+                )
+                }
+                
 
                 <View
                   style={{

@@ -518,7 +518,7 @@ class Dashboard extends Component {
     // );
     
     socket.onAny(async event => {
-      if('MakeDealToBuyer' + (await EncryptedStorage.getItem('user_id')) === event)
+      if('MakeDealToSeller' + (await EncryptedStorage.getItem('user_id')) === event)
     {
       this.getNegotiationListData();
 
@@ -983,10 +983,10 @@ class Dashboard extends Component {
         },
       })
         .then(function (response) {
-          console.log(
-            'my notification list response :',
-            JSON.stringify(response),
-          );
+          // console.log(
+          //   'my notification list response :',
+          //   JSON.stringify(response),
+          // );
           self.setState({
             arrNotificationList: {},
             spinner: false,

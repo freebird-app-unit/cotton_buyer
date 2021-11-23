@@ -366,7 +366,7 @@ const SelectBroker = ({ navigation }) => {
   const getStationName = (districtID) => {
     setLoading(true);
     setValueDistrict(districtID);
-    let data = { city_id: districtID };
+    let data = { district_id: districtID };
 
     const formData = new FormData();
     formData.append("data", JSON.stringify(data));
@@ -746,14 +746,14 @@ const SelectBroker = ({ navigation }) => {
           <Text>Sorry, no records available</Text>
         </View> )}
        
-        <FullButtonComponent
+        {!submittingOtp ? <FullButtonComponent
           type={'fill'}
           text={'Add'}
           textStyle={styles.submitButtonText}
           buttonStyle={{marginBottom:hp(2)}}
           onPress={AddBroker}
           disabled={submittingOtp}
-        />
+        /> : null }
         {/* <View
           style={{
             flexDirection: "row",

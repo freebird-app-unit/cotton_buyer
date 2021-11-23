@@ -218,6 +218,8 @@ class App extends Component {
       ids: [],
       selectedIDs: [],
       appState: AppState.currentState,
+      itemsSellerType: [],
+      valueSellerType: '',
       loading: "true",
       userID: 0,
       spinner: true,
@@ -383,6 +385,50 @@ class App extends Component {
       console.log(error);
     }
   };
+
+  getRegistrationDropDownData = () => {
+    console.log('hi>>')
+    var self = this;
+    axios({
+      url: api_config.BASE_URL + api_config.REGISTRATION_SCREEN_DROPDOWN_DATA,
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then(function (response) {
+        console.log('Response 111: ' + new Date());
+        self.setState({
+          spinner: false,
+        })
+
+        console.log('response.data.data[0].buyer_type', response.data.data[0].seller_type)
+
+        let sellerListData = response.data.data[0].seller_type;
+        let setlist = []
+        let obj = {}
+        for (let i = 0; i < response.data.data[0].seller_type.length; i++) {
+
+          obj = { label: sellerListData[i].name, value: sellerListData[i].id }
+          setlist.push(obj)
+
+        }
+
+        self.setState({ itemsSellerType: setlist })
+
+
+        console.log('Response 123: ' + new Date());
+      })
+      .catch(function (error) {
+        self.setState({
+          spinner: false,
+        })
+        console.log('error>>>>', JSON.stringify(error))
+        alert(defaultMessages.en.serverNotRespondingMsg);
+      });
+  };
+
   crateProductAttributeUI = () => {
    return (<View
           style={{
@@ -458,6 +504,7 @@ class App extends Component {
 
 
   componentDidMount() {
+    this.getRegistrationDropDownData()
     this.getProductListAPI();
     //this.getProductAttributeAPI(1)
     // this.setDEFlages({ label: 'Domestic', value: 'Export' });
@@ -788,6 +835,11 @@ class App extends Component {
         return false;
       }
 
+      if (this.state.valueSellerType == "") {
+        alert(defaultMessages.en.selectValidation.replace("{0}", "seller type"));
+        return false;
+      }
+
       return true;
     } catch (error) {
       console.log(error);
@@ -890,6 +942,7 @@ class App extends Component {
           no_of_bales: this.state.displayBalesCount,
           required: nonRequiredArray,
           non_required: requiredArray,
+          seller_type: self.state.valueSellerType
         };
 
         console.log("user id --->" + data.seller_buyer_id);
@@ -915,12 +968,13 @@ class App extends Component {
                 spinner: false,
               });
               if (response.data.data.length > 0) {
-                console.log("self", self.props);
+                // console.log("self", self.props);
                 self.props.navigation.navigate("SearchSelectSeller", {
                   data: response.data.data,
                   info: attributeArray,
                   pn: productName,
                   bales: self.state.displayBalesCount,
+                  seller_type:self.state.valueSellerType
                 });
                 // self.setState({
                 //   selectedIDs: [],
@@ -1170,6 +1224,70 @@ class App extends Component {
                 />
               </TouchableOpacity>
             </View>
+
+            
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              marginLeft: '5%',
+              marginTop: 10,
+              marginRight: '5%',
+              height: 20,
+              alignItems: 'center',
+            }}>
+            <Text style={{ width: '35%', color: theme.colors.textColor }}>
+              Seller Type
+            </Text>
+          </View>
+          <View
+            style={{
+              height: 50,
+              width: '90%',
+              marginTop: 15,
+              marginLeft: '5%',
+            }}>
+            <SelectDropdown
+              data={this.state.itemsSellerType}
+              defaultValue={this.state.itemsSellerType}
+              onSelect={(selectedItem, index) => {
+                // setSellerTypeError(null);
+                this.setState({
+                  valueSellerType: selectedItem.label
+                })
+                // setValueSellerType(selectedItem.label);
+              }}
+              buttonStyle={styles.dropdown3BtnStyle}
+              renderCustomizedButtonChild={(selectedItem, index) => {
+                return (
+                  <View style={styles.dropdown3BtnChildStyle}>
+                    <Text style={styles.dropdown3BtnTxt}>
+                      {selectedItem ? selectedItem.label : 'seller Type'}
+                    </Text>
+                  </View>
+                );
+              }}
+              renderDropdownIcon={() => {
+                return (
+                  <FontAwesome
+                    name="chevron-down"
+                    color={'black'}
+                    size={14}
+                    style={{ marginRight: 20 }}
+                  />
+                );
+              }}
+              dropdownIconPosition={'right'}
+              dropdownStyle={styles.dropdown3DropdownStyle}
+              rowStyle={styles.dropdown3RowStyle}
+              renderCustomizedRowChild={(item, index) => {
+                return (
+                  <View style={styles.dropdown3RowChildStyle}>
+                    <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                  </View>
+                );
+              }}
+            />
           </View>
 
           <Button

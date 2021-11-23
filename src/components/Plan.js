@@ -9,7 +9,7 @@ import Swiper from 'react-native-swiper';
 import { GenericStyles } from '../styles/GenericStyles';
 import colors from '../common/colors';
 import EncryptedStorage from 'react-native-encrypted-storage';
-import { RazorpayApiKey } from "../Api/Razorpayconfig";
+import { RazorpayApiKey, RazorpayApiSecret } from "../Api/Razorpayconfig";
 import RazorpayCheckout from 'react-native-razorpay';
 
 import {
@@ -33,6 +33,8 @@ const Plan = ({ navigation,route }) => {
     const balance = route.params
 
     const [Plan, setPlan] = useState([])
+    const [refund, setRefund] = useState(false)
+
     // const 
 
 
@@ -112,6 +114,7 @@ const Plan = ({ navigation,route }) => {
 
 
     const PaymentDone = async (RazorPayId) => {
+        const nav = navigation
         console.log('avigay')
         try {
             setSpinner(true)
@@ -135,25 +138,34 @@ const Plan = ({ navigation,route }) => {
                     'Content-Type': 'multipart/form-data',
 
                 },
-            }).then(function (response) {
+            }).then(async function (response) {
                 setSpinner(false)
 
                 console.log('res>>>', response.data)
                 if (response.data.status == 200) {
+                    let data = JSON.parse(await EncryptedStorage.getItem('Plan_data'));
+                    data.is_api_call = true,
+                     await EncryptedStorage.setItem('Plan_data', JSON.stringify(data));
                     alert(response.data.message)
-                    navigation.goBack()
+                    nav.goBack()
 
 
                 } else {
+                    setRefund(true)
+                    alert(response.data.message)
                     console.log(response.data.message);
                 }
             })
                 .catch(function (error) {
+                    setRefund(true)
+
                     setSpinner(false)
                     console.log('error', JSON.stringify(error))
                     alert(defaultMessages.en.serverNotRespondingMsg);
                 });
         } catch (error) {
+            setRefund(true)
+
             console.log(Json.stringify(error));
         }
     }
@@ -162,7 +174,18 @@ const Plan = ({ navigation,route }) => {
         //  test with upi failure@razorpay
         //  test with upi success@razorpay
 
-        if (balance >= parseInt(IdSelected.price)) {
+        let datas = JSON.parse(await EncryptedStorage.getItem('user_data'));
+        let data = {
+            ...datas,
+            plan_id: IdSelected.id,
+            payment_status: false,
+            payment_id: '',
+            is_api_call: false,
+            user_type: 'buyer'
+
+        };
+
+        await EncryptedStorage.setItem('Plan_data', JSON.stringify(data));
 
         if (IdSelected) {
             try {
@@ -191,10 +214,19 @@ const Plan = ({ navigation,route }) => {
                 console.log('option', op)
 
                 RazorpayCheckout.open(op)
-                    .then(res => {
+                    .then(async res => {
                         console.log('res', res)
                         if (res.hasOwnProperty('razorpay_payment_id'))
+                        {
+                            // console.log('data', JSON.parse(await EncryptedStorage.getItem('Plan_data')))
+                            let data = JSON.parse(await EncryptedStorage.getItem('Plan_data'));
+
+                            data.payment_status = true,
+                                data.payment_id = res.razorpay_payment_id,
+
+                            await EncryptedStorage.setItem('Plan_data', JSON.stringify(data));
                             PaymentDone(res.razorpay_payment_id)
+                        }
                         else
                             alert('please check your network')
 
@@ -213,13 +245,64 @@ const Plan = ({ navigation,route }) => {
             alert('Please Select the Plan')
         }
     }
-    else {
-            alert(`You don't have sufficient balance`)
-    }
 
-    }
+    
 
     const [submittingOtp, setSubmittingOtp] = useState(true);
+
+    const onRefund = async () => {
+        // var basicAuth = 'Basic ' + window.btoa(username + ':' + password);
+
+        // console.log('besicauth', basicAuth)
+
+        try {
+
+            let data = JSON.parse(await EncryptedStorage.getItem('Plan_data'));
+            setSpinner(true)
+
+
+            // const formData = new FormData();
+            // formData.append('data', JSON.stringify(data));
+            console.log(`https://api.razorpay.com/v1/payments/${data.payment_id}/refund`);
+            var session_url = `https://api.razorpay.com/v1/payments/${data.payment_id}/refund`;
+            // var username = RazorpayApiKey;
+            // var password = RazorpayApiSecret;
+            // var basicAuth = 'Basic ' + btoa(username + ':' + password);
+
+            // console.log('besicauth',basicAuth)
+            // axios.post(session_url, {}, {
+            //     headers: { 'Authorization': + basicAuth }
+            axios({
+                url: session_url,
+                method: 'POST',
+                auth: {
+                    username: RazorpayApiKey,
+                    password: RazorpayApiSecret,
+                },
+            }).then(function (response) {
+                setSpinner(false)
+
+                console.log('res>>>refunc', response)
+                // if (response.data.status == 200) {
+                //     // console.log('resposed',response.data)
+
+                //     // alert(`the refund for the amount ${amount}`)
+
+                //     navigation.navigate('HomeScreen')
+
+                // } else {
+                //     setRefund(true)
+                //     console.log(response.data.message);
+                // }
+            }).catch(function (error) {
+                setSpinner(false)
+                console.log('error', JSON.stringify(error))
+                alert(defaultMessages.en.serverNotRespondingMsg);
+            });
+        } catch (error) {
+            console.log('eroor', JSON.stringify(error));
+        }
+    }
 
     const InPutText = (props) => {
         return (
@@ -354,9 +437,12 @@ const Plan = ({ navigation,route }) => {
                         </View>
                         <FullButtonComponent
                             type={'fill'}
-                            text={'Done'}
+                            // text={refund ? 'Refund' : 'Buy'} // when the refund need to done temp commentted
+                            text={'Buy'}
+
                             textStyle={styles.submitButtonText}
                             // buttonStyle={GenericStyles.mt24}
+                            // onPress={refund ? onRefund : onSubmitButtonPress} // when the refund need to done temp commentted
                             onPress={onSubmitButtonPress}
                         // disabled={submittingOtp}
                         />

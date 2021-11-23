@@ -451,10 +451,12 @@ class App extends Component {
                                                         (<TouchableOpacity 
                                                             disabled={dd.is_buyer_otp_verify == 1}
                                                             onPress={() => {
-                                                                (dd.is_buyer_otp_verify == 0) && this.setState({
-                                                                    set: true, deal_Id: dd.deal_id, otpArray: ['', '', '', '', '', ''],
+                                                                (dd.is_buyer_otp_verify == 0) && 
+                                                                this.setState({
+                                                                    set: true, deal_Id: dd.deal_id, 
+                                                                    otpArray: ['', '', '', '', '', ''],
                                                                     otpArrayMail: ['', '', '', '', '', '']})
-                                                            }}>
+                                                                              }}>
                                                         <Text
                                                             numberOfLines={1}
                                                             ellipsizeMode="tail"

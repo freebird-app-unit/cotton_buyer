@@ -101,7 +101,8 @@ class App extends Component {
             isMenuOpen: false,
             isProfile: false,
             isBroker: false,
-
+            itemsSellerType:[],
+            valueSellerType:'',
             ProfileData: [],
             openState: false,
             deValue: null,
@@ -216,6 +217,7 @@ class App extends Component {
             btnCompletedTextColor: 'gray',
         };
 
+        // 
         // this.setValue = this.setValue.bind(this);
         // this.setOpenState = this.setOpenState.bind(this);
         // this.setItemsState = this.setItemsState.bind(this);
@@ -250,9 +252,13 @@ class App extends Component {
             console.log(error);
         }
     };
+
+
+
+
+
     crateProductAttributeUI = () => {
         try {
-
             return this.state.productAttributeList.map((el, i) => (
                 <View
                     style={{
@@ -326,6 +332,7 @@ class App extends Component {
     };
 
     componentDidMount() {
+        this.getRegistrationDropDownData()
         this.getProductListAPI()
         // this.setDEFlages({ label: 'Domestic', value: 'Export' });
 
@@ -338,7 +345,48 @@ class App extends Component {
             }
         });
     }
+    getRegistrationDropDownData = () => {
+        console.log('hi>>')
+        var self = this;
+        axios({
+            url: api_config.BASE_URL + api_config.REGISTRATION_SCREEN_DROPDOWN_DATA,
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+            .then(function (response) {
+                console.log('Response 111: ' + new Date());
+                self.setState({
+                    spinner: false,
+                })
 
+                console.log('response.data.data[0].buyer_type', response.data.data[0].seller_type)
+
+                let sellerListData = response.data.data[0].seller_type;
+                let setlist = []
+                let obj = {}
+                for (let i = 0; i < response.data.data[0].seller_type.length; i++) {
+
+                    obj = { label: sellerListData[i].name, value: sellerListData[i].id }
+                    setlist.push(obj)
+                    
+                }
+
+                self.setState({ itemsSellerType: setlist })
+
+               
+                console.log('Response 123: ' + new Date());
+            })
+            .catch(function (error) {
+                self.setState({
+                    spinner: false,
+                })
+                console.log('error>>>>', JSON.stringify(error))
+                alert(defaultMessages.en.serverNotRespondingMsg);
+            });
+    };
     addValuesSearchBuyer = (text, label, itemId, index, rangeType) => {
         if (label === 'Length(mm)') {
             let dataArray = this.state.LengthinputData;
@@ -638,6 +686,12 @@ class App extends Component {
                 alert(defaultMessages.en.required.replace('{0}', 'atribute value'));
                 return false;
             }
+
+            if (this.state.valueSellerType == '') {
+                alert(defaultMessages.en.selectValidation.replace('{0}', 'seller type'));
+                return false;
+            }
+
             if (this.state.displayBalesCount == 0) {
                 alert(defaultMessages.en.required.replace('{0}', 'bales'));
                 return false;
@@ -709,6 +763,7 @@ class App extends Component {
         let data = {
           type: 'notification',
           seller_buyer_id: await EncryptedStorage.getItem('user_id'),
+          seller_type:this.state.valueSellerType,
           product_id: this.state.selectedProductID,
           price: this.state.balesPrice,
           no_of_bales: this.state.displayBalesCount,
@@ -997,6 +1052,68 @@ class App extends Component {
                         </View>
                     </View>
 
+                    <View
+                        style={{
+                            flexDirection: 'row',
+                            marginLeft: '5%',
+                            marginTop: 10,
+                            marginRight: '5%',
+                            height: 20,
+                            alignItems: 'center',
+                        }}>
+                        <Text style={{ width: '35%', color: theme.colors.textColor }}>
+                            Seller Type
+                        </Text>
+                    </View>
+                    <View
+                        style={{
+                            height: 50,
+                            width: '90%',
+                            marginTop: 15,
+                            marginLeft: '5%',
+                        }}>
+                    <SelectDropdown
+                        data={this.state.itemsSellerType}
+                        defaultValue={this.state.itemsSellerType}
+                        onSelect={(selectedItem, index) => {
+                            // setSellerTypeError(null);
+                            this.setState({
+                                valueSellerType: selectedItem.label
+                            })
+                            // setValueSellerType(selectedItem.label);
+                        }}
+                        buttonStyle={styles.dropdown3BtnStyle}
+                        renderCustomizedButtonChild={(selectedItem, index) => {
+                            return (
+                                <View style={styles.dropdown3BtnChildStyle}>
+                                    <Text style={styles.dropdown3BtnTxt}>
+                                        {selectedItem ? selectedItem.label : 'seller Type'}
+                                    </Text>
+                                </View>
+                            );
+                        }}
+                        renderDropdownIcon={() => {
+                            return (
+                                <FontAwesome
+                                    name="chevron-down"
+                                    color={'black'}
+                                    size={14}
+                                    style={{ marginRight: 20 }}
+                                />
+                            );
+                        }}
+                        dropdownIconPosition={'right'}
+                        dropdownStyle={styles.dropdown3DropdownStyle}
+                        rowStyle={styles.dropdown3RowStyle}
+                        renderCustomizedRowChild={(item, index) => {
+                            return (
+                                <View style={styles.dropdown3RowChildStyle}>
+                                    <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                                </View>
+                            );
+                        }}
+                    />
+</View>
                     <View
                         style={{
                             flexDirection: 'row',

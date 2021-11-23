@@ -142,7 +142,7 @@ const App = (props) => {
 
 
     //yes proper che reload karo pachi app server bandh hatu aayathi baroba
-    socket.onAny(event => console.log('got,', event))
+    // socket.onAny(event => console.log('got,', event))
     socket.on('NegotiationToMultipleSeller1', content => console.log('got,', content))
 
 
