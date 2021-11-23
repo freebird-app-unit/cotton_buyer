@@ -147,7 +147,7 @@ function Contract({navigation}) {
                     setLoader(false)
 
                     // console.log('response :>>>>>>>>>.list', response.data);
-                    if (response.data.status == 200) {
+                    if (response.data.status == 200 && response.data.data.length > 0) {
                         let productList = response.data.data;
                         var arrProductList = [];
 
@@ -168,11 +168,11 @@ function Contract({navigation}) {
                         var arrProductList = [];
                         let obj = {
                             label: 'No Product available',
-                            value: 0,
+                            value: -1,
                         }
                         arrProductList.unshift(obj)
                         setProduct(arrProductList)
-                        setProductId({ label: 'No Product available', value: 0 })
+                        setProductId({ label: 'No Product available', value: -1 })
                     }
                 })
                 .catch(function (error) {
@@ -210,7 +210,7 @@ function Contract({navigation}) {
                     setLoader(false)
 
                     // console.log('response :>>>>>>>>>.broker', response.data);
-                    if (response.data.status == 200) {
+                    if (response.data.status == 200 && response.data.data.length > 0) {
                         let productList = response.data.data;
                         var arrProductList = [];
 
@@ -231,11 +231,11 @@ function Contract({navigation}) {
                         var arrProductList = [];
                         let obj = {
                             label: 'No Broker available',
-                            value: 0,
+                            value: -1,
                         }
                         arrProductList.unshift(obj)
                         setBroker(arrProductList)
-                        setBrokerId({ label: 'No Broker available', value: 0 })
+                        setBrokerId({ label: 'No Broker available', value: -1 })
                     }
                 })
                 .catch(function (error) {
@@ -273,7 +273,7 @@ function Contract({navigation}) {
                     setLoader(false)
 
                     // console.log('response :>>>>>>>>>.buyer', response.data);
-                    if (response.data.status == 200) {
+                    if (response.data.status == 200 && response.data.data.length > 0) {
                         let productList = response.data.data;
                         var arrProductList = [];
 
@@ -294,11 +294,11 @@ function Contract({navigation}) {
                         var arrProductList = [];
                         let obj = {
                             label: 'No Seller available',
-                            value: 0,
+                            value: -1,
                         }
                         arrProductList.unshift(obj)
                         setBuyer(arrProductList)
-                        setBuyerId({ label: 'No Seller available', value: 0 })
+                        setBuyerId({ label: 'No Seller available', value: -1})
                     }
                 })
                 .catch(function (error) {
@@ -312,7 +312,7 @@ function Contract({navigation}) {
     const BuyerApiContract = async (dates) => {
         console.log('hi buyer')
         try {
-            setLoader(true)
+            BuyerId.value != -1 && setLoader(true)
 
             let data = {
 
@@ -323,7 +323,7 @@ function Contract({navigation}) {
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            axios({
+            BuyerId.value != -1 && axios({
                 url: api_config.BASE_URL + api_config.PARTY_WISE_CONTRACT_REPORT,
                 method: 'POST',
                 data: formData,
@@ -364,7 +364,7 @@ function Contract({navigation}) {
     const BrokerApiContract = async (dates) => {
         console.log('hi broker')
         try {
-            setLoader(true)
+            BrokerId.value != -1 && setLoader(true)
 
             let data = {
 
@@ -375,7 +375,7 @@ function Contract({navigation}) {
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            axios({
+            BrokerId.value != -1 &&  axios({
                 url: api_config.BASE_URL + api_config.BROKER_WISE_CONTRACT_REPORT,
                 method: 'POST',
                 data: formData,
@@ -417,7 +417,7 @@ function Contract({navigation}) {
     const ProductApiContract = async (dates) => {
         console.log('hi broker')
         try {
-            setLoader(true)
+            ProductId.value != -1 &&  setLoader(true)
 
             let data = {
 
@@ -428,7 +428,7 @@ function Contract({navigation}) {
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            axios({
+            ProductId.value != -1 &&  axios({
                 url: api_config.BASE_URL + api_config.PRODUCT_WISE_CONTRACT_REPORT,
                 method: 'POST',
                 data: formData,
@@ -483,9 +483,9 @@ function Contract({navigation}) {
 
     console.log('buyerdssdfasda',BuyerData)
 
-    const [BuyerId, setBuyerId] = useState({ label: 'All', value: 0 })
-    const [BrokerId, setBrokerId] = useState({ label: 'All', value: 0 })
-    const [ProductId, setProductId] = useState({ label: 'All', value: 0 })
+    const [BuyerId, setBuyerId] = useState({ label: 'All', value: -1 })
+    const [BrokerId, setBrokerId] = useState({ label: 'All', value: -1 })
+    const [ProductId, setProductId] = useState({ label: 'All', value: -1 })
 
     const FlagSet = (item) => {
             if (item == 'Buyer')
