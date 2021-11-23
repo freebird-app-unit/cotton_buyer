@@ -166,11 +166,13 @@
     <orderEntry type="module" module-name="CottonBid.react-native-gesture-handler" />
     <orderEntry type="module" module-name="CottonBid.react-native-image-picker" />
     <orderEntry type="module" module-name="CottonBid.react-native-otp-verify" />
+    <orderEntry type="module" module-name="CottonBid.react-native-razorpay" />
     <orderEntry type="module" module-name="CottonBid.react-native-safe-area-context" />
     <orderEntry type="module" module-name="CottonBid.react-native-screens" />
     <orderEntry type="module" module-name="CottonBid.react-native-simple-crypto" />
     <orderEntry type="module" module-name="CottonBid.react-native-svg" />
     <orderEntry type="module" module-name="CottonBid.react-native-vector-icons" />
+    <orderEntry type="module" module-name="CottonBid.react-native-webview" />
     <orderEntry type="module" module-name="CottonBid.rn-fetch-blob" />
   </component>
 </module>
