@@ -652,7 +652,7 @@ let d = []
 
                     setSelectedValueDistrict(d)
                     setItemsDistrict(d);
-                    valueDistrict
+                    // valueDistrict
                     // valueSellerType != 'Spinner' && getStationName(parseInt(route.params.data.district_id))
                     // getStationName(parseInt(route.params.data.city_id))
                     districtRef.current.closeDropdown()
