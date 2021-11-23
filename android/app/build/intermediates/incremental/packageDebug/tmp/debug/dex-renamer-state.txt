@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-#Tue Nov 23 12:33:22 IST 2021
-=======
-#Thu Nov 11 17:33:08 IST 2021
-base.2=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.1=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
-base.0=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-renamed.22=classes23.dex
-renamed.21=classes22.dex
-renamed.20=classes21.dex
-path.22=classes_9.dex
-base.22=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_9.dex
-path.21=classes_8.dex
-base.21=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_8.dex
-path.20=classes_7.dex
-base.20=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_7.dex
-path.9=classes_14.dex
-path.8=classes_13.dex
-path.7=classes_12.dex
-renamed.9=classes10.dex
-path.6=classes_11.dex
-renamed.8=classes9.dex
-path.5=classes_10.dex
-renamed.7=classes8.dex
->>>>>>> f87236ba99a083fa42647bf01a7735c348e8a838
+#Tue Nov 23 18:03:00 IST 2021
 path.4=classes_1.dex
 path.3=classes_0.dex
 path.2=classes2.dex
@@ -55,7 +31,6 @@ renamed.8=classes9.dex
 renamed.15=classes16.dex
 path.19=classes_6.dex
 renamed.14=classes15.dex
-<<<<<<< HEAD
 renamed.13=classes14.dex
 renamed.12=classes13.dex
 renamed.11=classes12.dex
@@ -70,26 +45,6 @@ base.20=/Users/empiere-mac/ReactNativeProjects/washim/Bhavik/Buyer_github/cotton
 base.22=/Users/empiere-mac/ReactNativeProjects/washim/Bhavik/Buyer_github/cotton_buyer/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_9.dex
 base.21=/Users/empiere-mac/ReactNativeProjects/washim/Bhavik/Buyer_github/cotton_buyer/android/app/build/intermediates/dex/debug/mergeLibDexDebug/classes_8.dex
 renamed.3=classes4.dex
-=======
-path.19=classes_6.dex
-base.19=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_6.dex
-renamed.13=classes14.dex
-path.18=classes_5.dex
-base.18=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_5.dex
-renamed.12=classes13.dex
-path.17=classes_4.dex
-base.17=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_4.dex
-renamed.11=classes12.dex
-path.16=classes_3.dex
-base.16=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_3.dex
-renamed.10=classes11.dex
-path.15=classes_2.dex
-base.15=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_2.dex
-path.14=classes_19.dex
-base.14=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_19.dex
-path.13=classes_18.dex
-base.13=D\:\\Github_Projects\\cotton_buyer\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\classes_18.dex
->>>>>>> f87236ba99a083fa42647bf01a7735c348e8a838
 path.12=classes_17.dex
 renamed.2=classes3.dex
 path.13=classes_18.dex

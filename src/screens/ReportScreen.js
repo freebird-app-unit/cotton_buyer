@@ -146,7 +146,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    console.log('response :>>>>>>>>>.list', response.data);
+                    // console.log('response :>>>>>>>>>.list', response.data);
                     if (response.data.status == 200) {
                         let productList = response.data.data;
                         var arrProductList = [];
@@ -154,8 +154,8 @@ function Contract({navigation}) {
                         for (let i = 0; i < productList.length; i++) {
                             
                             arrProductList.push({
-                                label: productList[i].name,
-                                value: productList[i].id,
+                                label: productList[i].product_name,
+                                value: productList[i].product_id,
                             });
                         }
                         setProduct(arrProductList)
@@ -197,7 +197,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    console.log('response :>>>>>>>>>.broker', response.data);
+                    // console.log('response :>>>>>>>>>.broker', response.data);
                     if (response.data.status == 200) {
                         let productList = response.data.data;
                         var arrProductList = [];
@@ -253,7 +253,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    console.log('response :>>>>>>>>>.buyer', response.data);
+                    // console.log('response :>>>>>>>>>.buyer', response.data);
                     if (response.data.status == 200) {
                         let productList = response.data.data;
                         var arrProductList = [];
@@ -416,7 +416,7 @@ function Contract({navigation}) {
                     setLoader(false)
                     // alert('response :>>>>>>>>>.app product', response.data);
 
-                    console.log('response :>>>>>>>>>.appproduct', response.data);
+                    // console.log('response :>>>>>>>>>.appproduct', response.data);
                     if (response.data.status == 200) {
                         let d = {
                             title: ProductId.label,
