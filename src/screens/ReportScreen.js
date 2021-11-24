@@ -25,7 +25,7 @@ import { FlatList } from 'react-native-gesture-handler';
 // import { navigationRef } from '../../RootNavigation';
 import api_config from '../Api/api';
 
-const TouchableFunction = ({...props}) => {
+const TouchableFunction = ({ ...props }) => {
     return (
         <TouchableOpacity style={{
             backgroundColor: '#F0F5F9',
@@ -38,20 +38,20 @@ const TouchableFunction = ({...props}) => {
                 ellipsizeMode='tail'
                 style={{
                     flex: 1,
-                    color: props.flag ? '#fff' :  theme.colors.textColor,
+                    color: props.flag ? '#fff' : theme.colors.textColor,
                     fontSize: hp(1.8),
                     backgroundColor: props.flag ? theme.colors.primary : '#F0F5F9',
                     borderRadius: 5,
-                    fontFamily:'Poppins-Regular',
+                    fontFamily: 'Poppins-Regular',
                     height: 35,
                     textAlign: 'center',
                     textAlignVertical: 'center'
                 }}>{props.title}</Text></TouchableOpacity>
     )
-    
+
 }
 
-const SelectsBox = ({...props}) => (<SelectDropdown
+const SelectsBox = ({ ...props }) => (<SelectDropdown
     data={props.data}
     onSelect={props.onSelect}
     buttonStyle={{
@@ -98,21 +98,21 @@ const SelectsBox = ({...props}) => (<SelectDropdown
 
 
 
-function Contract({navigation}) {
+function Contract({ navigation }) {
 
     useEffect(() => {
 
 
         // const willFocusSubscription = navigation.addListener('focus', () => {
-            
-                        getBuyerApi()
 
-            setbbg(true)
-            // setbrg(false)
-            // setprg(false)
-            // getBrokerApi()
-            // getBuyerApi()
-           
+        getBuyerApi()
+
+        setbbg(true)
+        // setbrg(false)
+        // setprg(false)
+        // getBrokerApi()
+        // getBuyerApi()
+
         // });
 
         // return willFocusSubscription;
@@ -124,6 +124,7 @@ function Contract({navigation}) {
         console.log('hi')
         try {
             setLoader(true)
+
             let data = {
 
                 user_type: 'buyer', seller_buyer_id: await EncryptedStorage.getItem('user_id')
@@ -132,7 +133,6 @@ function Contract({navigation}) {
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            console.log('data',data)
 
             axios({
                 url: api_config.BASE_URL + api_config.CONTRACT_PRODUCT_LIST,
@@ -146,13 +146,13 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    // console.log('response :>>>>>>>>>.list', response.data);
+                    console.log('response :>>>>>>>>>.list', response.data);
                     if (response.data.status == 200 && response.data.data.length > 0) {
                         let productList = response.data.data;
                         var arrProductList = [];
 
                         for (let i = 0; i < productList.length; i++) {
-                            
+
                             arrProductList.push({
                                 label: productList[i].product_name,
                                 value: productList[i].product_id,
@@ -176,7 +176,7 @@ function Contract({navigation}) {
                     }
                 })
                 .catch(function (error) {
-                  setLoader(false)
+                    setLoader(false)
                 });
         } catch (error) {
             console.log(error);
@@ -187,7 +187,7 @@ function Contract({navigation}) {
         console.log('hi')
         try {
             setLoader(true)
-          
+
             let data = {
 
                 user_type: 'buyer', seller_buyer_id: await EncryptedStorage.getItem('user_id')
@@ -209,7 +209,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    // console.log('response :>>>>>>>>>.broker', response.data);
+                    console.log('response :>>>>>>>>>.brokertotal', response.data);
                     if (response.data.status == 200 && response.data.data.length > 0) {
                         let productList = response.data.data;
                         var arrProductList = [];
@@ -228,6 +228,7 @@ function Contract({navigation}) {
                         arrProductList.unshift(obj)
                         setBroker(arrProductList)
                     } else {
+
                         var arrProductList = [];
                         let obj = {
                             label: 'No Broker available',
@@ -258,6 +259,7 @@ function Contract({navigation}) {
 
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
+            console.log('data', data)
 
             axios({
                 url: api_config.BASE_URL + api_config.CONTRACT_PARTY_LIST,
@@ -293,12 +295,12 @@ function Contract({navigation}) {
                     } else {
                         var arrProductList = [];
                         let obj = {
-                            label: 'No Seller available',
-                            value: -1,
+                            label: 'No Buyer available',
+                            value: 0,
                         }
                         arrProductList.unshift(obj)
                         setBuyer(arrProductList)
-                        setBuyerId({ label: 'No Seller available', value: -1})
+                        setBuyerId({ label: 'No Buyer available', value: -1 })
                     }
                 })
                 .catch(function (error) {
@@ -310,20 +312,25 @@ function Contract({navigation}) {
     };
 
     const BuyerApiContract = async (dates) => {
+        console.log('hi buyer', BuyerId, dates)
+
+        if (BuyerId.value == -1)
+            return;
+
         console.log('hi buyer')
         try {
-            BuyerId.value != -1 && setLoader(true)
+            setLoader(true)
 
             let data = {
 
                 user_type: 'buyer', seller_buyer_id: BuyerId.value, user_id: await EncryptedStorage.getItem('user_id'), date_range: dates.from + '/' + dates.to
             };
 
-            console.log('data',data)
+            console.log('data', data)
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            BuyerId.value != -1 && axios({
+            axios({
                 url: api_config.BASE_URL + api_config.PARTY_WISE_CONTRACT_REPORT,
                 method: 'POST',
                 data: formData,
@@ -336,7 +343,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    // alert('response :>>>>>>>>>.appbyer', response.data);
+                    console.log('response :>>>>>>>>>.appbyer', response.data);
                     if (response.data.status == 200) {
                         let d = {
                             title: BuyerId.label,
@@ -347,10 +354,8 @@ function Contract({navigation}) {
                         let datag = []
                         datag.push(d);
                         setBuyerData(datag);
-
                     } else {
                         setBuyerData([]);
-
                         alert(response.data.message);
                     }
                 })
@@ -362,20 +367,22 @@ function Contract({navigation}) {
         }
     }
     const BrokerApiContract = async (dates) => {
-        console.log('hi broker')
+
+
+        console.log('hi broker', dates)
         try {
-            BrokerId.value != -1 && setLoader(true)
+            (BrokerId.value != -1) && setLoader(true)
 
             let data = {
 
                 user_type: 'buyer', broker_id: BrokerId.value, user_id: await EncryptedStorage.getItem('user_id'), date_range: dates.from + '/' + dates.to
             };
 
-            console.log('data', data)
+            console.log('data-broker', data)
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            BrokerId.value != -1 &&  axios({
+            (BrokerId.value != -1) && axios({
                 url: api_config.BASE_URL + api_config.BROKER_WISE_CONTRACT_REPORT,
                 method: 'POST',
                 data: formData,
@@ -388,8 +395,7 @@ function Contract({navigation}) {
                 .then(function (response) {
                     setLoader(false)
 
-                    // alert('response :>>>>>>>>>.app broker', response.data);
-
+                    // alert('response :>>>>>>>>>.appbroker' + response);
                     if (response.data.status == 200) {
                         let d = {
                             title: BrokerId.label,
@@ -416,8 +422,13 @@ function Contract({navigation}) {
 
     const ProductApiContract = async (dates) => {
         console.log('hi broker')
+
+        if (ProductId.value == -1)
+            return;
+
+        console.log('hi broker')
         try {
-            ProductId.value != -1 &&  setLoader(true)
+            ProductId.value != -1 && setLoader(true)
 
             let data = {
 
@@ -428,7 +439,7 @@ function Contract({navigation}) {
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
 
-            ProductId.value != -1 &&  axios({
+            ProductId.value != -1 && axios({
                 url: api_config.BASE_URL + api_config.PRODUCT_WISE_CONTRACT_REPORT,
                 method: 'POST',
                 data: formData,
@@ -440,9 +451,8 @@ function Contract({navigation}) {
             })
                 .then(function (response) {
                     setLoader(false)
-                    // alert('response :>>>>>>>>>.app product', response.data);
 
-                    // console.log('response :>>>>>>>>>.appproduct', response.data);
+                    console.log('response :>>>>>>>>>.appproduct', response.data);
                     if (response.data.status == 200) {
                         let d = {
                             title: ProductId.label,
@@ -466,47 +476,82 @@ function Contract({navigation}) {
             console.log(error);
         }
     }
-    const [bbg,setbbg] = useState(false)
+    const [bbg, setbbg] = useState(false)
     const [brg, setbrg] = useState(false)
     const [prg, setprg] = useState(false)
     const [Loader, setLoader] = useState(false)
     const [currentDate, setCurrentDate] = useState(moment(new Date()).format('DD-MM-YYYY'))
-    const [date,setDate] = useState(null)
+    const [ToDate, setTodate] = useState(null)
+    const [brokercurrentDate, setbrokerCurrentDate] = useState(moment(new Date()).format('DD-MM-YYYY'))
+    const [brokerToDate, setbrokerTodate] = useState(null)
+    const [procurrentDate, setproCurrentDate] = useState(moment(new Date()).format('DD-MM-YYYY'))
+    const [proToDate, setproTodate] = useState(null)
+
+
+    const [date, setDate] = useState(null)
 
     const [Buyer, setBuyer] = useState([{ label: 'All', value: 0 }])
     const [Broker, setBroker] = useState([{ label: 'All', value: 0 }])
     const [Product, setProduct] = useState([{ label: 'All', value: 0 }])
 
-    const [BuyerData,setBuyerData] = useState([])
+    const [BuyerData, setBuyerData] = useState([])
     const [BrokerData, setBrokerData] = useState([])
     const [ProductData, setProductData] = useState([])
 
-    console.log('buyerdssdfasda',BuyerData)
+    console.log('buyerdssdfasda', BuyerData)
 
-    const [BuyerId, setBuyerId] = useState({ label: 'All', value: -1 })
-    const [BrokerId, setBrokerId] = useState({ label: 'All', value: -1 })
-    const [ProductId, setProductId] = useState({ label: 'All', value: -1 })
+    const [BuyerId, setBuyerId] = useState({ label: 'All', value: 0 })
+    const [BrokerId, setBrokerId] = useState({ label: 'All', value: 0 })
+    const [ProductId, setProductId] = useState({ label: 'All', value: 0 })
 
     const FlagSet = (item) => {
-            if (item == 'Buyer')
-                {setbbg(true); setprg(false); setbrg(false);}
-                    else if (item == 'Broker')
-            { setbbg(false); setprg(false); setbrg(true); }
-            else {
-                 setbbg(false); setprg(true); setbrg(false); }
-            }
-          
+        if (item == 'Seller') { setbbg(true); setprg(false); setbrg(false); }
+        else if (item == 'Broker') { setbbg(false); setprg(false); setbrg(true); }
+        else {
+            setbbg(false); setprg(true); setbrg(false);
+        }
+    }
+
 
 
     const onSelect = data => {
-        console.log('data>>>',data)
+        console.log('data>>>', data)
         setDate(data.obj)
-        FlagSet(data.obj.GoingTo)
-        bbg && BuyerApiContract(data.obj)
-        brg && BrokerApiContract(data.obj)
-        prg && ProductApiContract(data.obj)
+        FlagSet(data.obj.GoingTo);
 
-        setCurrentDate(moment(new Date(data.obj.from)).format('DD-MM-YYYY'))
+        if (data.obj.selectedDate) {
+            bbg && BuyerApiContract(data.obj)
+            brg && BrokerApiContract(data.obj)
+            prg && ProductApiContract(data.obj)
+        }
+
+        if (bbg)
+            if (data.obj.from == data.obj.to)
+                setTodate(null)
+            else
+                setTodate(moment(new Date(data.obj.to)).format('DD-MM-YYYY'))
+
+        if (brg)
+            if (data.obj.from == data.obj.to)
+                setbrokerTodate(null)
+            else
+                setbrokerTodate(moment(new Date(data.obj.to)).format('DD-MM-YYYY'))
+
+        if (prg)
+            if (data.obj.from == data.obj.to)
+                setproTodate(null)
+            else
+                setproTodate(moment(new Date(data.obj.to)).format('DD-MM-YYYY'))
+
+
+
+
+        bbg && setCurrentDate(moment(new Date(data.obj.from)).format('DD-MM-YYYY'))
+        brg && setbrokerCurrentDate(moment(new Date(data.obj.from)).format('DD-MM-YYYY'))
+
+        prg && setproCurrentDate(moment(new Date(data.obj.from)).format('DD-MM-YYYY'))
+
+
         console.log('cur', currentDate.toString())
     };
 
@@ -662,27 +707,26 @@ function Contract({navigation}) {
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: wp(2) }}>
             <Spinner visible={Loader} color="#085cab" />
-
-            <View style={{flexDirection:'row',marginTop:hp(2),justifyContent:'space-between'}}>
+            <View style={{ flexDirection: 'row', marginTop: hp(2), justifyContent: 'space-between' }}>
                 <TouchableFunction title='Seller Wise' flag={bbg} onPressIn={() => {
                     setbbg(true);
                     setbrg(false);
                     setprg(false)
-                }} onPress={() => getBuyerApi()}/>
+                }} onPress={() => getBuyerApi()} />
                 <TouchableFunction title='Broker Wise' flag={brg} onPressIn={() => {
                     setbbg(false);
                     setbrg(true);
                     setprg(false)
-                }} onPress={() => getBrokerApi()}/>
+                }} onPress={() => getBrokerApi()} />
                 <TouchableFunction title='Product Wise' flag={prg} onPressIn={() => {
                     setbbg(false);
                     setbrg(false);
                     setprg(true)
-                }} onPress={() => getProductApi()}/>
+                }} onPress={() => getProductApi()} />
 
-                    </View>
+            </View>
 
-                    <View style={{marginTop:hp(2)}}>
+            <View style={{ marginTop: hp(2) }}>
                 <Text
                     style={{
                         fontSize: 14,
@@ -692,16 +736,16 @@ function Contract({navigation}) {
                         // marginLeft: 20,
                         marginBottom: 5,
                     }}>
-                    {bbg ? 'Seller' :  brg ? 'Broker' : 'Product'}
+                    {bbg ? 'Buyer' : brg ? 'Broker' : 'Product'}
 
                 </Text>
 
-                {bbg && <SelectsBox data={Buyer} selected={BuyerId} onSelect={(selectedItem) => setBuyerId(selectedItem) } />}
+                {bbg && <SelectsBox data={Buyer} selected={BuyerId} onSelect={(selectedItem) => setBuyerId(selectedItem)} />}
                 {brg && <SelectsBox data={Broker} selected={BrokerId} onSelect={(selectedItem) => setBrokerId(selectedItem)} />}
                 {prg && <SelectsBox data={Product} selected={ProductId} onSelect={(selectedItem) => setProductId(selectedItem)} />}
 
 
-                    </View>
+            </View>
             <View style={{ marginTop: 10, marginBottom: 5, width: wp(46) }}>
                 <Text
                     style={{
@@ -716,24 +760,64 @@ function Contract({navigation}) {
                     }}>
                     Date Range
                 </Text>
-                <TouchableOpacity onPress={() => navigation.navigate('Custom')} onPress={() => navigation.navigate('Custom', { onSelect: onSelect, comingFrom: bbg? 'Buyer': brg ? 'Broker' : 'Product' })}>
+                <TouchableOpacity onPress={() => navigation.navigate('Custom')} onPress={() => navigation.navigate('Custom', { onSelect: onSelect, comingFrom: bbg ? 'Seller' : brg ? 'Broker' : 'Product' })}>
                     <View style={{
                         flexDirection: 'row', borderWidth: 0.5, height: hp(6.5), borderWidth: 0.7,
                         borderRadius: 4,
                         borderColor: "lightgray", justifyContent: 'space-between', width: wp(46), alignItems: 'center',
                         paddingHorizontal: wp(3)
                     }}>
-                        <Text style={{
-                            fontSize: 14,
-                            // fontWeight: 'bold',
-                            color: 'black',
-                            // fontFamily: 'Poppins-SemiBold',
-                            fontFamily: 'Poppins-Regular',
-                            // marginLeft: 20,
-                            // marginBottom: 5,
-                        }}>
-                            {currentDate}
-                        </Text>
+                        {bbg && (<View style={{ flexDirection: ToDate ? 'column' : 'row' }}>
+                            <Text style={{
+                                fontSize: 14,
+                                color: 'black',
+                                fontFamily: 'Poppins-Regular',
+                            }}>
+                                {bbg && currentDate}
+                                {brg && brokercurrentDate}
+                                {prg && procurrentDate}
+
+
+                            </Text>
+                            <Text style={{
+                                fontSize: 14,
+                                color: 'black',
+                                fontFamily: 'Poppins-Regular',
+                            }}>
+                                {bbg && ToDate}
+
+                            </Text>
+                        </View>)}
+                        {brg && (<View style={{ flexDirection: brokerToDate ? 'column' : 'row' }}>
+                            <Text style={{
+                                fontSize: 14,
+                                color: 'black',
+                                fontFamily: 'Poppins-Regular',
+                            }}>{brg && brokercurrentDate}</Text>
+                            <Text style={{
+                                fontSize: 14,
+                                color: 'black',
+                                fontFamily: 'Poppins-Regular',
+                            }}>
+                                {brg && brokerToDate}
+                            </Text>
+                        </View>)}
+
+                        {prg && (<View style={{ flexDirection: proToDate ? 'column' : 'row', }}>
+                            <Text style={{
+                                fontSize: 14,
+                                color: 'black',
+                                fontFamily: 'Poppins-Regular',
+                            }}>
+                                {prg && procurrentDate}</Text>
+                            <Text style={{
+                                fontSize: 14,
+                                color: 'black',
+                                fontFamily: 'Poppins-Regular',
+                            }}>
+                                {prg && proToDate}
+                            </Text>
+                        </View>)}
                         <Icon name="calendar" size={hp(2.3)} color="#000" />
                     </View>
                 </TouchableOpacity>
@@ -741,11 +825,11 @@ function Contract({navigation}) {
             </View>
             <View style={{ flex: 1, marginTop: hp(2) }}>
 
-                     
+
 
                 <FlatList data={
-                     bbg ? BuyerData :  brg ? BrokerData : ProductData
-                   
+                    bbg ? BuyerData : brg ? BrokerData : ProductData
+
                 } renderItem={renderItemPost} ListEmptyComponent={emptyCompo()} />
             </View>
         </ScrollView>
@@ -753,20 +837,107 @@ function Contract({navigation}) {
     )
 }
 
-function Post({navigation}) {
-    const [Status, setstatusValue] = useState([{ label: 'active', value: 0 },
-        { label: 'complete', value: 1 }, { label: 'cancel', value: 2 }])
-    const [selectedStatus, setSelectedStatus] = useState(null)
+function Post({ navigation }) {
+    const [Status, setstatusValue] = useState([{ label: 'active', value: 0 }, { label: 'complete', value: 1 },
+    { label: 'cancel', value: 2 }])
+    const [selectedStatus, setSelectedStatus] = useState({ label: 'active', value: 0 })
 
     // const [Expenses, setExpense] = useState(0.0)
     // const [Cotton_Seed, setCottoSeed] = useState(0.0)
     // const [Our_Turn, setOutTurn] = useState(0.0)
     // const [Shortage, setShortage] = useState(0.0)
     // const [Result, setResult] = useState(0.0)
+    const [ToDate, setTodate] = useState(null)
     const [currentDate, setCurrentDate] = useState(moment(new Date()).format('DD-MM-YYYY'))
     const [statusData, setStatusData] = useState([])
-
     const [Loader, setLoader] = useState(false)
+
+
+    const postApi = async (dates) => {
+        try {
+            setLoader(true)
+
+            let data = {
+
+                user_type: 'buyer', status: selectedStatus.label, seller_buyer_id: await EncryptedStorage.getItem('user_id'), date_range: dates.from + '/' + dates.to
+            };
+
+            console.log('data', data)
+            const formData = new FormData();
+            formData.append('data', JSON.stringify(data));
+
+            axios({
+                url: api_config.BASE_URL + api_config.POST_REPORT,
+                method: 'POST',
+                data: formData,
+
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
+                .then(function (response) {
+                    setLoader(false)
+                    console.log('response :>>>>>>>>>.apppost', response.data);
+
+
+                    // alert('response :>>>>>>>>>.apppost', response.data);
+                    if (response.data.status == 200) {
+                        let d = {
+                            title: selectedStatus.label,
+                            date: moment(new Date(dates.from)).format('DD-MM-YYYY') + ' to ' + moment(new Date(dates.to)).format('DD-MM-YYYY'),
+                            download: response.data.data
+                        }
+
+                        let datag = []
+                        datag.push(d);
+                        setStatusData(datag);
+
+                    } else {
+                        setStatusData([]);
+
+                        alert(response.data.message);
+                    }
+                })
+                .catch(function (error) {
+                    setLoader(false)
+                });
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+
+    const onSelectPost = data => {
+        console.log('data>>>', data, selectedStatus)
+        // setDate(data.obj)
+        if (data.obj.selectedDate)
+            selectedStatus ? postApi(data.obj) : alert("please select status");
+
+        if (data.obj.from == data.obj.to)
+            setTodate(null)
+        else
+            setTodate(moment(new Date(data.obj.to)).format('DD-MM-YYYY'))
+
+
+        setCurrentDate(moment(new Date(data.obj.from)).format('DD-MM-YYYY'))
+        console.log('cur', currentDate.toString())
+    };
+
+    const emptyCompo = () => {
+        return (
+            <View
+                style={{
+                    flex: 1,
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}>
+                <NoRecordsFound_Icon />
+                <Text>Sorry, no records available</Text></View>
+        )
+    }
 
     const onClickDownload = async pdfURL => {
         if (pdfURL == '') {
@@ -902,186 +1073,124 @@ function Post({navigation}) {
         )
     }
 
-    const postApi = async(dates) => {
-        try {
-            setLoader(true)
-
-            let data = {
-
-                user_type: 'buyer', status: selectedStatus.label, seller_buyer_id: await EncryptedStorage.getItem('user_id'), date_range: dates.from + '/' + dates.to
-            };
-
-            console.log('data', data)
-            const formData = new FormData();
-            formData.append('data', JSON.stringify(data));
-
-            axios({
-                url: api_config.BASE_URL + api_config.POST_REPORT,
-                method: 'POST',
-                data: formData,
-
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'multipart/form-data',
-                },
-            })
-                .then(function (response) {
-                    setLoader(false)
-
-                    console.log('response :>>>>>>>>>.appproduct', response.data);
-                    if (response.data.status == 200) {
-                        let d = {
-                            title: selectedStatus.label,
-                            date: moment(new Date(dates.from)).format('DD-MM-YYYY') + ' to ' + moment(new Date(dates.to)).format('DD-MM-YYYY'),
-                            download: response.data.data
-                        }
-
-                        let datag = []
-                        datag.push(d);
-                        setStatusData(datag);
-
-                    } else {
-                        setStatusData([])
-                        alert(response.data.message);
-                    }
-                })
-                .catch(function (error) {
-                    setLoader(false)
-                });
-        } catch (error) {
-            console.log(error);
-        }
-
-    }
-
- 
-    const onSelectPost = data => {
-        console.log('data>>>', data)
-        // setDate(data.obj)
-      
-        setCurrentDate(moment(new Date(data.obj.from)).format('DD-MM-YYYY'))
-        selectedStatus ? postApi(data.obj) : alert("please select status")
-        console.log('cur', currentDate.toString())
-    };
-   
-    const emptyCompo = () => {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                }}>
-                <NoRecordsFound_Icon />
-                <Text>Sorry, no records available</Text></View>
-        )
-    }
-
     return (
         <View style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: wp(2) }}>
-            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                <Spinner visible={Loader} color="#085cab" />
+            <Spinner visible={Loader} color="#085cab" />
 
-            <View style={{ marginTop: 10, marginBottom: 5,width:wp(46) }}>
-            <Text
-                style={{
-                    fontSize: 14,
-                 
-                    color: 'black',
-                            fontFamily:'Poppins-SemiBold',
-                    // marginLeft: 20,
-                    marginBottom: 5,
-                }}>
-                Status
-            </Text>
-            <SelectDropdown
-                data={Status}
-                onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index);
-                    setSelectedStatus(selectedItem);
-                }}
-                buttonStyle={{
-                    width: "100%",
-                    height: hp(6.5),
-                    // padding:2,
-                    backgroundColor: "#FFF",
-                    paddingHorizontal: wp(2),
-                    borderWidth: 0.7,
-                    borderRadius: 4,
-                    borderColor: "lightgray",
-                    left: 0
-                }}
-                renderCustomizedButtonChild={(selectedItem, index) => {
-                    return (
-                        <View style={styles.dropdown3BtnChildStyle}>
-                            <Text style={styles.dropdown3BtnTxt}>
-                                {selectedItem ? selectedItem.label : Status[0].label}
-                            </Text>
-                        </View>
-                    );
-                }}
-                renderDropdownIcon={() => {
-                    return (
-                        <FontAwesome
-                            name="chevron-down"
-                            color={'black'}
-                            size={14}
-                            style={{ marginRight: 10 }}
-                        />
-                    );
-                }}
-                dropdownIconPosition={'right'}
-                dropdownStyle={styles.dropdown3DropdownStyle}
-                rowStyle={styles.dropdown3RowStyle}
-                renderCustomizedRowChild={(item, index) => {
-                    return (
-                        <View style={styles.dropdown3RowChildStyle}>
-                            <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
-                        </View>
-                    );
-                }}
-            />
-            </View>
-            <View style={{ marginTop: 10, marginBottom: 5, width: wp(46) }}>
-                <Text
-                    style={{
-                        fontSize: 14,
-                        
-                        color: 'black',
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View style={{ marginTop: 10, marginBottom: 5, width: wp(46) }}>
+                    <Text
+                        style={{
+                            fontSize: 14,
+
+                            color: 'black',
+                            fontFamily: 'Poppins-SemiBold',
+                            // marginLeft: 20,
+                            marginBottom: 5,
+                        }}>
+                        Status
+                    </Text>
+                    <SelectDropdown
+                        data={Status}
+                        onSelect={(selectedItem, index) => {
+                            console.log(selectedItem, index);
+                            setSelectedStatus(selectedItem);
+                        }}
+                        buttonStyle={{
+                            width: "100%",
+                            height: hp(6.5),
+                            // padding:2,
+                            backgroundColor: "#FFF",
+                            paddingHorizontal: wp(2),
+                            borderWidth: 0.7,
+                            borderRadius: 4,
+                            borderColor: "lightgray",
+                            left: 0
+                        }}
+                        renderCustomizedButtonChild={(selectedItem, index) => {
+                            return (
+                                <View style={styles.dropdown3BtnChildStyle}>
+                                    <Text style={styles.dropdown3BtnTxt}>
+                                        {selectedItem ? selectedItem.label : Status[0].label}
+                                    </Text>
+                                </View>
+                            );
+                        }}
+                        renderDropdownIcon={() => {
+                            return (
+                                <FontAwesome
+                                    name="chevron-down"
+                                    color={'black'}
+                                    size={14}
+                                    style={{ marginRight: 10 }}
+                                />
+                            );
+                        }}
+                        dropdownIconPosition={'right'}
+                        dropdownStyle={styles.dropdown3DropdownStyle}
+                        rowStyle={styles.dropdown3RowStyle}
+                        renderCustomizedRowChild={(item, index) => {
+                            return (
+                                <View style={styles.dropdown3RowChildStyle}>
+                                    <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                                </View>
+                            );
+                        }}
+                    />
+                </View>
+                <View style={{ marginTop: 10, marginBottom: 5, width: wp(46) }}>
+                    <Text
+                        style={{
+                            fontSize: 14,
+
+                            color: 'black',
                             fontFamily: 'Poppins-SemiBold',
 
-                        // marginLeft: 20,
-                        marginBottom: 5,
-                        
-                    }}>
-                    Date Range
-                </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Custom')} onPress={() => navigation.navigate('Custom', { onSelect: onSelectPost, comingFrom:'Post' })}>
-                    <View style={{
-                        flexDirection: 'row', borderWidth: 0.5, height: hp(6.5), borderWidth: 0.7,
-                        borderRadius: 4,
-                        borderColor: "lightgray",justifyContent:'space-between',width:wp(46),alignItems:'center',
-                        paddingHorizontal:wp(3)}}>
-                        <Text style={{
-                            fontSize: 14,
-                            // fontWeight: 'bold',
-                            color: 'black',
-                                // fontFamily: 'Poppins-SemiBold',
-                                fontFamily: 'Poppins-Regular',
                             // marginLeft: 20,
-                            // marginBottom: 5,
-                        }}>
-                                {currentDate}
-                            </Text>
-                        <Icon name="calendar" size={hp(2.3)} color="#000" />
-                        </View>
-                </TouchableOpacity>
+                            marginBottom: 5,
 
+                        }}>
+                        Date Range
+                    </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('Custom')} onPress={() => navigation.navigate('Custom', { onSelect: onSelectPost, comingFrom: 'Post' })}>
+                        <View style={{
+                            flexDirection: 'row', borderWidth: 0.5, height: hp(6.5), borderWidth: 0.7,
+                            borderRadius: 4,
+                            borderColor: "lightgray", justifyContent: 'space-between', width: wp(46), alignItems: 'center',
+                            paddingHorizontal: wp(3)
+                        }}>
+                            <View style={{ flexDirection: ToDate ? 'column' : 'row' }}>
+                                <Text style={{
+                                    fontSize: 14,
+                                    // fontWeight: 'bold',
+                                    color: 'black',
+                                    // fontFamily: 'Poppins-SemiBold',
+                                    fontFamily: 'Poppins-Regular',
+                                    // marginLeft: 20,
+                                    // marginBottom: 5,
+                                }}>
+                                    {currentDate}
+                                </Text>
+                                <Text style={{
+                                    fontSize: 14,
+                                    // fontWeight: 'bold',
+                                    color: 'black',
+                                    // fontFamily: 'Poppins-SemiBold',
+                                    fontFamily: 'Poppins-Regular',
+                                    // marginLeft: 20,
+                                    // marginBottom: 5,
+                                }}>
+                                    {ToDate}
+                                </Text>
+                            </View>
+                            <Icon name="calendar" size={hp(2.3)} color="#000" />
+                        </View>
+                    </TouchableOpacity>
+
+                </View>
             </View>
-            </View>
-            <View style={{flex:1,marginTop:hp(2)}}>
-                <FlatList data={statusData} renderItem={renderItemPost} ListEmptyComponent={emptyCompo()}/>
+            <View style={{ flex: 1, marginTop: hp(2) }}>
+                <FlatList data={statusData} renderItem={renderItemPost} ListEmptyComponent={emptyCompo()} />
             </View>
         </View>
 
@@ -1089,6 +1198,8 @@ function Post({navigation}) {
 
     )
 }
+
+
 
 
 function ThirdRoute() {
