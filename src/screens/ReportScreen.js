@@ -754,7 +754,8 @@ function Contract({navigation}) {
 }
 
 function Post({navigation}) {
-    const [Status, setstatusValue] = useState([{ label: 'active', value: 0 }, { label: 'complete', value: 1}])
+    const [Status, setstatusValue] = useState([{ label: 'active', value: 0 },
+        { label: 'complete', value: 1 }, { label: 'cancel', value: 2 }])
     const [selectedStatus, setSelectedStatus] = useState(null)
 
     // const [Expenses, setExpense] = useState(0.0)
