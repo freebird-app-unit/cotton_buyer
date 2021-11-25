@@ -36,6 +36,8 @@ import Newsfeed_Icon from '../assets/NewsFeed';
 import MCX_Icon from '../assets/MCX';
 import Calculator_Icon from '../assets/Calculator';
 import ChangePassword_Icon from '../assets/ChangePassword';
+import Brokers_Icon from '../assets/Brokers';
+
 import Profile_Icon from '../assets/Profile';
 import Reports_Icon from '../assets/Reports';
 import TransactionTracking_Icon from '../assets/TransactionTracking';
@@ -164,7 +166,7 @@ const Data = [
     {
         label: 'Brokers',
         Title: 'Brokers',
-        Icon: <Profile_Icon />
+        Icon: <Brokers_Icon />
     },
     {
         label: 'ChangePasswordScreen',
