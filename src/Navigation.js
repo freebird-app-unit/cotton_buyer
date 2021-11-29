@@ -9,6 +9,8 @@ import notifee, { EventType, AndroidImportance } from '@notifee/react-native';
 import { Appbar, Searchbar, Button, Badge } from 'react-native-paper';
 import styles from './screens/Styles'
 import { navigationRef } from '../RootNavigation';
+import FilterSettings from './assets/FilterSettings';
+
 import {
     LoginScreen,
     RegisterScreen,
@@ -34,6 +36,7 @@ import {
     heightPercentageToDP as hp,
 } from './components/responsive-ratio';
 import Custom from './components/Custom'
+
 import NewsSingle from './components/NewsSingle'
 import EditProfile from './components/EditProfile'
 import SelectBroker from './components/SelectBroker'
@@ -79,7 +82,7 @@ const tabnavi = ({ navigation }) => {
                 borderTopRightRadius: 20,
             }}>
                 <Tab.Navigator tabBarOptions={{
-                    labelStyle: { fontSize: hp(2), fontFamily: 'Poppins - Regular' },
+                    labelStyle: { fontSize: hp(2), fontFamily: 'Poppins-SemiBold',textTransform: 'none' },
                     activeTintColor: theme.colors.primary,
                     inactiveTintColor: '#afafaf',
                     indicatorStyle: { backgroundColor: theme.colors.primary }
@@ -118,7 +121,7 @@ const ReportTab = ({ navigation }) => {
                 borderTopRightRadius: 20,
             }}>
                 <Tab.Navigator tabBarOptions={{
-                    labelStyle: { fontSize: hp(2), fontFamily: 'Poppins-Regular' },
+                    labelStyle: { fontSize: hp(2), fontFamily: 'Poppins-SemiBold',textTransform: 'none' },
                     activeTintColor: theme.colors.primary,
                     inactiveTintColor: '#afafaf',
                     indicatorStyle: { backgroundColor: theme.colors.primary }
@@ -151,11 +154,11 @@ const AppHeading = (props) => {
                     style={{ alignItems: 'center' }}
                     color={props.color ? props.color : "white"}
                     title={props.title}
-                    titleStyle={{ fontSize: hp(2.5), fontFamily: "Poppins-SemiBold" }}
+                    titleStyle={{ fontSize: hp(2.5), fontFamily: "Poppins-SemiBold", textTransform: 'none' }}
                 />
                
                 {props.filter ? <Appbar.Action
-                    icon="notification-clear-all"
+                    icon= {() => <FilterSettings color={'white'}/>}
                     color={props.color ? props.color : "white"}
 
                     onPress={
@@ -233,6 +236,42 @@ const home = ({ navigation, route }) => {
             <View
                 style={styles.flex}>
                 <HomeScreen navigation={navigation} route={route} />
+            </View>
+        </View>
+    )
+}
+
+const VerifyOtpFunction = ({ navigation, route }) => {
+    return (
+        <View style={{ flex: 1, backgroundColor: '#F0F5F9' }}>
+            <AppHeading color={'#333'} title={'Verify OTP'} leftPress={() => navigation.navigate('ForgotPasswordScreen')} />
+            <View
+                style={styles.flex}>
+                <VerifyOtpScreen navigation={navigation} />
+            </View>
+        </View>
+    )
+}
+
+const ChangePasswordFunction = ({ navigation, route }) => {
+    return (
+        <View style={{ flex: 1, backgroundColor: '#333' }}>
+            <AppHeading menu title={'Change Password'} leftPress={() => navigation.navigate('MenuScreen')} />
+            <View
+                style={styles.flex}>
+                <ChangePasswordScreen navigation={navigation} />
+            </View>
+        </View>
+    )
+}
+
+const ForgotPasswordFunction = ({ navigation, route }) => {
+    return (
+        <View style={{ flex: 1, backgroundColor: '#F0F5F9' }}>
+            <AppHeading color={'#333'} title={'Forgot Password'} leftPress={() => navigation.navigate('LoginScreen')} />
+            <View
+                style={styles.flex}>
+                <ForgotPasswordScreen navigation={navigation} />
             </View>
         </View>
     )
@@ -614,13 +653,13 @@ const App = () => {
 
                     <Stack.Screen
                         name="ForgotPasswordScreen"
-                        component={ForgotPasswordScreen} />
+                        component={ForgotPasswordFunction} />
                     <Stack.Screen
                         name="SetPasswordScreen"
                         component={SetPasswordScreen} />
                     <Stack.Screen
                         name="ChangePasswordScreen"
-                        component={ChangePasswordScreen} />
+                        component={ChangePasswordFunction} />
                     <Stack.Screen name="SplashScreen" component={SplashScreen} />
 
                     <Stack.Screen name="HomeScreen" component={home} />
@@ -647,7 +686,7 @@ const App = () => {
 
 
                     {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
-                    <Stack.Screen name="VerifyOtpScreen" component={VerifyOtpScreen} />
+                    <Stack.Screen name="VerifyOtpScreen" component={VerifyOtpFunction} />
                     <Stack.Screen name="MyContractDetails" component={MyContractDetailsFunction} />
                     <Stack.Screen name="DealDetails" component={DealDetailsFunction} />
                     <Stack.Screen name="NegotiateDetails" component={NegotiateDetailsFunction} />

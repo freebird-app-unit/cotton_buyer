@@ -68,16 +68,16 @@ import TextInput from '../components/TextInput';
 
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: wp(2) }}>
-            <InPutText label='Yarn Count' keyboardType="phone-pad" labelValue='' outlineColor={'#d1d1d1'} onChangeText={onChangedYarn_Count} maxLength={6}/>
-            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/ Candy' outlineColor={'#d1d1d1'} onChangeText={onChangedCotton_Rate} maxLength={6}/>
-            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#d1d1d1'} value={Auto_Cotton_Ratekg} maxLength={6} editable={false}/>
+            <InPutText label='Yarn Count' keyboardType="phone-pad" labelValue='' outlineColor={'#eee'} onChangeText={onChangedYarn_Count} maxLength={6}/>
+            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/ Candy' outlineColor={'#eee'} onChangeText={onChangedCotton_Rate} maxLength={6}/>
+            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} value={Auto_Cotton_Ratekg} maxLength={6} editable={false}/>
 
-            <InPutText label='Yield' keyboardType="phone-pad" labelValue='%' outlineColor={'#d1d1d1'} onChangeText={onChangedYield} maxLength={6}/>
-            <InPutText label='Waste Recovery' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#d1d1d1'} onChangeText={onChangedWaste_Recovery} maxLength={6}/>
-            {/* <InPutText label='Material Cost' labelValue='Rs/kg' outlineColor={'#d1d1d1'} onChangeText={onChangedMaterial_Cost} /> */}
-            <InPutText label='Conversion Cost' keyboardType="phone-pad" labelValue='Rs/k/Count' outlineColor={'#d1d1d1'} onChangeText={onChangedConversion_Cost} maxLength={6}/>
-            {/* <InPutText label='Commission' labelValue='%' outlineColor={'#d1d1d1'} onChangeText={onChangedCommission} />
-            <InPutText label='Other Exp' labelValue='Rs/kg' outlineColor={'#d1d1d1'} onChangeText={onChangedOther_Exp} /> */}
+            <InPutText label='Yield' keyboardType="phone-pad" labelValue='%' outlineColor={'#eee'} onChangeText={onChangedYield} maxLength={6}/>
+            <InPutText label='Waste Recovery' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedWaste_Recovery} maxLength={6}/>
+            {/* <InPutText label='Material Cost' labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedMaterial_Cost} /> */}
+            <InPutText label='Conversion Cost' keyboardType="phone-pad" labelValue='Rs/k/Count' outlineColor={'#eee'} onChangeText={onChangedConversion_Cost} maxLength={6}/>
+            {/* <InPutText label='Commission' labelValue='%' outlineColor={'#eee'} onChangeText={onChangedCommission} />
+            <InPutText label='Other Exp' labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedOther_Exp} /> */}
         <View style={{
             flexDirection: 'row',
             alignItems: 'center', marginTop: hp(1)
@@ -88,8 +88,8 @@ import TextInput from '../components/TextInput';
                 <Text style={styles.VAlue1}>Rs/kg</Text>
             </View>
         </View>
-        {/* <InPutText label='Yarn Rate' labelValue='Rs/kg' outlineColor={'#d1d1d1'} />
-        <InPutText label='Profit' labelValue='Rs/kg' outlineColor={'#d1d1d1'} /> */}
+        {/* <InPutText label='Yarn Rate' labelValue='Rs/kg' outlineColor={'#eee'} />
+        <InPutText label='Profit' labelValue='Rs/kg' outlineColor={'#eee'} /> */}
         {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <Button mode="contained"
                 onPress={onPressed}
@@ -167,11 +167,11 @@ import TextInput from '../components/TextInput';
 
     return (
     <View style={{ flex: 1,backgroundColor:'#fff',paddingHorizontal:wp(2) }}>
-            <InPutText label='Kapas' keyboardType="phone-pad" labelValue='Rs/ 20 kg' outlineColor={'#d1d1d1'} onChangeText={text => onChangedKapas(text)} maxLength={6}/>
-            <InPutText label='Expenses' keyboardType="phone-pad" labelValue='Rs/ 20 kg' outlineColor={'#d1d1d1'} onChangeText={text => onChangedExpense(text)} maxLength={6}/>
-            <InPutText label='Cotton Seed' keyboardType="phone-pad" labelValue='Rs/ 20 kg' outlineColor={'#d1d1d1'} onChangeText={text => onChangedCotton_Seed(text)} maxLength={6}/>
-            <InPutText label='Our Turn' keyboardType="phone-pad" labelValue='%' outlineColor={'#d1d1d1'} onChangeText={text => onChangedOut_Turn(text)} maxLength={6}/>
-            <InPutText label='Shortage' keyboardType="phone-pad" labelValue='%' outlineColor={'#d1d1d1'} onChangeText={text => onChangedShortage(text)} maxLength={6}/>
+            <InPutText label='Kapas' keyboardType="phone-pad" labelValue='Rs/ 20 kg' outlineColor={'#eee'} onChangeText={text => onChangedKapas(text)} maxLength={6}/>
+            <InPutText label='Expenses' keyboardType="phone-pad" labelValue='Rs/ 20 kg' outlineColor={'#eee'} onChangeText={text => onChangedExpense(text)} maxLength={6}/>
+            <InPutText label='Cotton Seed' keyboardType="phone-pad" labelValue='Rs/ 20 kg' outlineColor={'#eee'} onChangeText={text => onChangedCotton_Seed(text)} maxLength={6}/>
+            <InPutText label='Our Turn' keyboardType="phone-pad" labelValue='%' outlineColor={'#eee'} onChangeText={text => onChangedOut_Turn(text)} maxLength={6}/>
+            <InPutText label='Shortage' keyboardType="phone-pad" labelValue='%' outlineColor={'#eee'} onChangeText={text => onChangedShortage(text)} maxLength={6}/>
         <View style={{
             flexDirection: 'row',
             alignItems: 'center', marginTop: hp(1)
@@ -230,9 +230,9 @@ import TextInput from '../components/TextInput';
     return (
         <View style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: wp(2)}}>
 
-            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/Candy' outlineColor={'#d1d1d1'} onChangeText={text => onChangedCotton_Rate(text)} maxLength={6}/>
-            <InPutText label='Expenses' keyboardType="phone-pad" labelValue='Rs/Candy' outlineColor={'#d1d1d1'} onChangeText={text => onChangedExpenses(text)} maxLength={6}/>
-            <InPutText label='Exchange Rate' keyboardType="phone-pad" labelValue='USD/INR' outlineColor={'#d1d1d1'} onChangeText={text => onChangedExchange_Rate(text)} maxLength={6}/>
+            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/Candy' outlineColor={'#eee'} onChangeText={text => onChangedCotton_Rate(text)} maxLength={6}/>
+            <InPutText label='Expenses' keyboardType="phone-pad" labelValue='Rs/Candy' outlineColor={'#eee'} onChangeText={text => onChangedExpenses(text)} maxLength={6}/>
+            <InPutText label='Exchange Rate' keyboardType="phone-pad" labelValue='USD/INR' outlineColor={'#eee'} onChangeText={text => onChangedExchange_Rate(text)} maxLength={6}/>
         <View style={{
             flexDirection: 'row',
             alignItems: 'center', marginTop: hp(2)
@@ -282,7 +282,7 @@ const InPutText = (props) => {
             <View style={{ width: wp(18), alignItems: 'flex-start', justifyContent: 'center', paddingTop: hp(1.5) }}>
                 <Text style={{
                     fontSize: hp(1.7),
-                    color: theme.colors.text,
+                    color: '#555555',
                     opacity: 0.5,
                     fontFamily: "Poppins-Regular",
                     width: wp(18)

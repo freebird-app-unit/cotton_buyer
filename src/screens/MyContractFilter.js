@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -27,6 +28,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { theme } from '../core/theme';
 import TextInput from '../components/TextInput';
 import SelectDropdown from 'react-native-select-dropdown';
+import style1 from './Styles'
 
 //svgs
 import Home from '../assets/Home';
@@ -38,7 +40,7 @@ import Download from '../assets/Download';
 import Checked from '../assets/Checked';
 import Search from '../assets/Search';
 import Unchecked from '../assets/Unchecked';
-import { heightPercentageToDP } from '../components/responsive-ratio';
+import { heightPercentageToDP, widthPercentageToDP } from '../components/responsive-ratio';
 
 class MyContractFilter extends Component {
   constructor(props) {
@@ -218,7 +220,7 @@ class MyContractFilter extends Component {
           height: 30,
           marginRight: 10
         }} />
-          )}
+        )}
         <View style={{ flex: 1 }}>
           <Text numberOfLines={1}
             ellipsizeMode='tail'
@@ -257,6 +259,10 @@ class MyContractFilter extends Component {
   onClickApply = () => {
 
   }
+  onSelectPost = data => {
+    console.log('data>>>bhai', data)
+    // setDate(data.obj)    
+  };
   changeProduct = selectedItem => {
     try {
       this.setState({ spinner: true, selectedProductID: selectedItem.value, selectedProductName: selectedItem.label });
@@ -275,300 +281,264 @@ class MyContractFilter extends Component {
 
 
     return (
-      <Background>
 
-        <View
-          style={{
-            flex: 1,
-            width: '100%',
-            height: '100%',
-            position: 'relative',
-            // marginTop: -40,
-            backgroundColor: 'white'
-          }}>
 
+
+
+
+
+      <View style={{
+        width: '100%',
+        paddingBottom: 30, backgroundColor: 'white', borderTopLeftRadius: 20, borderTopRightRadius: 20
+      }}>
+        <ScrollView>
           <Spinner
             visible={this.state.spinner}
             color="#085cab" />
-
-          {/* <View style={{ width: '100%', height: 55, marginTop: 40 }}>
-            <Appbar.Header style={{ backgroundColor: 'transparent' }} >
-              <Appbar.BackAction color='black' onPress={() => this.props.navigation.goBack()} />
-              <Appbar.Content
-                style={{ alignItems: 'center' }}
-                color="black"
-                title="Filter"
-                titleStyle={{ fontSize: 20, fontWeight: 'bold' }}
-              />
-              <Appbar.Action icon='notification-clear-all' color="transparent" onPress={() => {
-                this.setState({ isFilterShow: true });
-              }} />
-            </Appbar.Header>
-          </View> */}
+          <View style={{ marginTop: 20 }}>
 
 
 
+            <View style={{ marginLeft: '5%', marginRight: '5%' }}>
 
-          <View style={{ width: '100%', paddingBottom: 30, marginTop: 10, backgroundColor: 'white', borderTopLeftRadius: 20, borderTopRightRadius: 20 }}>
-            <ScrollView>
-              <View >
+              <Text numberOfLines={1}
+                ellipsizeMode='tail'
+                style={{
+                  flex: 1,
+                  color: theme.colors.textColor,
+                  fontSize: 12,
+                  fontFamily: 'Poppins-Regular',
+                  textAlignVertical: 'center'
+                }}>By time duration</Text>
+
+              <View style={{ flexDirection: 'row', marginTop: 10 }}>
 
 
+                <Text numberOfLines={1}
+                  ellipsizeMode='tail'
+                  style={{
+                    flex: 1,
+                    color: theme.colors.textColor,
+                    fontSize: 12,
+                    backgroundColor: '#F0F5F9',
+                    borderRadius: 5,
+                    flex: 1,
+                    height: 35,
+                    textAlign: 'center',
+                    textAlignVertical: 'center', paddingTop: 3,
+                    fontFamily: 'Poppins-Medium',
 
-                <View style={{ marginLeft: '5%', marginRight: '5%' }}>
+                  }}>Weekly</Text>
 
+                <Text numberOfLines={1}
+                  ellipsizeMode='tail'
+                  style={{
+                    flex: 1,
+                    color: theme.colors.textColor,
+                    fontSize: 12,
+                    backgroundColor: '#F0F5F9',
+                    borderRadius: 5,
+                    flex: 1,
+                    height: 35,
+                    textAlign: 'center',
+                    textAlignVertical: 'center',
+                    marginLeft: 10, marginRight: 10, paddingTop: 3,
+                    fontFamily: 'Poppins-Medium',
+
+                  }}>Monthly</Text>
+
+                <TouchableOpacity style={{
+                  backgroundColor: '#F0F5F9',
+                  borderRadius: 5,
+                  flex: 1,
+                }}
+                  onPress={() => this.props.navigation.navigate('Custom', { onSelect: this.onSelectPost, comingFrom: 'Post' })}>
                   <Text numberOfLines={1}
                     ellipsizeMode='tail'
                     style={{
                       flex: 1,
                       color: theme.colors.textColor,
                       fontSize: 12,
-
-                      textAlignVertical: 'center'
-                    }}>By time duration</Text>
-
-                  <View style={{ flexDirection: 'row', marginTop: 10 }}>
-
-
-                    <Text numberOfLines={1}
-                      ellipsizeMode='tail'
-                      style={{
-                        flex: 1,
-                        color: theme.colors.textColor,
-                        fontSize: 12,
-                        backgroundColor: '#F0F5F9',
-                        borderRadius: 5,
-                        flex: 1,
-                        height: 35,
-                        textAlign: 'center',
-                        textAlignVertical: 'center'
-                      }}>Weekly</Text>
-
-                    <Text numberOfLines={1}
-                      ellipsizeMode='tail'
-                      style={{
-                        flex: 1,
-                        color: theme.colors.textColor,
-                        fontSize: 12,
-                        backgroundColor: '#F0F5F9',
-                        borderRadius: 5,
-                        flex: 1,
-                        height: 35,
-                        textAlign: 'center',
-                        textAlignVertical: 'center',
-                        marginLeft: 10, marginRight: 10
-                      }}>Monthly</Text>
-
-                    <TouchableOpacity style={{
                       backgroundColor: '#F0F5F9',
                       borderRadius: 5,
                       flex: 1,
-                    }}
-                      onPress={() => this.props.navigation.navigate('Custom')}>
-                      <Text numberOfLines={1}
-                        ellipsizeMode='tail'
-                        style={{
-                          flex: 1,
-                          color: theme.colors.textColor,
-                          fontSize: 12,
-                          backgroundColor: '#F0F5F9',
-                          borderRadius: 5,
-                          flex: 1,
-                          height: 35,
-                          textAlign: 'center',
-                          textAlignVertical: 'center'
-                        }}>Custom</Text></TouchableOpacity>
-                  </View>
+                      height: 35,
+                      textAlign: 'center',
+                      textAlignVertical: 'center', paddingTop: 3,
+                      fontFamily: 'Poppins-Medium',
 
-
-                </View>
-
-                <View style={{ marginLeft: '5%', marginRight: '5%', marginTop: 20 }}>
-
-                  <Text numberOfLines={1}
-                    ellipsizeMode='tail'
-                    style={{
-                      flex: 1,
-                      color: theme.colors.textColor,
-                      fontSize: 12,
-
-                      textAlignVertical: 'center'
-                    }}>By Product</Text>
-
-                  <View style={{ height: 50, width: '100%', marginTop: 15, }}>
-                    <SelectDropdown
-                      data={this.state.productItem}
-                      onSelect={(selectedItem, i) => {
-                        console.log(selectedItem)
-                        this.changeProduct(selectedItem)
-                        //this.addValues(selectedItem.label, el.label)
-                      }}
-
-                      buttonStyle={styles.dropdown3BtnStyle}
-                      renderCustomizedButtonChild={(selectedItem, index) => {
-                        return (
-                          <View style={styles.dropdown3BtnChildStyle}>
-                            <Text style={styles.dropdown3BtnTxt}>
-                              {selectedItem ? selectedItem.label : this.state.dropdownPlaceholder}
-                            </Text>
-                          </View>
-                        );
-                      }}
-                      renderDropdownIcon={() => {
-                        return (
-                          <FontAwesome name="chevron-down" color={"black"} size={14} style={{ marginRight: 20 }} />
-                        );
-                      }}
-                      dropdownIconPosition={"right"}
-
-                      dropdownStyle={styles.dropdown3DropdownStyle}
-                      rowStyle={styles.dropdown3RowStyle}
-                      renderCustomizedRowChild={(item, index) => {
-                        return (
-                          <View style={styles.dropdown3RowChildStyle}>
-
-                            <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
-                          </View>
-                        );
-                      }}
-                    /></View>
-
-
-
-                </View>
-
-
-                <View style={{ marginLeft: '5%', marginRight: '5%', marginTop: 20 }}>
-
-                  <Text numberOfLines={1}
-                    ellipsizeMode='tail'
-                    style={{
-                      flex: 1,
-                      color: theme.colors.textColor,
-                      fontSize: 12,
-
-                      textAlignVertical: 'center'
-                    }}>By Seller</Text>
-
-                </View>
-
-
-
-                <View style={{ flexDirection: 'row', backgroundColor: '#F0F5F9', marginLeft: '5%', marginRight: '5%', height: 50, marginTop: 10, borderRadius: 5, alignItems: 'center', }}>
-
-
-                  <Search style={{
-                    width: 30,
-                    height: 30,
-                    marginLeft: 10,
-                    marginRight: 0
-                  }} />
-
-
-                  <TextInput
-                    theme={{
-                      colors: {
-                        placeholder: 'transparent', text: 'black', primary: 'transparent',
-                        underlineColor: 'transparent', background: 'transparent'
-                      }
-                    }}
-                    label="Search Seller"
-                    style={{ width: '100%', height: 45, backgroundColor: 'transparent' }}
-                    value={"Search Seller"}
-                    underlineColor={"transparent"}
-                    underlineColorAndroid="transparent"
-
-                  />
-
-                </View>
-
-
-
-
-                <FlatList
-                  data={this.state.data}
-                  renderItem={this.renderItem}
-                  extraData={this.state}
-                />
-
-
-
-                <View style={{ flexDirection: 'row', marginLeft: '5%', marginTop: 10, marginRight: '5%', height: 40, alignItems: 'center', }}>
-
-
-
-                  <Unchecked style={{
-                    width: 30,
-                    height: 30,
-
-                    marginRight: 10
-                  }} />
-
-
-
-
-                  <View style={{ flex: 1 }}>
-                    <Text numberOfLines={1}
-                      ellipsizeMode='tail'
-                      style={{
-                        flex: 1,
-                        color: theme.colors.textColor,
-                        fontSize: fontSizeMyPostCenterText,
-                        textAlign: 'left',
-                        textAlignVertical: 'center'
-                      }}>Alex McCaddy</Text>
-
-                    <Text numberOfLines={1}
-                      ellipsizeMode='tail'
-                      style={{
-                        flex: 1,
-                        color: theme.colors.textColor,
-                        fontSize: fontSizeMyPostCenterText,
-
-                        textAlign: 'left',
-                        textAlignVertical: 'center'
-                        , opacity: .5
-                      }}>Los Angeles</Text>
-
-                  </View>
-
-
-
-
-
-                </View>
-
-
-
+                    }}>Custom</Text></TouchableOpacity>
               </View>
-            </ScrollView>
 
 
-            <View style={{ flexDirection: 'row', marginLeft: '5%' }}>
+            </View>
+
+            <View style={{ marginLeft: '5%', marginRight: '5%', marginTop: 20 }}>
+
+              <Text numberOfLines={1}
+                ellipsizeMode='tail'
+                style={{
+                  flex: 1,
+                  color: theme.colors.textColor,
+                  fontSize: 12,
+                  fontFamily: 'Poppins-Regular',
+
+                  textAlignVertical: 'center'
+                }}>By Product</Text>
+
+              <View style={{ height: 50, width: '100%', marginTop: 15, }}>
+                <SelectDropdown
+                  data={this.state.productItem}
+                  onSelect={(selectedItem, i) => {
+                    console.log(selectedItem)
+                    this.changeProduct(selectedItem)
+                    //this.addValues(selectedItem.label, el.label)
+                  }}
+
+                  buttonStyle={style1.dropdown3BtnStyle}
+                  renderCustomizedButtonChild={(selectedItem, index) => {
+                    return (
+                      <View style={style1.dropdown3BtnChildStyle}>
+                        <Text style={style1.dropdown3BtnTxt}>
+                          {selectedItem ? selectedItem.label : this.state.dropdownPlaceholder}
+                        </Text>
+                      </View>
+                    );
+                  }}
+                  renderDropdownIcon={() => {
+                    return (
+                      <FontAwesome name="chevron-down" color={"black"} size={14} style={{ marginRight: 20 }} />
+                    );
+                  }}
+                  dropdownIconPosition={"right"}
+
+                  dropdownStyle={style1.dropdown3DropdownStyle}
+                  rowStyle={style1.dropdown3RowStyle}
+                  renderCustomizedRowChild={(item, index) => {
+                    return (
+                      <View style={style1.dropdown3RowChildStyle}>
+
+                        <Text style={style1.dropdown3RowTxt}>{item.label}</Text>
+                      </View>
+                    );
+                  }}
+                /></View>
+
+
+
+            </View>
+
+
+            <View style={{ marginLeft: '5%', marginRight: '5%', marginTop: 20 }}>
+
+              <Text numberOfLines={1}
+                ellipsizeMode='tail'
+                style={{
+                  flex: 1,
+                  color: theme.colors.textColor,
+                  fontSize: 12,
+
+                  textAlignVertical: 'center'
+                }}>By Seller</Text>
+
+            </View>
+
+
+            <Searchbar
+              placeholder="Search Seller"
+              onChangeText={ () => console.log('text')}
+              inputStyle={{ fontFamily: 'Poppins-Regular',paddingBottom:5, width: widthPercentageToDP(100), backgroundColor: '#F0F5F9'}}
+              style={{  backgroundColor: '#F0F5F9',width:widthPercentageToDP(90),marginVertical:10, marginHorizontal:widthPercentageToDP(5)}}
+              icon={() => <Search style={{
+                width: 25,
+                height: 25,
+                // marginLeft: 10,
+                marginRight: 0
+              }} />}
+              
+              // value={}
+            />
+
+            {/* <View style={{ flexDirection: 'row', backgroundColor: '#F0F5F9', marginLeft: '5%', marginRight: '5%', height: 50, marginTop: 10, borderRadius: 5, alignItems: 'center', }}>
+
+
+              <Search style={{
+                width: 30,
+                height: 30,
+                marginLeft: 10,
+                marginRight: 0
+              }} />
+
+
+              <TextInput
+                theme={{
+                  colors: {
+                    placeholder: 'transparent', text: 'black', primary: 'transparent',
+                    underlineColor: 'transparent', background: 'transparent'
+                  }
+                }}
+                label="Search Seller"
+                style={{ width: '100%', height: 45, backgroundColor: 'transparent' }}
+                value={"Search Seller"}
+                underlineColor={"transparent"}
+                underlineColorAndroid="transparent"
+
+              />
+
+            </View> */}
+
+
+
+
+            <FlatList
+              data={this.state.data}
+              renderItem={this.renderItem}
+              extraData={this.state}
+            />
+
+
+
+            <View style={{ flexDirection: 'row', marginLeft: '5%', marginTop: 10, marginRight: '5%', height: 40, alignItems: 'center', }}>
+
+
+
+              <Unchecked style={{
+                width: 30,
+                height: 30,
+
+                marginRight: 10
+              }} />
+
+
+
 
               <View style={{ flex: 1 }}>
+                <Text numberOfLines={1}
+                  ellipsizeMode='tail'
+                  style={{
+                    flex: 1,
+                    color: theme.colors.textColor,
+                    fontSize: fontSizeMyPostCenterText,
+                    textAlign: 'left',
+                    textAlignVertical: 'center'
+                  }}>Alex McCaddy</Text>
 
-                <Button mode="contained"
-                  uppercase={false}
-                  contentStyle={{ height: 50 }}
-                  style={{ width: '90%', borderColor: theme.colors.primary, borderWidth: 2, backgroundColor: 'white' }}
-                  labelStyle={{ fontSize: 18, color: theme.colors.primary, }}
-                  onPress={() => this.onClickCancel()}>
-                  Cancel
-                                  </Button>
+                <Text numberOfLines={1}
+                  ellipsizeMode='tail'
+                  style={{
+                    flex: 1,
+                    color: theme.colors.textColor,
+                    fontSize: fontSizeMyPostCenterText,
+
+                    textAlign: 'left',
+                    textAlignVertical: 'center'
+                    , opacity: .5
+                  }}>Los Angeles</Text>
 
               </View>
 
-              <View style={{ flex: 1 }}>
-                <Button mode="contained"
-                  uppercase={false}
-                  contentStyle={{ height: 50 }}
-                  style={{ width: '90%', }}
-                  labelStyle={{ fontSize: 18, color: 'white' }}
-                  onPress={() => this.onClickApply()}>
-                  Apply
-                                  </Button>
-              </View>
+
+
 
 
             </View>
@@ -576,25 +546,36 @@ class MyContractFilter extends Component {
 
 
           </View>
+        </ScrollView>
 
 
+        <View style={{ flexDirection: 'row', marginLeft: '5%' }}>
 
+          <View style={{ flex: 1 }}>
 
+            <Button mode="contained"
+              uppercase={false}
+              contentStyle={{ height: 50 }}
+              style={{ width: '90%', borderColor: theme.colors.primary, borderWidth: 2, backgroundColor: 'white' }}
+              labelStyle={{ fontSize: 18, color: theme.colors.primary, }}
+              onPress={() => this.onClickCancel()}>
+              Cancel
+            </Button>
 
+          </View>
 
-
-
-
-
-
-
-
-
-
-
+          <View style={{ flex: 1 }}>
+            <Button mode="contained"
+              uppercase={false}
+              contentStyle={{ height: 50 }}
+              style={{ width: '90%', }}
+              labelStyle={{ fontSize: 18, color: 'white' }}
+              onPress={() => this.onClickApply()}>
+              Apply
+            </Button>
+          </View>
         </View>
-
-      </Background>
+      </View>
     );
   }
 }
@@ -746,12 +727,12 @@ const styles = StyleSheet.create({
   },
   dropdown3BtnStyle: {
     width: "100%",
-    height: 50,
+    height: 45,
     backgroundColor: "#FFF",
     paddingHorizontal: 0,
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: "#444",
+    borderColor: "lightgray",
     left: 0
   },
   dropdown3BtnTxt: {
@@ -759,7 +740,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "normal",
     fontSize: 16,
-    marginHorizontal: 0,
+    marginHorizontal: 10,
   },
   dealBtnEnable: {
     flex: 1,

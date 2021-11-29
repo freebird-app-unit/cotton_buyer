@@ -315,6 +315,8 @@ class App extends Component {
                                                 fontSize: 14,
                                                 opacity: 0.5,
                                                 textAlignVertical: 'center',
+                                                fontFamily: 'Poppins-Regular',
+
                                             }}>
                                             {displayDate}
                                         </Text>
@@ -342,6 +344,8 @@ class App extends Component {
                                                             color: theme.colors.textColor,
                                                             fontSize: 16,
                                                             textAlignVertical: 'center',
+                              fontFamily: 'Poppins-Bold',
+
                                                         }}>
                                                         {dd.product_name}
                                                     </Text>
@@ -367,6 +371,8 @@ class App extends Component {
                                                             fontSize: 12,
                                                             opacity: 0.5,
                                                             textAlignVertical: 'center',
+                                                            fontFamily: 'Poppins-Regular',
+
                                                         }}>
                                                         Seller
                                                     </Text>
@@ -379,6 +385,8 @@ class App extends Component {
                                                             color: theme.colors.textColor,
                                                             fontSize: 12,
                                                             textAlignVertical: 'center',
+                                                            fontFamily: 'Poppins-Regular',
+
                                                         }}>
                                                         {dd.seller_name}
                                                     </Text>
@@ -401,6 +409,8 @@ class App extends Component {
                                                             fontSize: 12,
                                                             fontWeight: 'bold',
                                                             textAlignVertical: 'center',
+                                                            fontFamily: 'Poppins-SemiBold',
+
                                                         }}>
                                                         Price
                                                     </Text>
@@ -414,6 +424,8 @@ class App extends Component {
                                                             fontSize: 12,
                                                             fontWeight: 'bold',
                                                             textAlignVertical: 'center',
+                                                            fontFamily: 'Poppins-SemiBold',
+
                                                         }}>
                                                         ₹ {dd.sell_price}({dd.sell_bales})
                                                     </Text>
@@ -444,6 +456,8 @@ class App extends Component {
                                                                 borderRadius: 5,paddingHorizontal:widthPercentageToDP(1),
                                                                 backgroundColor: '#69BA53',
                                                                 textAlignVertical: 'center',
+                                fontFamily:'Poppins-Regular'
+
                                                             }}>
                                                          Download
                                                         </Text>
@@ -470,6 +484,8 @@ class App extends Component {
                                                                 borderRadius: 5,
                                                                 backgroundColor: (dd.is_buyer_otp_verify == 1 ) ? 'rgba(105, 186, 83, 0.7)' : '#69BA53',
                                                                 textAlignVertical: 'center',
+                                fontFamily:'Poppins-Regular'
+
                                                             }}>
                                                                 Pending Verification
                                                         </Text>
@@ -503,7 +519,7 @@ class App extends Component {
                         marginTop: '50%',
                     }}>
                     <NoRecordsFound_Icon />
-                    <Text>Sorry, no records available</Text>
+                    <Text style={{ fontSize: 14, fontFamily: 'Poppins-Regular' }}>Sorry, no records available</Text>
                 </View>
             );
         } catch (error) {

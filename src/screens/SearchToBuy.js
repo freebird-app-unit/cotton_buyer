@@ -98,7 +98,7 @@ const CustomComponent = ({ ...props }) => {
         alignItems: "center",
       }}
     >
-      <Text style={{ width: "35%", color: theme.colors.textColor }}>
+      <Text style={{ width: "35%", color: theme.colors.textColor, fontFamily: 'Poppins-Regular' }}>
         {props.label}
       </Text>
       <View
@@ -127,7 +127,7 @@ const CustomComponent = ({ ...props }) => {
                     <Text style={styles.dropdown3BtnTxt}>
                       {selectedItem
                         ? selectedItem.label
-                        : "Select " + props.label}
+                        : props.label}
                     </Text>
                   </View>
                 );
@@ -168,8 +168,8 @@ const CustomComponent = ({ ...props }) => {
                   <View style={styles.dropdown3BtnChildStyle}>
                     <Text style={styles.dropdown3BtnTxt}>
                       {selectedItem
-                        ? (selectedItem.label > props.from ? selectedItem.label : 'Select ' + props.label)
-                        : "Select " + props.label}
+                        ? (selectedItem.label > props.from ? selectedItem.label :  props.label)
+                        : props.label}
                     </Text>
                   </View>
                 );
@@ -441,7 +441,7 @@ class App extends Component {
             alignItems: "center",
           }}
         >
-          <Text style={{ width: "35%", color: theme.colors.textColor }}>
+          <Text style={{ width: "35%", color: theme.colors.textColor,fontFamily:'Poppins-Regular' }}>
             {this.state.lengthData.label}
           </Text>
           <View
@@ -468,7 +468,7 @@ class App extends Component {
                       <Text style={styles.dropdown3BtnTxt}>
                         {selectedItem
                           ? selectedItem.label
-                          : "Select " + this.state.lengthData.label}
+                          : this.state.lengthData.label}
                       </Text>
                     </View>
                   );
@@ -1175,7 +1175,7 @@ class App extends Component {
               alignItems: "center",
             }}
           >
-            <Text style={{ width: "35%", color: theme.colors.textColor }}>
+            <Text style={{ width: "35%", color: theme.colors.textColor, fontFamily: 'Poppins-SemiBold' }}>
               Buy bales
             </Text>
             
@@ -1207,7 +1207,7 @@ class App extends Component {
                   textAlignVertical: "center",
                   height: "100%",
                   color: theme.colors.textColor,
-                  fontWeight: "bold",
+                  fontFamily: 'Poppins-SemiBold'
                 }}
               >
                 {this.state.displayBalesCount}
@@ -1236,7 +1236,7 @@ class App extends Component {
               height: 20,
               alignItems: 'center',
             }}>
-            <Text style={{ width: '35%', color: theme.colors.textColor }}>
+            <Text style={{ width: '35%', color: theme.colors.textColor, fontFamily: 'Poppins-SemiBold',fontSize:16 }}>
               Seller Type
             </Text>
           </View>
@@ -1294,9 +1294,9 @@ class App extends Component {
             mode="contained"
             uppercase={false}
             contentStyle={{ height: 50 }}
-            style={{ width: "90%", marginLeft: "5%", marginTop: 20 }}
+            style={{ width: "90%", marginLeft: "5%", marginTop: 20 ,paddingTop:5}}
             labelStyle={{
-              fontWeight: "bold",
+              fontFamily: 'Poppins-SemiBold',
               fontSize: 16,
               color: "white",
             }}

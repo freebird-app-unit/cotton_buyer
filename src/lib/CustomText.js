@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   style: {
     color: colors.SILVER,
     fontSize:18,
-    fontFamily:'popins',
+    fontFamily:'Poppins-Regular',
     textAlign: 'center'
   }
 });

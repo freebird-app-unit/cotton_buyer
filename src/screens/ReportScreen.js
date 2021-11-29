@@ -25,6 +25,14 @@ import { FlatList } from 'react-native-gesture-handler';
 // import { navigationRef } from '../../RootNavigation';
 import api_config from '../Api/api';
 
+
+function camalize(str) {
+    console.log('str', str)
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+        return index === 0 ? word.toUpperCase() : word.toLowerCase();
+    }).replace(/\s+/g, '');
+}
+
 const TouchableFunction = ({ ...props }) => {
     return (
         <TouchableOpacity style={{
@@ -45,7 +53,8 @@ const TouchableFunction = ({ ...props }) => {
                     fontFamily: 'Poppins-Regular',
                     height: 35,
                     textAlign: 'center',
-                    textAlignVertical: 'center'
+                    textAlignVertical: 'center',
+                    paddingTop:3
                 }}>{props.title}</Text></TouchableOpacity>
     )
 
@@ -566,7 +575,7 @@ function Contract({ navigation }) {
                     alignItems: 'center',
                 }}>
                 <NoRecordsFound_Icon />
-                <Text>Sorry, no records available</Text></View>
+                <Text style={{fontSize:14,fontFamily:'Poppins-Regular'}}>Sorry, no records available</Text></View>
         )
     }
 
@@ -884,7 +893,7 @@ function Post({ navigation }) {
                     // alert('response :>>>>>>>>>.apppost', response.data);
                     if (response.data.status == 200) {
                         let d = {
-                            title: selectedStatus.label,
+                            title: camalize(selectedStatus.label),
                             date: moment(new Date(dates.from)).format('DD-MM-YYYY') + ' to ' + moment(new Date(dates.to)).format('DD-MM-YYYY'),
                             download: response.data.data
                         }
@@ -935,7 +944,7 @@ function Post({ navigation }) {
                     alignItems: 'center',
                 }}>
                 <NoRecordsFound_Icon />
-                <Text>Sorry, no records available</Text></View>
+                <Text style={{ fontSize: 14, fontFamily: 'Poppins-Regular' }}>Sorry, no records available</Text></View>
         )
     }
 
@@ -1111,7 +1120,7 @@ function Post({ navigation }) {
                             return (
                                 <View style={styles.dropdown3BtnChildStyle}>
                                     <Text style={styles.dropdown3BtnTxt}>
-                                        {selectedItem ? selectedItem.label : Status[0].label}
+                                        {selectedItem ? camalize(selectedItem.label) : camalize(Status[0].label)}
                                     </Text>
                                 </View>
                             );
@@ -1132,7 +1141,7 @@ function Post({ navigation }) {
                         renderCustomizedRowChild={(item, index) => {
                             return (
                                 <View style={styles.dropdown3RowChildStyle}>
-                                    <Text style={styles.dropdown3RowTxt}>{item.label}</Text>
+                                    <Text style={styles.dropdown3RowTxt}>{camalize(item.label)}</Text>
                                 </View>
                             );
                         }}
@@ -1152,7 +1161,7 @@ function Post({ navigation }) {
                         }}>
                         Date Range
                     </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('Custom')} onPress={() => navigation.navigate('Custom', { onSelect: onSelectPost, comingFrom: 'Post' })}>
+                    <TouchableOpacity  onPress={() => navigation.navigate('Custom', { onSelect: onSelectPost, comingFrom: 'Post' })}>
                         <View style={{
                             flexDirection: 'row', borderWidth: 0.5, height: hp(6.5), borderWidth: 0.7,
                             borderRadius: 4,

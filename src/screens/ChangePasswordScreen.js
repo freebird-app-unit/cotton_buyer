@@ -133,8 +133,8 @@ const ChangePasswordScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={{flex: 1,backgroundColor: '#F0F5F9'}}>
-    <View style={{width: '100%',height:heightPercentageToDP(9), marginTop: heightPercentageToDP(4)}}>
+    <View style={{flex: 1}}>
+    {/* <View style={{width: '100%',height:heightPercentageToDP(9), marginTop: heightPercentageToDP(4)}}>
 
         <Appbar.Header style={{backgroundColor: 'transparent'}} >
             
@@ -152,17 +152,17 @@ const ChangePasswordScreen = ({ navigation }) => {
           </Appbar.Header>
 
 
-        </View>
+        </View> */}
 
 <View style={{flex: 1, marginTop:'1%',width:'100%',borderTopLeftRadius:20,borderTopRightRadius:20,backgroundColor:'white'}}>
 
-<View style={{justifyContent:'center',width:'100%',alignItems:'center',marginTop:'10%',marginBottom:50}}>
+<View style={{justifyContent:'center',width:'100%',alignItems:'center',marginBottom:50}}>
       <Spinner
           //visibility of Overlay Loading Spinner
           visible={loading}
           color="#085cab"
       />
-      <SetPasswordIcon> </SetPasswordIcon>
+      {/* <SetPasswordIcon> </SetPasswordIcon> */}
       </View>
 
       <TextInput
@@ -213,6 +213,7 @@ const ChangePasswordScreen = ({ navigation }) => {
         mode="contained"
         onPress={onSetPasswordClick}
         style={{ marginTop: 25 }}
+          texting={{ fontFamily: 'Poppins-Bold', paddingTop:3 }}
       >
         Set Password
       </Button>

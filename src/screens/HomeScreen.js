@@ -199,6 +199,8 @@ class Dashboard extends Component {
         alignItems: 'center',
         textAlignVertical: 'center',
         color: 'white',
+        fontFamily: 'Poppins-Regular',
+
       },
       dealTabTextBox2: {
         height: 40,
@@ -207,6 +209,8 @@ class Dashboard extends Component {
         alignItems: 'center',
         textAlignVertical: 'center',
         color: theme.colors.textColor,
+        fontFamily: 'Poppins-Regular',
+
       },
       btnActiveContainer: {
         flex: 1,
@@ -823,6 +827,8 @@ class Dashboard extends Component {
         alignItems: 'center',
         textAlignVertical: 'center',
         color: 'white',
+        fontFamily: 'Poppins-Regular',
+
       },
       dealTabTextBox2: {
         height: 40,
@@ -831,6 +837,8 @@ class Dashboard extends Component {
         alignItems: 'center',
         textAlignVertical: 'center',
         color: theme.colors.textColor,
+        fontFamily: 'Poppins-Regular',
+
       },
     });
     this.setState({spinner: true});
@@ -947,6 +955,8 @@ class Dashboard extends Component {
         alignItems: 'center',
         textAlignVertical: 'center',
         color: 'white',
+        fontFamily: 'Poppins-Regular',
+
       },
       dealTabTextBox1: {
         height: 40,
@@ -955,6 +965,8 @@ class Dashboard extends Component {
         alignItems: 'center',
         textAlignVertical: 'center',
         color: theme.colors.textColor,
+        fontFamily: 'Poppins-Regular',
+
       },
     });
 
@@ -1047,6 +1059,8 @@ class Dashboard extends Component {
                             color: theme.colors.textColor,
                             fontSize: 16,
                             textAlignVertical: 'center',
+                            fontFamily: 'Poppins-Regular',
+
                           }}>
                           {el.product_name}
                         </Text>
@@ -1061,6 +1075,8 @@ class Dashboard extends Component {
                           color: theme.colors.textColor,
                           fontSize: 16,
                           textAlignVertical: 'center',
+                          fontFamily: 'Poppins-Regular',
+
                         }}>
                         {el.product_name}
                       </Text>
@@ -1084,6 +1100,8 @@ class Dashboard extends Component {
                         fontSize: 12,
                         opacity: 0.5,
                         textAlignVertical: 'center',
+                        fontFamily: 'Poppins-Regular',
+
                       }}>
                       Prev
                     </Text>
@@ -1096,6 +1114,8 @@ class Dashboard extends Component {
                           color: theme.colors.textColor,
                           fontSize: 12,
                           textAlignVertical: 'center',
+                          fontFamily: 'Poppins-Regular',
+
                         }}>
                         ₹ {el.notification_detail[0].prev_price} (
                         {el.notification_detail[0].prev_no_of_bales})
@@ -1141,6 +1161,8 @@ class Dashboard extends Component {
                               color: '#69BA53',
                               borderRadius: 5,
                               textAlignVertical: 'center',
+                              fontFamily: 'Poppins-Regular',
+
                             }}>
                             Waiting for response
                           </Text>
@@ -1171,6 +1193,8 @@ class Dashboard extends Component {
                               borderRadius: 5,
                               backgroundColor: '#69BA53',
                               textAlignVertical: 'center',
+                              paddingTop:5,
+                              fontFamily: 'Poppins-Regular',
                             }}>
                             Respond
                           </Text>
@@ -1201,6 +1225,8 @@ class Dashboard extends Component {
                             color: '#69BA53',
                             borderRadius: 5,
                             textAlignVertical: 'center',
+                            fontFamily: 'Poppins-Regular',
+
                           }}>
                           Waiting for response
                         </Text>
@@ -1230,6 +1256,10 @@ class Dashboard extends Component {
                             borderRadius: 5,
                             backgroundColor: '#69BA53',
                             textAlignVertical: 'center',
+                            fontFamily: 'Poppins-Regular',
+                            paddingTop: 5
+
+
                           }}>
                           Respond
                         </Text>
@@ -1256,6 +1286,8 @@ class Dashboard extends Component {
                         fontSize: 12,
                         opacity: 0.5,
                         textAlignVertical: 'center',
+                        fontFamily: 'Poppins-Regular',
+
                       }}>
                       Posted by
                     </Text>
@@ -1269,6 +1301,8 @@ class Dashboard extends Component {
                           color: theme.colors.textColor,
                           fontSize: 12,
                           textAlignVertical: 'center',
+                          fontFamily: 'Poppins-Regular',
+
                         }}>
                         {el.name}
                       </Text>
@@ -1281,6 +1315,8 @@ class Dashboard extends Component {
                           color: theme.colors.textColor,
                           fontSize: 12,
                           textAlignVertical: 'center',
+                          fontFamily: 'Poppins-Regular',
+
                         }}>
                         {el.name}
                       </Text>
@@ -1302,7 +1338,8 @@ class Dashboard extends Component {
                         flex: 1,
                         color: theme.colors.textColor,
                         fontSize: 12,
-                        fontWeight: 'bold',
+                                                    fontFamily: 'Poppins-SemiBold',
+
 
                         textAlignVertical: 'center',
                       }}>
@@ -1316,7 +1353,8 @@ class Dashboard extends Component {
                           flex: 1,
                           color: theme.colors.textColor,
                           fontSize: 12,
-                          fontWeight: 'bold',
+                                                      fontFamily: 'Poppins-SemiBold',
+
                           textAlignVertical: 'center',
                         }}>
                         ₹ {el.notification_detail[0].current_price} (
@@ -1330,7 +1368,8 @@ class Dashboard extends Component {
                           flex: 1,
                           color: theme.colors.textColor,
                           fontSize: 12,
-                          fontWeight: 'bold',
+                                                      fontFamily: 'Poppins-SemiBold',
+
                           textAlignVertical: 'center',
                         }}>
                         ₹ {el.post_detail[0].current_price} (
@@ -1549,6 +1588,8 @@ class Dashboard extends Component {
                     color: theme.colors.textColor,
                     fontSize: 16,
                     textAlignVertical: 'center',
+                    fontFamily: 'Poppins-Regular',
+
                   }}>
                   {el.product_name}
                 </Text>
@@ -1573,6 +1614,8 @@ class Dashboard extends Component {
                     fontSize: 12,
                     opacity: 0.5,
                     textAlignVertical: 'center',
+                    fontFamily: 'Poppins-Regular',
+
                   }}>
                   Send by
                 </Text>
@@ -1585,6 +1628,8 @@ class Dashboard extends Component {
                     color: theme.colors.textColor,
                     fontSize: 12,
                     textAlignVertical: 'center',
+                    fontFamily: 'Poppins-Regular',
+
                   }}>
                   {el.send_by}
                 </Text>
@@ -1607,6 +1652,8 @@ class Dashboard extends Component {
                     fontSize: 12,
                     opacity: 0.5,
                     textAlignVertical: 'center',
+                    fontFamily: 'Poppins-Regular',
+
                   }}>
                   Price
                 </Text>
@@ -1619,6 +1666,8 @@ class Dashboard extends Component {
                     color: theme.colors.textColor,
                     fontSize: 12,
                     textAlignVertical: 'center',
+                    fontFamily: 'Poppins-Regular',
+
                   }}>
                   ₹ {el.price} ({el.no_of_bales})
                 </Text>
@@ -1648,6 +1697,9 @@ class Dashboard extends Component {
                       borderRadius: 5,
                       backgroundColor: '#69BA53',
                       textAlignVertical: 'center',
+                      paddingTop:5,
+                      fontFamily: 'Poppins-Regular',
+
                     }}>
                     View
                   </Text>
@@ -1710,7 +1762,7 @@ class Dashboard extends Component {
                   mode="text"
                   uppercase={false}
                   color="gray"
-                  labelStyle={{fontSize: 14}}>
+                  labelStyle={{ fontSize: 14, fontFamily: 'Poppins-SemiBold'}}>
                   My Favourite
                 </Button>
               </TouchableOpacity>
@@ -1722,7 +1774,7 @@ class Dashboard extends Component {
                   mode="text"
                   uppercase={false}
                   color={theme.colors.primary}
-                  labelStyle={{fontSize: 14}}>
+                  labelStyle={{ fontSize: 14, fontFamily: 'Poppins-SemiBold'}}>
                   Deals
                 </Button>
               </TouchableOpacity>
@@ -1735,7 +1787,7 @@ class Dashboard extends Component {
                 <Text
                   numberOfLines={1}
                   ellipsizeMode="tail"
-                  style={this.state.dealTabTextBox1}>
+                  style={[this.state.dealTabTextBox1, { paddingTop: 5 }]}>
                   In Negotiation
                 </Text>
               </TouchableOpacity>
@@ -1746,7 +1798,8 @@ class Dashboard extends Component {
                 <Text
                   numberOfLines={1}
                   ellipsizeMode="tail"
-                  style={this.state.dealTabTextBox2}>
+        
+                style={[this.state.dealTabTextBox2, {paddingTop:5}]}>
                   Notification
                 </Text>
               </TouchableOpacity>

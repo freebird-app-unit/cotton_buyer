@@ -257,7 +257,12 @@ class App extends Component {
         try {
             if (attributeArray.length > 0) {
                 return attributeArray.map((el, i) => (
-                    <View style={{ flex: 1 }}>
+                    <View style={{
+                        flex: 1,
+                        paddingEnd: 0.5,
+                        borderColor: i < attributeArray.length - 1 ? '#D1D1D1' : '#fff',
+                        borderRightWidth: 0.5
+                    }}>
                         <Text
                             numberOfLines={1}
                             ellipsizeMode="tail"
@@ -267,6 +272,8 @@ class App extends Component {
                                 fontSize: fontSizeMyPostCenterText,
                                 textAlign: 'center',
                                 textAlignVertical: 'center',
+                                fontFamily: "Poppins-Regular",
+
                             }}>
                             {el.attribute}
                         </Text>
@@ -281,6 +288,8 @@ class App extends Component {
                                 fontWeight: 'bold',
                                 textAlign: 'center',
                                 textAlignVertical: 'center',
+                                fontFamily: "Poppins-Regular",
+
                             }}>
                             {el.attribute_value}(mm)
                         </Text>
@@ -343,6 +352,8 @@ class App extends Component {
                                             color: theme.colors.textColor,
                                             fontSize: 16,
                                             textAlignVertical: 'center',
+                                            fontFamily: "Poppins-SemiBold",
+
                                         }}>
                                         {el.product_name}
                                     </Text>
@@ -358,6 +369,8 @@ class App extends Component {
                                             alignItems: 'center',
 
                                             textAlignVertical: 'center',
+                                            fontFamily: "Poppins-SemiBold",
+
                                         }}>
                                         {parseInt(el.remaining_bales) == 0 ? <Text>{el.no_of_bales} Bales </Text> : <Text>{el.remaining_bales} Bales </Text>}
                                     </Text>
@@ -392,6 +405,8 @@ class App extends Component {
                                                 fontSize: 12,
                                                 opacity: 0.5,
                                                 textAlignVertical: 'center',
+                        fontFamily: "Poppins-Medium",
+
                                             }}>
                                             {el.date}
                                         </Text>
@@ -410,6 +425,8 @@ class App extends Component {
                                             fontWeight: 'bold',
                                             top: 5,
                                             textAlignVertical: 'center',
+                                            fontFamily: "Poppins-SemiBold",
+
                                         }}>
                                         ₹ {el.price}
                                     </Text>
@@ -425,10 +442,14 @@ class App extends Component {
                                             textAlign: 'center',
                                             alignItems: 'center',
                                             color: 'white',
-                                            fontWeight: 'bold',
+                                            // fontWeight: 'bold',
+                      paddingTop:3,
+
                                             borderRadius: 5,
                                             backgroundColor: '#69BA53',
                                             textAlignVertical: 'center',
+                                            fontFamily: "Poppins-SemiBold",
+
                                         }}>
                                         Cancel
                                     </Text>
@@ -501,6 +522,8 @@ class App extends Component {
                                             color: theme.colors.textColor,
                                             fontSize: 16,
                                             textAlignVertical: 'center',
+                                            fontFamily: "Poppins-Medium",
+
                                         }}>
                                         {el.product_name}
                                     </Text>
@@ -516,6 +539,8 @@ class App extends Component {
                                             alignItems: 'center',
 
                                             textAlignVertical: 'center',
+                                            fontFamily: "Poppins-Medium",
+
                                         }}>
                                         {el.no_of_bales} Bales
                                     </Text>
@@ -539,6 +564,8 @@ class App extends Component {
                                                 fontSize: 12,
                                                 opacity: 0.5,
                                                 textAlignVertical: 'center',
+                                                fontFamily: "Poppins-Regular",
+
                                             }}>
                                             Post time
                                         </Text>
@@ -551,6 +578,8 @@ class App extends Component {
                                                 color: theme.colors.textColor,
                                                 fontSize: 12,
                                                 textAlignVertical: 'center',
+                                                fontFamily: "Poppins-Regular",
+
                                             }}>
                                             {el.created_at}
                                         </Text>
@@ -571,6 +600,8 @@ class App extends Component {
                                                 borderRadius: 5,
                                                 borderColor: '#69BA53',
                                                 textAlignVertical: 'center',
+                                                fontFamily: "Poppins-Medium",
+
                                             }}>
                                             Deal Done
                                         </Text>
@@ -590,6 +621,8 @@ class App extends Component {
                                                 borderRadius: 5,
                                                 borderColor: '#BA5369',
                                                 textAlignVertical: 'center',
+                                                fontFamily: "Poppins-Medium",
+
                                             }}>
                                             Cancelled
                                         </Text>
@@ -614,6 +647,8 @@ class App extends Component {
                                                     fontSize: 12,
                                                     opacity: 0.5,
                                                     textAlignVertical: 'center',
+                                                    fontFamily: "Poppins-Regular",
+
                                                 }}>
                                                 Seller Name
                                             </Text>
@@ -626,6 +661,8 @@ class App extends Component {
                                                     color: theme.colors.textColor,
                                                     fontSize: 12,
                                                     textAlignVertical: 'center',
+                                                    fontFamily: "Poppins-Regular",
+
                                                 }}>
                                                 {el.done_by}
                                             </Text>
@@ -642,6 +679,8 @@ class App extends Component {
                                                 color: 'black',
                                                 fontWeight: 'bold',
                                                 textAlignVertical: 'center',
+                                                fontFamily: "Poppins-SemiBold",
+
                                             }}>
                                             ₹ {el.price}
                                         </Text>
@@ -665,6 +704,8 @@ class App extends Component {
                                                     fontSize: 12,
                                                     opacity: 0.5,
                                                     textAlignVertical: 'center',
+                                                    fontFamily: "Poppins-Regular",
+
                                                 }}>
                                                 Cancel time
                                             </Text>
@@ -677,6 +718,8 @@ class App extends Component {
                                                     color: theme.colors.textColor,
                                                     fontSize: 12,
                                                     textAlignVertical: 'center',
+                                                    fontFamily: "Poppins-Regular",
+
                                                 }}>
                                                 {el.updated_at}
                                             </Text>
@@ -693,6 +736,8 @@ class App extends Component {
                                                 color: 'black',
                                                 fontWeight: 'bold',
                                                 textAlignVertical: 'center',
+                                                fontFamily: "Poppins-SemiBold",
+
                                             }}>
                                             ₹ {el.price}
                                         </Text>
@@ -724,7 +769,7 @@ class App extends Component {
                             marginTop: '40%',
                         }}>
                         <NoRecordsFound_Icon />
-                        <Text>Sorry, no records available</Text>
+                        <Text style={{ fontSize: 14,fontFamily: "Poppins-Regular"}}>Sorry, no records available</Text>
                     </View>
                 );
             }
@@ -1387,7 +1432,7 @@ class App extends Component {
                                     mode="text"
                                     uppercase={false}
                                     color={this.state.btnActiveTextColor}
-                                    labelStyle={{ fontSize: 14 }}>
+                                    labelStyle={{ fontSize: 14,fontFamily:'Poppins-SemiBold' }}>
                                     Active
                                 </Button>
                             </TouchableOpacity>
@@ -1399,7 +1444,7 @@ class App extends Component {
                                     mode="text"
                                     uppercase={false}
                                     color={this.state.btnCompletedTextColor}
-                                    labelStyle={{ fontSize: 14 }}>
+                                    labelStyle={{ fontSize: 14,fontFamily:'Poppins-SemiBold' }}>
                                     Completed
                                 </Button>
                             </TouchableOpacity>

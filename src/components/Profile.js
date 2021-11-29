@@ -132,8 +132,8 @@ useEffect(async () => {
             {props.label != 'Branch Address' ? <Text style={styles.ValueOfLabel}>{props.value}</Text> : <Text style={{
                 width: wp(60), flexWrap: 'wrap', fontSize: hp(2),
                 color: theme.colors.text,
-                fontFamily: "Poppins-Bold",
-                fontWeight: 'bold'
+                fontFamily: "Poppins-SemiBold",
+
             }}>{props.value}</Text>}
         </View>
     )
@@ -224,7 +224,7 @@ useEffect(async () => {
                 <LabelValue label='Branch Address' value={Props.branch_address || 'Not Provided'} />
                 <LabelValue label='IFSC Code' value={Props.ifsc_code || 'not provided'} />
                 <LabelValue label='Referral Code' value={Props.referral_code || 'not provided'} />
-                <LabelValue label='Broker Name' value={Props.broker_name || 'not provided'} />
+                {/* <LabelValue label='Broker Name' value={Props.broker_name || 'not provided'} /> */}
                     <HeaderValue label='Stamp' value={Props.profile_image} />
 
             </View>)}
@@ -242,13 +242,14 @@ const styles = StyleSheet.create({
     HeaderLAbel: {
         fontSize: hp(2.5),
         color: theme.colors.text,
-        fontFamily: "Poppins-Bold",
-        fontWeight: 'bold'
+        fontFamily: "Poppins-SemiBold",
+
     },
     value: {
         fontSize: hp(2.5),
         color: '#fff',
-        fontFamily: "Poppins-Bold",
+        fontFamily: "Poppins-SemiBold",
+
     },
     VAlue1: {
         fontSize: hp(2),
@@ -259,8 +260,8 @@ const styles = StyleSheet.create({
     ValueOfLabel: {
         fontSize: hp(2),
         color: theme.colors.text,
-        fontFamily: "Poppins-Bold",
-        fontWeight: 'bold',
+        fontFamily: "Poppins-Medium",
+
         lineHeight: hp(3)
     }
 

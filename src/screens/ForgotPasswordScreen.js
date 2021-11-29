@@ -111,7 +111,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
   return (
   
     <View style={{flex: 1,backgroundColor: '#F0F5F9'}}>
-    <View style={{width: '100%', marginTop: 0}}>
+    {/* <View style={{width: '100%', marginTop: 0}}>
 
         <Appbar.Header style={{backgroundColor: 'transparent'}} >
             
@@ -126,9 +126,9 @@ const ForgotPasswordScreen = ({ navigation }) => {
           </Appbar.Header>
 
 
-        </View>
+        </View> */}
 
-<View style={{flex: 1, marginTop:'10%',width:'100%',borderTopLeftRadius:20,borderTopRightRadius:20,backgroundColor:'white'}}>
+<View style={{flex: 1, marginTop:'0%',width:'100%',borderTopLeftRadius:20,borderTopRightRadius:20,backgroundColor:'white'}}>
     <View style={{justifyContent:'center',width:'100%',alignItems:'center',marginTop:'10%',marginBottom:50}}>
       <Spinner
           //visibility of Overlay Loading Spinner

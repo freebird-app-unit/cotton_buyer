@@ -2158,12 +2158,12 @@ const styles = StyleSheet.create({
 
   dropdown3BtnStyle: {
     width: '90%',
-    height: 50,
+    height: 45,
     backgroundColor: '#FFF',
     paddingHorizontal: 0,
     borderWidth: 1,
     borderRadius: 4,
-    borderColor: '#444',
+    borderColor: 'lightgray',
     left: 19,
   },
   dropdown3BtnChildStyle: {
@@ -2180,6 +2180,8 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     fontSize: 16,
     marginHorizontal: 0,
+    fontFamily: 'Poppins-Regular'
+
   },
   dropdown3DropdownStyle: {backgroundColor: 'white',marginTop:heightPercentageToDP(-4)},
   dropdown3RowStyle: {
@@ -2202,6 +2204,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginHorizontal: 0,
     width: '100%',
+    fontFamily: 'Poppins-Regular'
   },
   icon: {
     position: 'absolute',

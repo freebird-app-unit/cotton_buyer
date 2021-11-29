@@ -269,7 +269,7 @@ class App extends Component {
                         height: 50,
                         alignItems: 'center',
                     }}>
-                    <Text style={{ width: '35%', color: theme.colors.textColor }}>
+                    <Text style={{ width: '35%', color: theme.colors.textColor,fontFamily:'Poppins-Regular' }}>
                         {el.label}
                     </Text>
                     <View
@@ -296,7 +296,7 @@ class App extends Component {
                                         <Text style={styles.dropdown3BtnTxt}>
                                             {selectedItem
                                                 ? selectedItem.label
-                                                : 'Select ' + el.label}
+                                                :  el.label}
                                         </Text>
                                     </View>
                                 );
@@ -961,7 +961,7 @@ class App extends Component {
                             style={{
                                 width: '35%',
                                 color: theme.colors.textColor,
-                                fontWeight: 'bold',
+                                fontFamily:'Poppins-SemiBold'
                             }}>
                             Price
                         </Text>
@@ -975,7 +975,7 @@ class App extends Component {
                             <TextInput
                                 style={{
                                     width: '100%',
-                                    height: 46,
+                                    height: 45,
                                     fontWeight: 'bold',
                                     backgroundColor: '#fff',
                                 }}
@@ -1004,7 +1004,7 @@ class App extends Component {
                             height: 50,
                             alignItems: 'center',
                         }}>
-                        <Text style={{ width: '35%', color: theme.colors.textColor }}>
+                        <Text style={{ width: '35%', color: theme.colors.textColor,fontFamily:'Poppins-SemiBold' }}>
                             Buy bales
                         </Text>
 
@@ -1034,7 +1034,7 @@ class App extends Component {
                                     textAlignVertical: 'center',
                                     height: '100%',
                                     color: theme.colors.textColor,
-                                    fontWeight: 'bold',
+                                    fontFamily: 'Poppins-SemiBold'
                                 }}>
                                 {this.state.displayBalesCount}
                             </Text>
@@ -1061,7 +1061,7 @@ class App extends Component {
                             height: 20,
                             alignItems: 'center',
                         }}>
-                        <Text style={{ width: '35%', color: theme.colors.textColor }}>
+                        <Text style={{ width: '35%', color: theme.colors.textColor, fontFamily: 'Poppins-Medium' }}>
                             Seller Type
                         </Text>
                     </View>

@@ -113,7 +113,6 @@ const MCXScreen = ({ navigation }) => {
         name: 'USDINR22JANFUT', value: '--'
     }, {
         name: 'USDINR22FEBFUT', value: '--'
-        
     },
     { name: 'KAPAS22APRFUT', value: '--' }, { name: 'KAPAS22FEBFUT', value: '--' }])
 

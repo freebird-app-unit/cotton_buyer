@@ -449,7 +449,7 @@ const VerifyOtpScreen = function(props) {
           visible={loading}
           color="#085cab"
         />
-      <View style={{width: '100%', marginTop: 0,backgroundColor:'#F0F5F9',height:108,justifyContent:'center'}}>
+      {/* <View style={{width: '100%', marginTop: 0,backgroundColor:'#F0F5F9',height:108,justifyContent:'center'}}>
           <Appbar.Header style={{backgroundColor: 'transparent'}}>
             <Appbar.BackAction
               color="#000"
@@ -463,7 +463,7 @@ const VerifyOtpScreen = function(props) {
             />
             <Appbar.Action color="transparent" onPress={() => {}} />
           </Appbar.Header>
-        </View>
+        </View> */}
         <ScrollView
           showsVerticalScrollIndicator={true}
           showsHorizontalScrollIndicator={false}
@@ -498,7 +498,12 @@ const VerifyOtpScreen = function(props) {
                 onChangeText={onOtpChange(index)}
                 keyboardType={'numeric'}
                 maxLength={1}
-                style={[styles.otpText, GenericStyles.centerAlignedText]}
+                style={[{
+                  fontWeight: 'bold',
+                  color: colors.BLACK,
+                  borderColor: otpArray[index] != '' ? colors.GREEN : colors.GREY,
+                  fontSize: 18,
+                  width: '100%',}, GenericStyles.centerAlignedText]}
                 autoFocus={index === 0 ? true : undefined}
                 refCallback={refCallback(textInputRef)}
                 key={index}

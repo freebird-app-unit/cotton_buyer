@@ -282,6 +282,7 @@ class NegotiateDetails extends Component {
               textAlign: 'center',
               textAlignVertical: 'center',
               textTransform: 'uppercase',
+              fontFamily: 'Poppins-Regular'
             }}>
             {item.attribute}
           </Text>
@@ -296,6 +297,7 @@ class NegotiateDetails extends Component {
               fontWeight: 'bold',
               textAlign: 'center',
               textAlignVertical: 'center',
+              fontFamily: 'Poppins-Regular'
             }}>
             {item.attribute_value}
           </Text>
@@ -316,8 +318,9 @@ class NegotiateDetails extends Component {
                 color: theme.colors.textColor,
                 width: '100%',
                 textAlign: 'right',
-                fontWeight: 'bold',
+                // fontWeight: 'bold',
                 fontSize: 14,
+                fontFamily: 'Poppins-SemiBold'
               }}>
               ({ell.buyer_name})ME
             </Text>
@@ -326,7 +329,7 @@ class NegotiateDetails extends Component {
                 color: theme.colors.textColor,
                 width: '100%',
                 textAlign: 'right',
-                fontWeight: 'bold',
+                fontFamily: 'Poppins-SemiBold',
                 fontSize: 14,
               }}>
               ₹ {ell.current_price} ({ell.current_no_of_bales})
@@ -341,7 +344,8 @@ class NegotiateDetails extends Component {
                 color: theme.colors.textColor,
                 width: '100%',
                 textAlign: 'left',
-                fontWeight: 'bold',
+                                fontFamily: 'Poppins-SemiBold',
+
                 fontSize: 14,
               }}>
               {ell.seller_name}
@@ -351,7 +355,8 @@ class NegotiateDetails extends Component {
                 color: theme.colors.textColor,
                 width: '100%',
                 textAlign: 'left',
-                fontWeight: 'bold',
+                                fontFamily: 'Poppins-SemiBold',
+
                 fontSize: 14,
               }}>
               ₹ {ell.current_price} ({ell.current_no_of_bales})
@@ -367,19 +372,19 @@ class NegotiateDetails extends Component {
             marginTop: 15,
           }}>
           <View style={{flex: 1}}>
-            <Text style={{color: theme.colors.textColor, opacity: 0.5}}>
+            <Text style={{color: theme.colors.textColor, opacity: 0.5,fontFamily:'Poppins-Regular'}}>
               Payment Condition
             </Text>
-            <Text style={{color: theme.colors.textColor}}>
+            <Text style={{ color: theme.colors.textColor, fontFamily: 'Poppins-Regular'}}>
               {ell.payment_condition}
             </Text>
           </View>
 
           <View style={{flex: 1}}>
-            <Text style={{color: theme.colors.textColor, opacity: 0.5}}>
+            <Text style={{ color: theme.colors.textColor, opacity: 0.5, fontFamily: 'Poppins-Regular'}}>
               Header
             </Text>
-            <Text style={{color: theme.colors.textColor}}>{ell.header}</Text>
+            <Text style={{ color: theme.colors.textColor, fontFamily: 'Poppins-Regular'}}>{ell.header}</Text>
           </View>
         </View>
 
@@ -391,10 +396,10 @@ class NegotiateDetails extends Component {
             marginTop: 15,
           }}>
           <View style={{flex: 1}}>
-            <Text style={{color: theme.colors.textColor, opacity: 0.5}}>
+            <Text style={{ color: theme.colors.textColor, opacity: 0.5, fontFamily: 'Poppins-Regular'}}>
               Transmit Condition
             </Text>
-            <Text style={{color: theme.colors.textColor}}>
+            <Text style={{ color: theme.colors.textColor, fontFamily: 'Poppins-Regular'}}>
               {ell.transmit_condition}
             </Text>
           </View>
@@ -425,10 +430,10 @@ class NegotiateDetails extends Component {
             marginTop: 15,
           }}>
           <View style={{flex: 1}}>
-            <Text style={{color: theme.colors.textColor, opacity: 0.5}}>
+            <Text style={{ color: theme.colors.textColor, opacity: 0.5, fontFamily: 'Poppins-Regular'}}>
               Broker Name
             </Text>
-            <Text style={{color: theme.colors.textColor}}>
+            <Text style={{ color: theme.colors.textColor, fontFamily: 'Poppins-Regular'}}>
               {ell.broker_name}
             </Text>
           </View>
@@ -443,10 +448,10 @@ class NegotiateDetails extends Component {
               marginTop: 15,
             }}>
             <View style={{flex: 1}}>
-              <Text style={{color: theme.colors.textColor, opacity: 0.5}}>
+              <Text style={{ color: theme.colors.textColor, opacity: 0.5, fontFamily: 'Poppins-Regular'}}>
                 Notes
               </Text>
-              <Text style={{color: theme.colors.textColor}}>{ell.notes}</Text>
+              <Text style={{ color: theme.colors.textColor, fontFamily: 'Poppins-Regular'}}>{ell.notes}</Text>
             </View>
           </View>
         )}
