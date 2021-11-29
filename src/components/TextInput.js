@@ -5,6 +5,8 @@ import { theme } from '../core/theme'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from './responsive-ratio';
 
+// console.log('6.5',hp(6))
+
 const TextInput = ({ errorText, description, ...props }) => (
   <View style={styles.container}>
     <Input
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: theme.colors.surface,
     width: '90%',
-    height: hp(6.5),
+    height: hp(6),
     justifyContent: 'center',
     fontFamily: "Poppins-Regular",
     fontSize: hp(2.1)

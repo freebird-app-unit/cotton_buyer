@@ -216,6 +216,7 @@ class App extends Component {
       btnCompletedTextColor: 'gray',
     };
 
+    this.itemsRef = [];
     // this.setValue = this.setValue.bind(this);
     // this.setOpenState = this.setOpenState.bind(this);
     // this.setItemsState = this.setItemsState.bind(this);
@@ -360,6 +361,7 @@ class App extends Component {
             }}>
             <SelectDropdown
               data={el.value}
+              ref={(ref) => { this.itemsRef[i] = ref; return true; }}
               onSelect={(selectedItem, j) => {
                 console.log(selectedItem);
                 this.addValues(
@@ -594,6 +596,7 @@ class App extends Component {
         selectedProductID: selectedItem.value,
         selectedProductName: selectedItem.label,
       });
+
       this.getProductAttributeAPI(selectedItem.value);
     } catch (error) {
       console.log(error);
@@ -620,7 +623,13 @@ class App extends Component {
             <SelectDropdown
               data={this.state.productItem}
               onSelect={(selectedItem, i) => {
-                console.log(selectedItem);
+                console.log('hmm', selectedItem, this.itemsRef);
+                this.itemsRef.map(item => item.reset())
+                this.setState({
+                  balesPrice: '',
+                  displayBalesCount: 100
+                })
+                // this.itemsRef[0].reset()
                 this.changeProduct(selectedItem);
                 //this.addValues(selectedItem.label, el.label)
               }}
@@ -690,7 +699,7 @@ class App extends Component {
                 style={{
                   width: '100%',
                   height: 45,
-                  fontWeight: 'bold',
+                  fontFamily:'Poppins-Bold',
                   backgroundColor: '#fff',
                 }}
                 label=""

@@ -524,6 +524,8 @@ else {
       }
     }
 
+    console.log('ginner>>>>', this.props.route.params.dataObj)
+
     var sbid = this.props.route.params.dataObj.seller_buyer_id;
     var nob = this.props.route.params.dataObj.no_of_bales;
     var attributeArray = this.props.route.params.dataObj.attribute_array;
@@ -534,7 +536,7 @@ else {
     var spinningMealName = this.props.route.params.dataObj.spinning_meal_name;
     var sId = this.state.stateId;
     var dId = this.state.districtId;
-    var stId = this.props.route.params.dataObj == 'Ginner' ? this.state.stationId : this.state.cityId;
+    var stId = this.props.route.params.dataObj.seller_type == 'Ginner' ? this.state.stationId : this.state.cityId;
 
     //  {"seller_buyer_id":"1","product_id":"1","price":"50000","no_of_bales":"50","d_e":"export","buy_for":"other","spinning_meal_name":"test","country_id":"1","state_id":"1","city_id":"1","station_id":"1","buyers":[{"id":"1","type":"default"}],"attribute_array":[{"attribute":"uhml","attribute_value":"28.3"},{"attribute":"rd","attribute_value":"21.3"}]}
     let data = {
