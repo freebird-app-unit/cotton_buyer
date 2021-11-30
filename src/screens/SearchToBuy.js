@@ -128,7 +128,7 @@ const CustomComponent = ({ ...props }) => {
                     <Text style={styles.dropdown3BtnTxt}>
                       {selectedItem
                         ? selectedItem.label
-                        : props.label}
+                        : ''}
                     </Text>
                   </View>
                 );
@@ -172,7 +172,7 @@ const CustomComponent = ({ ...props }) => {
                     <Text style={styles.dropdown3BtnTxt}>
                       {selectedItem
                         ? (selectedItem.label > props.from ? selectedItem.label :  props.label)
-                        : props.label}
+                        : ''}
                     </Text>
                   </View>
                 );
@@ -490,7 +490,7 @@ class App extends Component {
                       <Text style={styles.dropdown3BtnTxt}>
                         {selectedItem
                           ? selectedItem.label
-                          : this.state.lengthData.label}
+                          : ''}
                       </Text>
                     </View>
                   );

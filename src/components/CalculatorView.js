@@ -19,6 +19,7 @@ import TextInput from '../components/TextInput';
      const [Waste_Recovery, setWasteRecovery] = useState(0.0)
      const [Conversion_Cost, setCoversionCost] = useState(0.0)
      const [Result, setResult] = useState(0.0)
+     const [ideaofCotton,setIdeaofCotton] = useState(0)
 
      const onChangedYarn_Count = (text) => {
         setYarnCount(text)
@@ -38,20 +39,69 @@ import TextInput from '../components/TextInput';
 
      const onChangedYield = (text) => {
         setYield(text)
+         let i = 100 - text;
+        //  console.log('i',i)
+         let b = (Auto_Cotton_Ratekg * i) / 100
+        //  console.log('b', b)
+
+         let ans = parseFloat(Auto_Cotton_Ratekg) + parseFloat(b)
+        // setIdeaofCotton(ans);
+        //  console.log('ansyiedl', ans)
+
         displayResult(Yarn_Count,Auto_Cotton_Ratekg,text,Waste_Recovery,Conversion_Cost)
      }
 
      const onChangedWaste_Recovery = (text) => {
         setWasteRecovery(text)
+
+        //  let i = 100 - Yield;
+        // //  console.log('i', i)
+        //  let b = (Auto_Cotton_Ratekg * i) / 100
+        // //  console.log('b', b)
+
+        //  let ans = parseFloat(Auto_Cotton_Ratekg) + parseFloat(b)
+        // //  setIdeaofCotton(ans);
+
+        // //  let  i = ideaofCotton
+        // let ansg = ans - text
+        // console.log('ansdfsdf',ans,text)
+        //  setIdeaofCotton(ansg);
+
+        // console.log('ans',ans)
         displayResult(Yarn_Count,Auto_Cotton_Ratekg,Yield,text,Conversion_Cost)
      }
 
      const onChangedConversion_Cost = (text) => {
         setCoversionCost(text)
+        //  console.log('ideaofCotton', ideaofCotton,text)
+         
         displayResult(Yarn_Count,Auto_Cotton_Ratekg,Yield,Waste_Recovery,text)
      }
 
+     const countingFunc = () => {
+         console.log('hi')
+         let i = 100 - Yield;
+          console.log('i', i)
+         let b = (Auto_Cotton_Ratekg * i) / 100
+          console.log('b', b)
+
+         let ans = parseFloat(Auto_Cotton_Ratekg) + parseFloat(b)
+         console.log('ans', ans)
+
+         //  setIdeaofCotton(ans);
+
+         //  let  i = ideaofCotton
+         let ansg = Waste_Recovery != 0.0 ?  ans - parseInt(Waste_Recovery) : ans
+         let bg = Conversion_Cost != 0.0 ?  ansg + parseInt(Conversion_Cost) : ansg
+
+         setIdeaofCotton(bg);
+
+         console.log('bg',bg)
+     }
+
      const displayResult = (yarnCount,autoCottonRate,yieldVal,wasteRecovery,conversionCost) => {
+
+        console.log('itda',ideaofCotton)
         let actualCost = parseFloat(autoCottonRate) * parseFloat(yieldVal) / 100;
         let yarnValue = parseFloat(yarnCount) * parseFloat(conversionCost)
         let t1 = parseFloat(wasteRecovery) + parseFloat(yarnValue)
@@ -72,10 +122,10 @@ import TextInput from '../components/TextInput';
             <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/ Candy' outlineColor={'#eee'} onChangeText={onChangedCotton_Rate} maxLength={6}/>
             <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} value={Auto_Cotton_Ratekg} maxLength={6} editable={false}/>
 
-            <InPutText label='Yield' keyboardType="phone-pad" labelValue='%' outlineColor={'#eee'} onChangeText={onChangedYield} maxLength={6}/>
-            <InPutText label='Waste Recovery' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedWaste_Recovery} maxLength={6}/>
+            <InPutText label='Yield' onBlur={countingFunc} keyboardType="phone-pad" labelValue='%' outlineColor={'#eee'} onChangeText={onChangedYield} maxLength={6}/>
+            <InPutText label='Waste Recovery' onBlur={countingFunc} keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedWaste_Recovery} maxLength={6}/>
             {/* <InPutText label='Material Cost' labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedMaterial_Cost} /> */}
-            <InPutText label='Conversion Cost' keyboardType="phone-pad" labelValue='Rs/k/Count' outlineColor={'#eee'} onChangeText={onChangedConversion_Cost} maxLength={6}/>
+            <InPutText label='Conversion Cost' onBlur={countingFunc} keyboardType="phone-pad" labelValue='Rs/k/Count' outlineColor={'#eee'} onChangeText={onChangedConversion_Cost} maxLength={6}/>
             {/* <InPutText label='Commission' labelValue='%' outlineColor={'#eee'} onChangeText={onChangedCommission} />
             <InPutText label='Other Exp' labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedOther_Exp} /> */}
         <View style={{

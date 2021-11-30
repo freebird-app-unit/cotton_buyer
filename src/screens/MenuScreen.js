@@ -105,7 +105,7 @@ const Data = [
     },
     {
         label: 'SearchToBuy',
-        Title: 'Search To Buy',
+        Title: 'Search Seller',
         Icon: <SearchToSell_Icon />
     },
      {

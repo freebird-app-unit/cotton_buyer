@@ -299,7 +299,7 @@ class App extends Component {
                                         <Text style={styles.dropdown3BtnTxt}>
                                             {selectedItem
                                                 ? selectedItem.label
-                                                :  el.label}
+                                                :  ''}
                                         </Text>
                                     </View>
                                 );
