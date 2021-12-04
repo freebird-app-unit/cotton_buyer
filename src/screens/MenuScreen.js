@@ -186,9 +186,91 @@ const Data = [
     
 ]
 
+ListTransaction = (props) => {
+    console.log('props', props);
+    try {
+
+        let data = {
+            parameters: {
+                cotton: "20.00", cocudakl: "300.00", kapas: "40.00", usdinr: "10.00"
+            }
+        };
+        // console.log("getNegotiationListData");
+        console.log('requested params: ', data);
+        const formData = new FormData();
+        formData.append('data', JSON.stringify(data));
+        axios({
+            url: api_config.BASE_URL + api_config.GET_MCX_DATA,
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer Pk0X15IVt07nPmvQPmtwMvRJKf4jlLncg1AHqmbvKBsybxAANf7ouAqlMJbAznLpPkAxaJjzvmIDszhk3WTZvcEaJv'
+
+            },
+        }).then(async function (response) {
+            // setLoader(false)
+            // serRefresh(false);
+            // console.log('response', response)
+
+            if (response.status == 200) {
+
+                // console.log('response', response.data)
+                let obj = {}
+
+                let list = response.data.data.map(item => {
+                    obj = {
+                        name: item.parameters,
+                        value: '--'
+                    }
+                    return obj
+                })
+
+                props.navigation.navigate('McxScreen', { list });
+
+                // setmcxData(list)
+                // setItemChecked((prevState) => !prevState);
+
+
+
+
+                // let bro = response.data.data.filter(item => item.type === 'default')
+                // DefaultBrokerList(bro);
+                // let Brokernotdefault = response.data.data.filter(item => item.type === 'not_default')
+                // setBalance(response.data.data.wallet_amount);
+                // setTransaction(response.data.data.transaction_history);
+
+                // self.setState({ ProfileData: response.data.data, spinner: false, });
+            } else {
+                // setListView(false)
+
+                console.log('hi_______', response.data.message);
+            }
+        })
+            .catch(function (error) {
+                // self.setState({
+                //     spinner: false,
+                //     message: 'Something bad happened ' + error,
+                // }),
+                // setListView(false)
+                // setLoader(false)
+                // serRefresh(false);
+                console.log('error', JSON.stringify(error))
+                alert(defaultMessages.en.serverNotRespondingMsg);
+            });
+    } catch (error) {
+        console.log(error);
+        // setLoader(false)
+        // serRefresh(false);
+
+        // setListView(false)
+
+    }
+}
+
 const NavigationButton = (props) => {
     // console.log('this',props)
-    return (<TouchableOpacity onPress={() => props.props.navigation.navigate(props.label)}>
+    return (<TouchableOpacity onPress={() => props.label == 'McxScreen' ? ListTransaction(props.props) : props.props.navigation.navigate(props.label)}>
         <View
             style={{
                 flexDirection: 'row',
