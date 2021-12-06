@@ -11,7 +11,7 @@ import {
 } from '../components/responsive-ratio';
 import TextInput from '../components/TextInput';
 
-function SecondRoute() {
+function SecondRoute () {
     const [Yarn_Count, setYarnCount] = useState(0.0)
     const [Cotton_Rate, setCottonRate] = useState(0.0)
     const [Auto_Cotton_Ratekg, setCottonRateKg] = useState(0.0)
@@ -19,139 +19,108 @@ function SecondRoute() {
     const [Waste_Recovery, setWasteRecovery] = useState(0.0)
     const [Conversion_Cost, setCoversionCost] = useState(0.0)
     const [Result, setResult] = useState(0.0)
-    const [ideaofCotton, setIdeaofCotton] = useState(0)
 
     const onChangedYarn_Count = (text) => {
-        setYarnCount(text)
-        displayResult(text, Auto_Cotton_Ratekg, Yield, Waste_Recovery, Conversion_Cost)
+       setYarnCount(text)
+       displayResult(text,Auto_Cotton_Ratekg,Yield,Waste_Recovery,Conversion_Cost)
     }
 
     const onChangedCotton_Rate = (text) => {
-        setCottonRate(text)
-        let t1 = parseFloat(text) / 355.6
-        t1 = t1.toFixed(2)
-        if (!isNaN(t1)) {
-            setCottonRateKg(t1)
-        }
-
-        displayResult(Yarn_Count, t1, Yield, Waste_Recovery, Conversion_Cost)
+       setCottonRate(text)
+       let t1 = parseFloat(text)/355.6
+       t1 = t1.toFixed(2)
+       if (!isNaN(t1)) {
+           setCottonRateKg(t1)
+       } 
+       
+       displayResult(Yarn_Count,t1,Yield,Waste_Recovery,Conversion_Cost)
     }
 
     const onChangedYield = (text) => {
-        setYield(text)
-        displayResult(Yarn_Count, Auto_Cotton_Ratekg, text, Waste_Recovery, Conversion_Cost)
+       setYield(text)
+       displayResult(Yarn_Count,Auto_Cotton_Ratekg,text,Waste_Recovery,Conversion_Cost)
     }
 
     const onChangedWaste_Recovery = (text) => {
-        setWasteRecovery(text)
-        displayResult(Yarn_Count, Auto_Cotton_Ratekg, Yield, text, Conversion_Cost)
+       setWasteRecovery(text)
+       displayResult(Yarn_Count,Auto_Cotton_Ratekg,Yield,text,Conversion_Cost)
     }
 
     const onChangedConversion_Cost = (text) => {
-        setCoversionCost(text)
-        displayResult(Yarn_Count, Auto_Cotton_Ratekg, Yield, Waste_Recovery, text)
+       setCoversionCost(text)
+       displayResult(Yarn_Count,Auto_Cotton_Ratekg,Yield,Waste_Recovery,text)
     }
 
-    const countingFunc = () => {
-        console.log('hi')
-        let i = 100 - Yield;
-        console.log('i', i)
-        let b = (Auto_Cotton_Ratekg * i) / 100
-        console.log('b', b)
+    const displayResult = (yarnCount,autoCottonRate,yieldVal,wasteRecovery,conversionCost) => {
+       //Cotton one kg rate + ((100-yield)% of One kg cotton rate)+(count × conversation cost)- waste recovery
 
-        let ans = parseFloat(Auto_Cotton_Ratekg) + parseFloat(b)
-        console.log('ans', ans)
-
-        //  setIdeaofCotton(ans);
-
-        //  let  i = ideaofCotton
-        let ansg = Waste_Recovery != 0.0 ? ans - parseInt(Waste_Recovery) : ans
-        let bg = Conversion_Cost != 0.0 ? ansg + parseInt(Conversion_Cost) : ansg
-
-        setIdeaofCotton(bg);
-        displayResultsofcotton(Yarn_Count, bg, Yield, Waste_Recovery, Conversion_Cost)
-
-        console.log('bg', bg)
+       let firstStep = parseFloat(autoCottonRate) * (100-yieldVal) / 100;
+       
+       firstStep = parseFloat(autoCottonRate) + firstStep;
+       let secondStep = firstStep + (parseFloat(yarnCount) * parseFloat(conversionCost));
+       
+       let result = secondStep - parseFloat(wasteRecovery)
+    //    let actualCost = parseFloat(autoCottonRate) * parseFloat(yieldVal) / 100;
+    //    let yarnValue = parseFloat(yarnCount) * parseFloat(conversionCost)
+    //    let t1 = parseFloat(wasteRecovery) + parseFloat(yarnValue)
+    //    let result = parseFloat(actualCost) - parseFloat(t1)
+       result = Math.abs(result)
+       
+       console.log("result: " + result)
+       if (isNaN(result)) {
+           setResult("Invalid")
+       } else {
+           setResult(result.toFixed(2))
+       }
     }
 
-    const displayResultsofcotton = (yarnCount, autoCottonRate, yieldVal, wasteRecovery, conversionCost) => {
-        let actualCost = parseFloat(autoCottonRate) * parseFloat(yieldVal) / 100;
-        let yarnValue = parseFloat(yarnCount) * parseFloat(conversionCost)
-        let t1 = parseFloat(wasteRecovery) + parseFloat(yarnValue)
-        let result = parseFloat(actualCost) - parseFloat(t1)
-        result = Math.abs(result)
+   return (
+       <ScrollView style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: wp(2) }}>
+           <InPutText label='Yarn Count' keyboardType="phone-pad" labelValue='' outlineColor={'#d1d1d1'} onChangeText={onChangedYarn_Count} maxLength={6}/>
+           <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/ Candy' outlineColor={'#d1d1d1'} onChangeText={onChangedCotton_Rate} maxLength={6}/>
+           <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#d1d1d1'} value={Auto_Cotton_Ratekg} maxLength={6} editable={false}/>
 
-        console.log("result: " + result)
-        if (isNaN(result)) {
-            setResult("Invalid")
-        } else {
-            setResult(result.toFixed(2))
-        }
-    }
+           <InPutText label='Yield' keyboardType="phone-pad" labelValue='%' outlineColor={'#d1d1d1'} onChangeText={onChangedYield} maxLength={6}/>
+           <InPutText label='Waste Recovery' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#d1d1d1'} onChangeText={onChangedWaste_Recovery} maxLength={6}/>
+           {/* <InPutText label='Material Cost' labelValue='Rs/kg' outlineColor={'#d1d1d1'} onChangeText={onChangedMaterial_Cost} /> */}
+           <InPutText label='Conversion Cost' keyboardType="phone-pad" labelValue='Rs/k/Count' outlineColor={'#d1d1d1'} onChangeText={onChangedConversion_Cost} maxLength={6}/>
+           {/* <InPutText label='Commission' labelValue='%' outlineColor={'#d1d1d1'} onChangeText={onChangedCommission} />
+           <InPutText label='Other Exp' labelValue='Rs/kg' outlineColor={'#d1d1d1'} onChangeText={onChangedOther_Exp} /> */}
+       <View style={{
+           flexDirection: 'row',
+           alignItems: 'center', marginTop: hp(1)
+       }}>
+           <View style={{ width: wp(40), }}><Text style={styles.label}>Yarn Cost</Text></View>
+           <View style={{ alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center' }}>
+               <Text style={styles.value}>{Result}</Text>
+               <Text style={styles.VAlue1}>Rs/kg</Text>
+           </View>
+       </View>
+       {/* <InPutText label='Yarn Rate' labelValue='Rs/kg' outlineColor={'#d1d1d1'} />
+       <InPutText label='Profit' labelValue='Rs/kg' outlineColor={'#d1d1d1'} /> */}
+       {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+           <Button mode="contained"
+               onPress={onPressed}
+               style={{ width: wp(74) }}
+               labelStyle={{
+                   textTransform: 'capitalize', fontSize: 18, color: '#FFFFFF',
+                   fontFamily: "Poppins-SemiBold"
+               }}>
+               Reset
+           </Button>
+           <TouchableOpacity
+               onPress={onPressed}
+               style={{
+                   width: wp(14), height: wp(14), backgroundColor: theme.colors.primary,
+                   borderRadius: wp(7), justifyContent: 'center', alignItems: 'center', marginVertical: 10
+               }}>
+               <Iconicons name='share-social-outline' size={hp(2.5)} color='white' />
+           </TouchableOpacity>
+       </View> */}
 
-    const displayResult = (yarnCount, autoCottonRate, yieldVal, wasteRecovery, conversionCost) => {
-        // let actualCost = parseFloat(autoCottonRate) * parseFloat(yieldVal) / 100;
-        // let yarnValue = parseFloat(yarnCount) * parseFloat(conversionCost)
-        // let t1 = parseFloat(wasteRecovery) + parseFloat(yarnValue)
-        // let result = parseFloat(actualCost) - parseFloat(t1)
-        // result = Math.abs(result)
+   </ScrollView>
 
-        // console.log("result: " + result)
-        // if (isNaN(result)) {
-        //     setResult("Invalid")
-        // } else {
-        //     setResult(result.toFixed(2))
-        // }
-    }
-
-    return (
-        <ScrollView style={{ flex: 1, backgroundColor: '#fff', paddingHorizontal: wp(2) }}>
-            <InPutText label='Yarn Count' keyboardType="phone-pad" labelValue='' outlineColor={'#eee'} onChangeText={onChangedYarn_Count} maxLength={6} />
-            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/ Candy' outlineColor={'#eee'} onChangeText={onChangedCotton_Rate} maxLength={6} />
-            <InPutText label='Cotton Rate' keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} value={Auto_Cotton_Ratekg} maxLength={6} editable={false} />
-
-            <InPutText label='Yield' onBlur={countingFunc} onMagicTap={countingFunc} onFocus={countingFunc} keyboardType="phone-pad" labelValue='%' outlineColor={'#eee'} onChangeText={onChangedYield} maxLength={6} />
-            <InPutText label='Waste Recovery' onBlur={countingFunc} onFocus={countingFunc} keyboardType="phone-pad" labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedWaste_Recovery} maxLength={6} />
-            {/* <InPutText label='Material Cost' labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedMaterial_Cost} /> */}
-            <InPutText label='Conversion Cost' onMagicTap={countingFunc} onEndEditing={countingFunc} onBlur={countingFunc} onFocus={countingFunc} keyboardType="phone-pad" labelValue='Rs/k/Count' outlineColor={'#eee'} onChangeText={onChangedConversion_Cost} maxLength={6} />
-            {/* <InPutText label='Commission' labelValue='%' outlineColor={'#eee'} onChangeText={onChangedCommission} />
-            <InPutText label='Other Exp' labelValue='Rs/kg' outlineColor={'#eee'} onChangeText={onChangedOther_Exp} /> */}
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center', marginTop: hp(1)
-            }}>
-                <View style={{ width: wp(40), }}><Text style={styles.label}>Yarn Cost</Text></View>
-                <View style={{ alignItems: 'flex-start', flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={styles.value}>{Result}</Text>
-                    <Text style={styles.VAlue1}>Rs/kg</Text>
-                </View>
-            </View>
-            {/* <InPutText label='Yarn Rate' labelValue='Rs/kg' outlineColor={'#eee'} />
-        <InPutText label='Profit' labelValue='Rs/kg' outlineColor={'#eee'} /> */}
-            {/* <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Button mode="contained"
-                onPress={onPressed}
-                style={{ width: wp(74) }}
-                labelStyle={{
-                    textTransform: 'capitalize', fontSize: 18, color: '#FFFFFF',
-                    fontFamily: "Poppins-SemiBold"
-                }}>
-                Reset
-            </Button>
-            <TouchableOpacity
-                onPress={onPressed}
-                style={{
-                    width: wp(14), height: wp(14), backgroundColor: theme.colors.primary,
-                    borderRadius: wp(7), justifyContent: 'center', alignItems: 'center', marginVertical: 10
-                }}>
-                <Iconicons name='share-social-outline' size={hp(2.5)} color='white' />
-            </TouchableOpacity>
-        </View> */}
-
-        </ScrollView>
-
-    )
-}
+)}
 
 function FirstRoute() {
     const [kapas, setKapasValue] = useState(0.0)
