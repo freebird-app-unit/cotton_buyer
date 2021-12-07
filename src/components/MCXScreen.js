@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, SectionList, RefreshControl, Platform } from 'react-native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from './responsive-ratio';
 import { Button } from './Button';
@@ -42,8 +42,17 @@ socket.connect()
 const MCXScreen = ({ navigation, route }) => {
 
     // console.log('route',route.params.list)
+    // let obj = {}
+    // let mcxdt = route.params.list.map(item => {
+    //     obj = {
+    //         ...item,
+    //         active:false
+    //     }
+    //     return obj
+    // })
 
     const [mcxData, setmcxData] = useState(route.params.list)
+    const [itemChecked, setItemChecked] = useState(false);
 
 
     useEffect(() => {
@@ -57,7 +66,7 @@ const MCXScreen = ({ navigation, route }) => {
         socket.on(
             'McxEvent',
             content => {
-                console.log('content >>> 1', content.data.Mcx.parameters.length);
+                // console.log('content >>> 1', content.data.Mcx.parameters.length);
 
                 // global.Notification = content.data.notificationSeller
                 let d = mcxData.filter(item => content.data.Mcx.parameters.map(it => {
@@ -66,7 +75,7 @@ const MCXScreen = ({ navigation, route }) => {
                             item.value = it.value
                         return item
                     } else {
-                        console.log('it', it)
+                        // console.log('it', it)
 
                         return it
                     }
@@ -104,7 +113,7 @@ const MCXScreen = ({ navigation, route }) => {
 
     const [isLogin, setLogin] = useState(true)
 
-    const [itemChecked, setItemChecked] = useState(false);
+    // const [itemChecked, setItemChecked] = useState(false);
 
 
     const [loading, setLoader] = useState(false)
@@ -163,11 +172,19 @@ const MCXScreen = ({ navigation, route }) => {
 
                     console.log('response', response.data)
                     let obj = {}
-
+                    let temp = ''
+                    let dt = ''
                     let list = response.data.data.map(item => {
+                        temp = item.parameters.split(/(\d+)/);
+                        dt = temp[1];
+                        temp = temp[2].split('FUT');
+                        
+                        // console.log('temp', temp)
                         obj = {
                             name: item.parameters,
-                            value: '--'
+                            value: '--',
+                            active:false,
+                            expiryDate: dt + ' ' + temp[0]
                         }
                         return obj
                     })
@@ -258,10 +275,26 @@ const MCXScreen = ({ navigation, route }) => {
             // backgroundColor: '#8fb1aa',  
         }
     }
+    const onItemShow = (item) => {
+        const updated = mcxData.map((it) => {
+            // it.active = false;
+            if (it.name === item.name) {
+                it.active = !it.active;
+            }
+            return it;
+        });
+        setmcxData(updated)
+        setItemChecked((prevState) => !prevState);
+
+
+    }
+
     const renderItem = ({ item }) => {
         // console.log('item', item)
         return (
-            <View style={{ flexDirection: 'column', borderBottomColor: 'lightgray', borderBottomWidth: 0.5 }}>
+            <TouchableOpacity onPress={() => onItemShow(item)}>
+            <View style={{flexDirection:'column'}}>
+            <View style={{ flexDirection: 'column', }}>
                 <View style={{
                     flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between', width: wp(94),
                     marginVertical: hp(1)
@@ -296,11 +329,11 @@ const MCXScreen = ({ navigation, route }) => {
                         {item.value}
                     </Text>
                 </View>
-                {/* <View style={{ flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between',
-                 width: wp(94), marginVertical: hp(0) }}> */}
-                {/* <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between',
+                 width: wp(94), marginVertical: hp(0) }}>
+                <View style={{ flexDirection: 'row' }}>
                         <Text>
-                            {datemonth}
+                            {item.expiryDate}
                         </Text>
                         <Text style={{
                             fontSize: hp(2),
@@ -311,16 +344,83 @@ const MCXScreen = ({ navigation, route }) => {
                         }}>
                             FUT
                         </Text>
-                    </View> */}
-                {/* <Text style={{
+                    </View> 
+                <Text style={{
                         fontSize: hp(2),
                         color: theme.colors.text,
                         fontFamily: "Poppins-Bold",
                         fontWeight: 'bold'
                     }}>
                     </Text>
-                </View> */}
+                </View>
             </View>
+            {item.active && (<View style={{flex:1,flexDirection:'row',justifyContent:'space-between'}}>
+                    <View style={{flexDirection:'column'}}>
+                            <Text style={{
+                            fontSize: hp(2),
+                            color: theme.colors.text,
+                            opacity: 0.5,
+                            fontFamily: "Poppins-Regular",
+                            
+                            }}>Open</Text>
+                            <Text style={{
+                                fontSize: hp(2),
+                                color: theme.colors.text,
+
+                                fontFamily: "Poppins-Medium",
+
+                            }}>Price</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text style={{
+                            fontSize: hp(2),
+                            color: theme.colors.text,
+                            opacity: 0.5,
+                            fontFamily: "Poppins-Regular",
+                            
+                        }}>High</Text>
+                            <Text style={{
+                                fontSize: hp(2),
+                                color: theme.colors.text,                               
+                                fontFamily: "Poppins-Medium",
+
+                            }}>Price</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text style={{
+                            fontSize: hp(2),
+                            color: theme.colors.text,
+                            opacity: 0.5,
+                            fontFamily: "Poppins-Regular",
+                            
+                        }}>Low</Text>
+                            <Text style={{
+                                fontSize: hp(2),
+                                color: theme.colors.text,
+
+                                fontFamily: "Poppins-Medium",
+
+                            }}>Price</Text>
+                    </View>
+                    <View style={{ flexDirection: 'column' }}>
+                        <Text style={{
+                            fontSize: hp(2),
+                            color: theme.colors.text,
+                            opacity: 0.5,
+                            fontFamily: "Poppins-Regular",
+                            
+                        }}>Prev.close</Text>
+                            <Text style={{
+                                fontSize: hp(2),
+                                color: theme.colors.text,
+
+                                fontFamily: "Poppins-Medium",
+
+                            }}>Price</Text>
+                    </View>
+            </View>)}
+                </View></TouchableOpacity>
+
         )
     }
 
@@ -329,6 +429,20 @@ const MCXScreen = ({ navigation, route }) => {
         console.log('state', state);
 
     }
+
+    const sepratorComponent = () => <View style={{
+        borderBottomColor: 'lightgray',
+        borderBottomWidth: 0.5,marginTop:hp(1)}} />
+    
+        const getItemLayout = 
+            useCallback((data,index) => ({
+                length: hp(10),
+                offset : hp(10) * index,
+                index,
+            }),
+            []);
+        
+    const keyExtractor = useCallback((item) => item.name.toString(),[]);
 
     return (
         <View style={{ flex: 1, backgroundColor: 'transparent', marginTop: hp(1), paddingHorizontal: wp(3) }}>
@@ -345,8 +459,11 @@ const MCXScreen = ({ navigation, route }) => {
                     <FlatList data={mcxData}
                         renderItem={renderItem}
                         // renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-                        keyExtractor={(item, index) => index}
-                        // extraData={itemChecked}
+                        keyExtractor={keyExtractor}
+                        ItemSeparatorComponent={sepratorComponent}
+                        extraData={itemChecked}
+                        removeClippedSubviews={true}
+                        getItemLayout={getItemLayout}
                         refreshControl={
                             <RefreshControl
                                 refreshing={refreshing}

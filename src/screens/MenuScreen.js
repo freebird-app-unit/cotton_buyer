@@ -215,13 +215,19 @@ ListTransaction = (props) => {
 
             if (response.status == 200) {
 
-                // console.log('response', response.data)
+                console.log('response', response.data)
                 let obj = {}
-
+                let temp = ''
+                let dt = ''
                 let list = response.data.data.map(item => {
+                    temp = item.parameters.split(/(\d+)/);
+                    dt = temp[1];
+                    temp = temp[2].split('FUT');
                     obj = {
                         name: item.parameters,
-                        value: '--'
+                        value: '--',
+                        active: false,
+                        expiryDate: dt + ' ' + temp[0]
                     }
                     return obj
                 })
