@@ -224,10 +224,14 @@ ListTransaction = (props) => {
                     dt = temp[1];
                     temp = temp[2].split('FUT');
                     obj = {
-                        name: item.parameters.split(/(\d+)/)[0],
-                        value: '--',
+                        name: item.parameters,
                         active: false,
-                        expiryDate: dt + ' ' + temp[0]
+                        expiryDate: dt + ' ' + temp[0],
+                        close_price: '--',
+                        current_price: '--',
+                        high_price: '--',
+                        low_price: '--',
+                        open_price: '--'
                     }
                     return obj
                 })

@@ -299,7 +299,7 @@ class App extends Component {
                         (
                             <View>
                                 <View style={{ flexDirection: 'row', width: '100%' }}>
-                                    <View
+                                   {arrDealDetails.length > 0 && (<View
                                         style={{
                                             flex: 1,
                                             marginLeft: '5%',
@@ -320,7 +320,7 @@ class App extends Component {
                                             }}>
                                             {displayDate}
                                         </Text>
-                                    </View>
+                                    </View>)}
                                 </View>
 
                                 {arrDealDetails.map((dd, j) => (

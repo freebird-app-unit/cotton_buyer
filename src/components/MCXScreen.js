@@ -32,6 +32,11 @@ const connectionConfig = {
     transports: ['websocket']/// you need to explicitly tell it to use websockets
 };
 
+const viewabilityConfig = {
+    minimumViewTime: 3000,
+    viewAreaCoveragePercentThreshold: 100,
+    waitForInteraction: true,
+};
 
 
 const socket = io.connect('http://165.232.181.91:3000/', connectionConfig); //live
@@ -58,22 +63,28 @@ const MCXScreen = ({ navigation, route }) => {
     useEffect(() => {
 
 
-        // console.log('d>>>>',d)
+        let isSubscribed = true;
 
-        console.log('connect')
+        // console.log('connect')
         socket.connect()
-
         socket.on(
             'McxEvent',
             content => {
-                // console.log('content >>> 1', content.data.Mcx.parameters.length);
-
-                // global.Notification = content.data.notificationSeller
+             
+                let obj = {}
                 let d = mcxData.filter(item => content.data.Mcx.parameters.map(it => {
-                    if (it.name.startsWith(item.name)) {
-                        item.name = it.name,
-                            item.value = it.value
-                        return item
+                    if (it.name.startsWith(item.name)) {    
+                       
+                            item.expiryDate = item.expiryDate,
+                            item.name = it.name,
+                            item.active= item.active,
+                            item.close_price =  it.close_price,
+                            item.current_price =  it.current_price,
+                            item.high_price =  it.high_price,
+                            item.low_price =  it.low_price,
+                            item.open_price =  it.open_price
+                        
+                        return item                       
                     } else {
                         // console.log('it', it)
 
@@ -83,20 +94,14 @@ const MCXScreen = ({ navigation, route }) => {
                 ))
 
                 // console.log('d',d.length);
-                setmcxData(d)
+               isSubscribed ? setmcxData(d) : null
 
             },
         );
 
+        return () => (isSubscribed = false)
 
-        // socket.on(
-        //     'McxEvent',
-        //     content => {
-        //         console.log('>>>>>', content)
-        //         setmcxData(content.parameters)
-        //     }
 
-        // )
     }, [])
 
     var date = new Date().getDate();
@@ -181,10 +186,14 @@ const MCXScreen = ({ navigation, route }) => {
                         
                         // console.log('temp', temp)
                         obj = {
-                            name: item.parameters.split(/(\d+)/)[0],
-                            value: '--',
-                            active:false,
-                            expiryDate: dt + ' ' + temp[0]
+                            name: item.parameters,
+                            active: false,
+                            expiryDate: dt + ' ' + temp[0],
+                            close_price: '--',
+                            current_price: '--',
+                            high_price: '--',
+                            low_price: '--',
+                            open_price: '--'
                         }
                         return obj
                     })
@@ -276,6 +285,7 @@ const MCXScreen = ({ navigation, route }) => {
         }
     }
     const onItemShow = (item) => {
+        console.log('clicked')
         const updated = mcxData.map((it) => {
             // it.active = false;
             if (it.name === item.name) {
@@ -289,11 +299,23 @@ const MCXScreen = ({ navigation, route }) => {
 
     }
 
+    const onLayout = event => {
+        let { height } = event.nativeEvent.layout;
+        // console.log('height',height,hp(9))
+    };
+
+    const calculationPercentage = (current,prev) => {
+        let value = current - prev;
+        // let percentage = ( ((prev-current) / prev) * 100);
+        let percentage = ((current * 100) / prev) - 100
+        return Math.floor(value).toFixed(2) + '(' + percentage.toFixed(2) + '%)'
+    }
+
     const renderItem = ({ item }) => {
         // console.log('item', item)
         return (
             <TouchableOpacity onPress={() => onItemShow(item)}>
-            <View style={{flexDirection:'column'}}>
+            <View style={{flexDirection:'column'}} >
             <View style={{ flexDirection: 'column', }}>
                 <View style={{
                     flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between', width: wp(94),
@@ -306,7 +328,7 @@ const MCXScreen = ({ navigation, route }) => {
                             fontFamily: "Poppins-SemiBold",
                             // fontWeight: 'bold'
                         }}>
-                            {item.name}
+                                    {item.name.split(/(\d+)/)[0]}
                         </Text>
                         <Text style={{
                             fontSize: hp(2),
@@ -325,8 +347,7 @@ const MCXScreen = ({ navigation, route }) => {
                         paddingTop: 5
                         // fontWeight: 'bold',
 
-                    }}>
-                        {item.value}
+                    }}>{Math.floor(item.current_price).toFixed(2)}
                     </Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between',
@@ -346,11 +367,10 @@ const MCXScreen = ({ navigation, route }) => {
                         </Text>
                     </View> 
                 <Text style={{
-                        fontSize: hp(2),
-                        color: theme.colors.text,
-                        fontFamily: "Poppins-Bold",
-                        fontWeight: 'bold'
-                    }}>
+                        fontSize: hp(1.7),
+                                color: parseInt(item.current_price - item.close_price) > 0 ? 'green' : item.current_price - item.close_price === 0 ? theme.colors.textColor : 'red',
+                        fontFamily: "Poppins-Medium",
+                    }}>{calculationPercentage(item.current_price,item.close_price)}
                     </Text>
                 </View>
             </View>
@@ -369,7 +389,7 @@ const MCXScreen = ({ navigation, route }) => {
 
                                 fontFamily: "Poppins-Medium",
 
-                            }}>Price</Text>
+                            }}>{Math.floor(item.open_price).toFixed(2)}</Text>
                     </View>
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={{
@@ -384,7 +404,7 @@ const MCXScreen = ({ navigation, route }) => {
                                 color: theme.colors.text,                               
                                 fontFamily: "Poppins-Medium",
 
-                            }}>Price</Text>
+                            }}>{Math.floor(item.high_price).toFixed(2)}</Text>
                     </View>
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={{
@@ -400,7 +420,7 @@ const MCXScreen = ({ navigation, route }) => {
 
                                 fontFamily: "Poppins-Medium",
 
-                            }}>Price</Text>
+                            }}>{Math.floor(item.low_price).toFixed(2)}</Text>
                     </View>
                     <View style={{ flexDirection: 'column' }}>
                         <Text style={{
@@ -416,7 +436,7 @@ const MCXScreen = ({ navigation, route }) => {
 
                                 fontFamily: "Poppins-Medium",
 
-                            }}>Price</Text>
+                            }}>{Math.floor(item.close_price).toFixed(2)}</Text>
                     </View>
             </View>)}
                 </View></TouchableOpacity>
@@ -436,13 +456,13 @@ const MCXScreen = ({ navigation, route }) => {
     
         const getItemLayout = 
             useCallback((data,index) => ({
-                length: hp(10),
-                offset : hp(10) * index,
+                length: hp(9),
+                offset : hp(9) * index,
                 index,
             }),
             []);
         
-    const keyExtractor = useCallback((item) => item.name.toString(),[]);
+    const keyExtractor = useCallback((item) => item.expiryDate.toString() + item.name.toString(),[]);
 
     return (
         <View style={{ flex: 1, backgroundColor: 'transparent', marginTop: hp(1), paddingHorizontal: wp(3) }}>
@@ -460,9 +480,13 @@ const MCXScreen = ({ navigation, route }) => {
                         renderItem={renderItem}
                         // renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
                         keyExtractor={keyExtractor}
+                        windowSize={2}
+                        initialNumToRender={3}
+                        viewabilityConfig={viewabilityConfig}
+                        maxToRenderPerBatch={1}
                         ItemSeparatorComponent={sepratorComponent}
                         extraData={itemChecked}
-                        removeClippedSubviews={true}
+                        removeClippedSubviews={false}
                         getItemLayout={getItemLayout}
                         refreshControl={
                             <RefreshControl
