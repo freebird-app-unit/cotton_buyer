@@ -224,7 +224,7 @@ ListTransaction = (props) => {
                     dt = temp[1];
                     temp = temp[2].split('FUT');
                     obj = {
-                        name: item.parameters,
+                        name: item.parameters.split(/(\d+)/)[0],
                         value: '--',
                         active: false,
                         expiryDate: dt + ' ' + temp[0]

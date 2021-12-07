@@ -181,7 +181,7 @@ const MCXScreen = ({ navigation, route }) => {
                         
                         // console.log('temp', temp)
                         obj = {
-                            name: item.parameters,
+                            name: item.parameters.split(/(\d+)/)[0],
                             value: '--',
                             active:false,
                             expiryDate: dt + ' ' + temp[0]
