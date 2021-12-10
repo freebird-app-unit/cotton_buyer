@@ -16,7 +16,11 @@ const defaultMessages = {
     hasNumber: 'The field "{0}" must contain a number.',
     hasSpecialCharacter: 'The field "{0}" must contain a special character.',
     confirmationDialog:'Are you sure you want to {1}?',
+<<<<<<< HEAD
     versionNumber: '1.1',
+=======
+    versionNumber: '1.3',
+>>>>>>> af842c53753ac13f908f1dff3cb386e561624ab9
     validInput:'Please enter valid {0}.',
     serverNotRespondingMsg:'We are sorry but an unexpected error occurred while processing your request. Please try again.',
   },
