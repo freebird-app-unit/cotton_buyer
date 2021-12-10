@@ -1,6 +1,7 @@
 import { theme } from '../core/theme';
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from '../components/responsive-ratio';
 import colors from '../common/colors';
+import { Platform } from 'react-native';
 
 module.exports = {
     submitButtonText: {
@@ -21,7 +22,7 @@ module.exports = {
         width: '100%',
         // height: '86%',
         flex: 1,
-        paddingBottom: 30,
+        paddingBottom: Platform.OS === 'ios' ? 5 : 30,
         // marginTop: 10,
         backgroundColor: 'white',
         borderTopLeftRadius: 20,
@@ -241,7 +242,7 @@ module.exports = {
         fontFamily: 'Poppins-Regular'
 
     },
-    dropdown3DropdownStyle: { backgroundColor: 'white', marginTop: hp(-4) },
+    dropdown3DropdownStyle: { backgroundColor: 'white', marginTop: hp(Platform.OS === 'ios' ? 0 : -4) },
     dropdown3RowStyle: {
         backgroundColor: '#fff',
         borderBottomColor: '#444',

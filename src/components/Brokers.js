@@ -97,19 +97,18 @@ const App = ({ navigation }) => {
     label: (color) => ({
       fontSize: hp(2.1),
       color: color,
-      fontWeight: "bold",
-      fontFamily: "Poppins - Bold",
+      fontFamily: "Poppins-Bold",
     }),
 
     balance: {
       fontSize: hp(3),
-      fontFamily: "Poppins - Bold",
+      fontFamily: "Poppins-Bold",
       fontWeight: "bold",
     },
     time: {
       fontSize: hp(1.5),
       opacity: 0.5,
-      fontFamily: "Poppins - Regular",
+      fontFamily: "Poppins-Regular",
     },
     sectionHeader: {
       marginVertical: hp(1.5),
@@ -216,7 +215,7 @@ const App = ({ navigation }) => {
               color: "#333",
               opacity: 0.5,
               fontSize: hp(2.1),
-              fontFamily: "Poppins - Bold",
+              fontFamily: "Poppins-Bold",
             }}
           >
             {item.city}
@@ -231,7 +230,7 @@ const App = ({ navigation }) => {
               style={{
                 fontSize: hp(1.9),
                 color: theme.colors.primary,
-                fontFamily: "Poppins - Regular",
+                fontFamily: "Poppins-Regular",
               }}
             >
               Verified
@@ -268,7 +267,7 @@ const App = ({ navigation }) => {
               color: "#333",
               opacity: 0.5,
               fontSize: hp(2.1),
-              fontFamily: "Poppins - Bold",
+              fontFamily: "Poppins-Bold",
             }}
           >
             {item.city}
@@ -283,7 +282,7 @@ const App = ({ navigation }) => {
               style={{
                 fontSize: hp(1.9),
                 color: theme.colors.primary,
-                fontFamily: "Poppins - Regular",
+                fontFamily: "Poppins-Regular",
               }}
             >
               Verified

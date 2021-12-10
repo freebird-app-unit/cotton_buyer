@@ -1057,7 +1057,7 @@ class App extends Component {
             style={{
               height: 50,
               width: "90%",
-              marginTop: 15,
+              // marginTop: 15,
               marginLeft: "5%",
             }}
           >
@@ -1252,7 +1252,7 @@ class App extends Component {
                   width: "45%",
                   textAlign: "center",
                   textAlignVertical: "center",
-                  height: "100%",
+                  height:Platform.OS === 'ios' ? undefined : "100%",
                   color: theme.colors.textColor,
                   fontFamily: 'Poppins-SemiBold'
                 }}

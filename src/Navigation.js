@@ -66,7 +66,7 @@ const tabnavi = ({ navigation }) => {
                 marginTop: hp(3), height: hp(9), alignItems: 'center', justifyContent: 'space-between'
             }}>
                 <Ionicons name='chevron-back-outline' size={hp(3)} color='#fff' style={{ width: wp(30) }} onPress={() => navigation.goBack()} />
-                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins - Regular' }}>Calculator</Text>
+                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins-Regular' }}>Calculator</Text>
                 <View style={{ width: wp(30) }} />
 
             </View>
@@ -105,7 +105,7 @@ const ReportTab = ({ navigation }) => {
                 marginTop: hp(4), height: hp(9), alignItems: 'center', justifyContent: 'space-between'
             }}>
                 <Ionicons name='chevron-back-outline' size={hp(3)} color='#fff' style={{ width: wp(30) }} onPress={() => navigation.goBack()} />
-                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins - Regular' }}>Report</Text>
+                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins-Regular' }}>Report</Text>
                 <View style={{ width: wp(30) }} />
 
             </View>

@@ -423,7 +423,7 @@ class App extends Component {
                                             alignItems: 'center',
                                             color: theme.colors.textColor,
                                             fontWeight: 'bold',
-                                            top: 5,
+                                            top: Platform.OS === 'ios' ? 10 : 5,
                                             textAlignVertical: 'center',
                                             fontFamily: "Poppins-SemiBold",
 
@@ -437,13 +437,13 @@ class App extends Component {
                                         style={{
                                             width: '35%',
                                             height: '80%',
-                                            marginTop: '2%',
+                                            marginTop: Platform.OS === 'ios' ? "0%" : '2%',
                                             fontSize: 14,
                                             textAlign: 'center',
                                             alignItems: 'center',
                                             color: 'white',
                                             // fontWeight: 'bold',
-                      paddingTop:3,
+                      paddingTop:Platform.OS === 'ios' ? 5 : 3,
 
                                             borderRadius: 5,
                                             backgroundColor: '#69BA53',

@@ -19,9 +19,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 
-export default function NewsFeedView({ navigation, route }) {
+export default function NewsFeedView({ navigation ,route}) {
 
-    console.log('navigation', navigation, route)
+    console.log('navigation', navigation,route)
 
     const [News, setNews] = useState([])
     const [loading, setLoading] = useState(true)
@@ -34,10 +34,10 @@ export default function NewsFeedView({ navigation, route }) {
     useEffect(() => {
         try {
             let data = {
-                news_id: route.params.Id
+                news_id:route.params.Id
 
             };
-            console.log("data>>>>>>>>>>>>>", data);
+            console.log("data>>>>>>>>>>>>>",data);
             // console.log('Negotiation Request Param: ' + JSON.stringify(data));
             const formData = new FormData();
             formData.append('data', JSON.stringify(data));
@@ -71,7 +71,7 @@ export default function NewsFeedView({ navigation, route }) {
         } catch (error) {
             console.log('Error: ' + error);
         }
-    }, [interested])
+    }, [loading])
 
 
 
@@ -86,7 +86,7 @@ export default function NewsFeedView({ navigation, route }) {
     const backgroundStyle = {
         flex: 1,
         width: '100%',
-        height: hp(86),
+        // height: hp(86),
         paddingBottom: 30,
         paddingTop: hp(3),
         marginTop: hp(2),
@@ -101,7 +101,7 @@ export default function NewsFeedView({ navigation, route }) {
     const FirstRoute = ({ item }) => {
         console.log('hellow', item)
         return (<View style={{ flex: 1, marginTop: hp(1) }}>
-            <Image style={{ width: wp(90), height: hp(25) }} source={{ uri: item.image }} />
+            <Image style={{ width: wp(90), height: hp(25) }} source={{uri:item.image}} />
             <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', paddingHorizontal: wp(2) }}>
                 <Text style={styles.label}>{item.name}</Text>
                 <Text style={[styles.VAlue1], { opacity: 0.5 }}>{item.time_ago}</Text>
@@ -152,15 +152,15 @@ export default function NewsFeedView({ navigation, route }) {
             flex: 1, backgroundColor: '#333',
 
         }}>
-            {loading &&
-                <Spinner visible={loading} color="#085cab" />}
+            {loading && 
+            <Spinner visible={loading} color="#085cab" />}
 
             <View style={{
                 flexDirection: 'row', paddingHorizontal: wp(5),
-                marginTop: hp(5), height: hp(5), alignItems: 'center', justifyContent: 'space-between'
+                marginTop: hp(4), height: hp(9), alignItems: 'center', justifyContent: 'space-between'
             }}>
                 <Ionicons name='chevron-back-outline' size={hp(3)} color='#fff' style={{ width: wp(30) }} onPress={() => navigation.goBack()} />
-                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins - Regular' }}>News Feed</Text>
+                <Text style={{ alignSelf: 'center', color: '#fff', fontSize: hp(3), fontFamily: 'Poppins-Regular' }}>News Feed</Text>
                 <View style={{ width: wp(30) }} />
 
             </View>

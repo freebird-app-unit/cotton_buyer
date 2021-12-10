@@ -215,8 +215,9 @@ ListTransaction = (props) => {
 
             if (response.status == 200) {
 
-                console.log('response', response.data)
+                // console.log('response', response.data)
                 let obj = {}
+
                 let temp = ''
                 let dt = ''
                 let list = response.data.data.map(item => {
@@ -375,9 +376,10 @@ export default class Dashboard extends Component {
 
 
     logoutSuccess = async () => {
-        await EncryptedStorage.setItem('isLogout', JSON.stringify(true));
-        await EncryptedStorage.setItem('user_id', null)
         this.props.navigation.navigate("LoginScreen");
+
+        await EncryptedStorage.setItem('isLogout', 'true');
+        await EncryptedStorage.setItem('user_id', null)
     };
     
 
