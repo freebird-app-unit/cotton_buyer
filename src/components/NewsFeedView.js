@@ -32,7 +32,7 @@ export default function NewsFeedView({ navigation,Props }) {
 
 
             let data = {
-                limit: '5',
+                limit: page === 1 ? '10' : '5',
                 offset: page,
 
             };
@@ -54,7 +54,7 @@ export default function NewsFeedView({ navigation,Props }) {
                     // console.log('response :', response.data.status);
 
                     if (response.data.status == 200) {
-                        console.log('response id :????', response.data.data);
+                        console.log('response id :????', JSON.stringify(response.data.data));
                         // setinterested((previous) => [...previous, response.data.data])
                         serRefresh(false);
 
@@ -216,7 +216,7 @@ export default function NewsFeedView({ navigation,Props }) {
                     data={News.slice(5)}
                     renderItem={renderItem}
                     extraData={loading}
-                    onEndReachedThreshold={0.7}
+                    onEndReachedThreshold={0.5}
                     onEndReached={handleLoadMore}
                     refreshControl={
                         <RefreshControl

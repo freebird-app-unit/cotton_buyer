@@ -73,7 +73,7 @@ const Plan = ({ navigation,route }) => {
 
             axios({
                 url: api_config.BASE_URL + api_config.PLAN_LIST,
-                method: 'GET',
+                method: 'POST',
                 data: formData,
                 headers: {
                     Accept: 'application/json',
