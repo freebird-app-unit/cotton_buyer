@@ -9,6 +9,7 @@ import {
   AppState,
   TouchableWithoutFeedback,
   FlatList,
+  Platform,
 } from 'react-native';
 import {baseUrl} from '../components/Global';
 import {fontSizeMyPostCenterText} from '../components/Global';
@@ -717,15 +718,15 @@ class DealDetails extends Component {
     var myData = this.state.dealDetails;
 
     return (
-      // <Background>
+      <Background>
         <View
-          style={{
-            flex: 1,
-            width: '100%',
-            // height: '100%',
-            position: 'relative',
-            marginTop: -40,
-            backgroundColor: 'white',
+        style={{
+          flex: 1,
+          width: '100%',
+          // height: '100%',
+          position: 'relative',
+          // marginTop: -40,
+          backgroundColor: 'white',
           }}>
 
           {/* <View style={{width: '100%', height: 30, marginTop: 40}}>
@@ -859,7 +860,7 @@ class DealDetails extends Component {
                       style={{
                         flexDirection: 'row',
                         width: '65%',
-                        height: '100%',
+                        height: Platform.OS === 'ios' ? undefined : '100%',
                         alignItems: 'center',
                       }}>
                       <TouchableOpacity onPress={() => this.onClickMinusIcon()}>
@@ -877,11 +878,11 @@ class DealDetails extends Component {
                       <Text
                         style={{
                           width: '45%',
-                          textAlign: 'center',
-                          textAlignVertical: 'center',
-                          height: '100%',
-                          color: theme.colors.textColor,
-                          fontWeight: 'bold',
+                    textAlign: 'center',
+                    textAlignVertical: 'center',
+                    height: Platform.OS === 'ios' ? undefined : '100%',
+                    color: theme.colors.textColor,
+                    fontFamily: 'Poppins-SemiBold',
                         }}>
                         {this.state.displayBalesCount}
                       </Text>
@@ -1331,7 +1332,7 @@ class DealDetails extends Component {
             </Provider>
           )}
         </View>
-      // </Background>
+      </Background>
     );
   }
 }
@@ -1538,7 +1539,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 0,
     fontFamily:'Poppins-Regular'
   },
-  dropdown3DropdownStyle: {backgroundColor: 'white',marginTop:heightPercentageToDP(-4)},
+  dropdown3DropdownStyle: {backgroundColor: 'white',marginTop:heightPercentageToDP(Platform.OS === 'ios' ? 0 : -4)},
   dropdown3RowStyle: {
     backgroundColor: '#fff',
     borderBottomColor: '#444',

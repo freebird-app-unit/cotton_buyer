@@ -505,7 +505,7 @@ const SelectBroker = ({ navigation }) => {
             alignSelf: "center",
             color: "#fff",
             fontSize: hp(3),
-            fontFamily: "Poppins - Regular",
+            fontFamily: "Poppins-Regular",
           }}
         >
           Select Broker

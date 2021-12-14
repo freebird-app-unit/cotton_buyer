@@ -193,20 +193,20 @@ class Dashboard extends Component {
         borderRadius: 5,
       },
       dealTabTextBox1: {
-        height: 40,
+        // height: 40,
         width: '100%',
         textAlign: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlignVertical: 'center',
         color: 'white',
         fontFamily: 'Poppins-Regular',
 
       },
       dealTabTextBox2: {
-        height: 40,
+        // height: 40,
         width: '100%',
         textAlign: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlignVertical: 'center',
         color: theme.colors.textColor,
         fontFamily: 'Poppins-Regular',
@@ -821,20 +821,20 @@ class Dashboard extends Component {
         borderRadius: 5,
       },
       dealTabTextBox1: {
-        height: 40,
+        // height: 40,
         width: '100%',
         textAlign: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlignVertical: 'center',
         color: 'white',
         fontFamily: 'Poppins-Regular',
 
       },
       dealTabTextBox2: {
-        height: 40,
+        // height: 40,
         width: '100%',
         textAlign: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlignVertical: 'center',
         color: theme.colors.textColor,
         fontFamily: 'Poppins-Regular',
@@ -949,20 +949,20 @@ class Dashboard extends Component {
         borderRadius: 5,
       },
       dealTabTextBox2: {
-        height: 40,
+        // height: 40,
         width: '100%',
         textAlign: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlignVertical: 'center',
         color: 'white',
         fontFamily: 'Poppins-Regular',
 
       },
       dealTabTextBox1: {
-        height: 40,
+        // height: 40,
         width: '100%',
         textAlign: 'center',
-        alignItems: 'center',
+        // alignItems: 'center',
         textAlignVertical: 'center',
         color: theme.colors.textColor,
         fontFamily: 'Poppins-Regular',
@@ -1180,24 +1180,25 @@ class Dashboard extends Component {
                         }}>
                         <TouchableOpacity
                           onPress={() => this.onClickRespond(el)}>
+                            <View style={{
+                              height: '100%',
+                              alignItems: 'center',justifyContent:'center',
+                              borderRadius: 5,
+                              backgroundColor: '#69BA53',
+                              width: '100%',
+                            }}>
                           <Text
                             numberOfLines={1}
                             ellipsizeMode="tail"
                             style={{
-                              width: '100%',
-                              height: '100%',
                               fontSize: 14,
-                              textAlign: 'center',
-                              alignItems: 'center',
+                              // textAlign: 'center',
                               color: 'white',
-                              borderRadius: 5,
-                              backgroundColor: '#69BA53',
-                              textAlignVertical: 'center',
-                              paddingTop:5,
+                              // textAlignVertical: 'center',
                               fontFamily: 'Poppins-Regular',
                             }}>
                             Respond
-                          </Text>
+                          </Text></View>
                         </TouchableOpacity>
                       </View>
                     )
@@ -1243,26 +1244,25 @@ class Dashboard extends Component {
                         height: 35,
                       }}>
                       <TouchableOpacity onPress={() => this.onClickRespond(el)}>
-                        <Text
-                          numberOfLines={1}
-                          ellipsizeMode="tail"
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            fontSize: 14,
-                            textAlign: 'center',
-                            alignItems: 'center',
-                            color: 'white',
-                            borderRadius: 5,
-                            backgroundColor: '#69BA53',
-                            textAlignVertical: 'center',
-                            fontFamily: 'Poppins-Regular',
-                            paddingTop: 5
-
-
-                          }}>
+                      <View style={{
+                              height: '100%',
+                              alignItems: 'center',justifyContent:'center',
+                              borderRadius: 5,
+                              backgroundColor: '#69BA53',
+                              width: '100%',
+                            }}>
+                          <Text
+                            numberOfLines={1}
+                            ellipsizeMode="tail"
+                            style={{
+                              fontSize: 14,
+                              // textAlign: 'center',
+                              color: 'white',
+                              // textAlignVertical: 'center',
+                              fontFamily: 'Poppins-Regular',
+                            }}>
                           Respond
-                        </Text>
+                        </Text></View>
                       </TouchableOpacity>
                     </View>
                   )}
@@ -1684,25 +1684,26 @@ class Dashboard extends Component {
                 }}>
                 <TouchableOpacity
                   onPress={() => this.onClickNotificationView(el)}>
+                    <View style={{
+                              height: '100%',
+                              alignItems: 'center',justifyContent:'center',
+                              borderRadius: 5,
+                              backgroundColor: '#69BA53',
+                              width: '100%',
+                            }}>
                   <Text
                     numberOfLines={1}
                     ellipsizeMode="tail"
                     style={{
-                      width: '100%',
-                      height: '100%',
                       fontSize: 14,
                       textAlign: 'center',
-                      alignItems: 'center',
                       color: 'white',
-                      borderRadius: 5,
-                      backgroundColor: '#69BA53',
                       textAlignVertical: 'center',
-                      paddingTop:5,
                       fontFamily: 'Poppins-Regular',
 
                     }}>
                     View
-                  </Text>
+                  </Text></View>
                 </TouchableOpacity>
               </View>
             </View>
@@ -1747,7 +1748,7 @@ class Dashboard extends Component {
             onRefresh={this._onRefresh}
         />}
          >
-        <Spinner visible={this.state.spinner} color="#085cab" />
+        {/* <Spinner visible={this.state.spinner} color="#085cab" /> */}
         <View style={{marginTop: 20}}>
           <View
             style={{
@@ -1784,24 +1785,36 @@ class Dashboard extends Component {
           <View style={styles.dealTopMainContainer}>
             <View style={this.state.dealTabStyle1}>
               <TouchableOpacity onPress={() => this.onClickNegotiation()}>
-                <Text
+              <View style={{
+                  height: 40,
+        width: '100%',        
+        alignItems: 'center',
+        justifyContent:'center',        
+        // paddingTop: 5,
+                }}><Text
                   numberOfLines={1}
                   ellipsizeMode="tail"
-                  style={[this.state.dealTabTextBox1, { paddingTop: 5 }]}>
+                  style={this.state.dealTabTextBox1}>
                   In Negotiation
-                </Text>
+                </Text></View>
               </TouchableOpacity>
             </View>
 
             <View style={this.state.dealTabStyle2}>
               <TouchableOpacity onPress={() => this.onClickNotification()}>
-                <Text
+              <View style={{
+                  height: 40,
+        width: '100%',        
+        alignItems: 'center',
+        justifyContent:'center',        
+        // paddingTop: 5,
+                }}><Text
                   numberOfLines={1}
                   ellipsizeMode="tail"
         
-                style={[this.state.dealTabTextBox2, {paddingTop:5}]}>
+                style={this.state.dealTabTextBox2}>
                   Notification
-                </Text>
+                </Text></View>
               </TouchableOpacity>
             </View>
           </View>

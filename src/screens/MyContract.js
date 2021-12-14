@@ -299,7 +299,7 @@ class App extends Component {
                         (
                             <View>
                                 <View style={{ flexDirection: 'row', width: '100%' }}>
-                                   {arrDealDetails.length > 0 && (<View
+                                    {arrDealDetails.length > 0 && ( <View
                                         style={{
                                             flex: 1,
                                             marginLeft: '5%',
@@ -320,7 +320,7 @@ class App extends Component {
                                             }}>
                                             {displayDate}
                                         </Text>
-                                    </View>)}
+                                    </View> )}
                                 </View>
 
                                 {arrDealDetails.map((dd, j) => (
@@ -443,24 +443,26 @@ class App extends Component {
 
                                                     {(dd.is_buyer_otp_verify == 1 && dd.is_seller_otp_verify == 1 && dd.is_broker_otp_verify == 1 )  ? 
                                                         (<TouchableOpacity onPress={() => this.onClickDownload(dd.url)}>
+                                                            <View style={{justifyContent:'center',
+                                                                borderRadius: 5,alignItems:'center',
+                                                                backgroundColor: '#69BA53',width: '100%',
+                                                                height: '100%',}}>
                                                         <Text
                                                             numberOfLines={1}
                                                             ellipsizeMode="tail"
                                                             style={{
-                                                                width: '100%',
-                                                                height: '100%',
+                                                                
                                                                 fontSize: 14,
                                                                 textAlign: 'center',
                                                                 alignItems: 'center',
-                                                                color: 'white',
-                                                                borderRadius: 5,paddingHorizontal:widthPercentageToDP(1),
-                                                                backgroundColor: '#69BA53',
+                                                                color: 'white',paddingHorizontal:widthPercentageToDP(1),
+                                                                
                                                                 textAlignVertical: 'center',
                                 fontFamily:'Poppins-Regular'
 
                                                             }}>
                                                          Download
-                                                        </Text>
+                                                        </Text></View>
                                                     </TouchableOpacity>) :
                                                         (<TouchableOpacity 
                                                             disabled={dd.is_buyer_otp_verify == 1}
@@ -470,25 +472,27 @@ class App extends Component {
                                                                     set: true, deal_Id: dd.deal_id, 
                                                                     otpArray: ['', '', '', '', '', ''],
                                                                     otpArrayMail: ['', '', '', '', '', '']})
-                                                                              }}>
+                                                                              }}><View style={{justifyContent:'center',
+                                                                borderRadius: 5,alignItems:'center',
+                                                                backgroundColor: (dd.is_buyer_otp_verify == 1 ) ? 'rgba(105, 186, 83, 0.7)' : '#69BA53',width: '100%',
+                                                                height: '100%',}}>
                                                         <Text
                                                             numberOfLines={1}
                                                             ellipsizeMode="tail"
                                                             style={{
-                                                                width: '100%',
-                                                                height: '100%',
+                                                               
                                                                 fontSize: 14,
                                                                 textAlign: 'center',
-                                                                alignItems: 'center',
+                                                                
                                                                 color: 'white',
-                                                                borderRadius: 5,
-                                                                backgroundColor: (dd.is_buyer_otp_verify == 1 ) ? 'rgba(105, 186, 83, 0.7)' : '#69BA53',
+                                                                
+                                                                
                                                                 textAlignVertical: 'center',
                                 fontFamily:'Poppins-Regular'
 
                                                             }}>
                                                                 Pending Verification
-                                                        </Text>
+                                                        </Text></View>
                                                     </TouchableOpacity>)}
                                                 </View>
                                             </View>

@@ -17,6 +17,7 @@ import defaultMessages from '../helpers/defaultMessages';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import { io } from "socket.io-client";
+// import ItemMcx from './ItemMcx';
 if (!window.location) {
     // MCXScreen is running in simulator
     // console.log('sdfsdf', window.navigator)
@@ -315,7 +316,7 @@ const MCXScreen = ({ navigation, route }) => {
         // console.log('item', item)
         return (
             <TouchableOpacity onPress={() => onItemShow(item)}>
-            <View style={{flexDirection:'column'}} >
+            <View style={{flexDirection:'column'}} key={item.name.toString()}>
             <View style={{ flexDirection: 'column', }}>
                 <View style={{
                     flexDirection: 'row', alignSelf: 'center', justifyContent: 'space-between', width: wp(94),
@@ -449,15 +450,17 @@ const MCXScreen = ({ navigation, route }) => {
         console.log('state', state);
 
     }
-
+   const shouldComponentUpdate = () => {
+        return false
+    }
     const sepratorComponent = () => <View style={{
         borderBottomColor: 'lightgray',
         borderBottomWidth: 0.5,marginTop:hp(1)}} />
     
         const getItemLayout = 
             useCallback((data,index) => ({
-                length: hp(9),
-                offset : hp(9) * index,
+                length: hp(11),
+                offset : hp(11) * index,
                 index,
             }),
             []);
@@ -477,10 +480,13 @@ const MCXScreen = ({ navigation, route }) => {
                     flex: 1
                 }}>
                     <FlatList data={mcxData}
+                    style={{flex:1}}
                         renderItem={renderItem}
+                        // renderItem={({item, index}) => <ItemMcx item={item} onItemShow={onItemShow} calculationPercentage={calculationPercentage} />}
                         // renderSectionHeader={({ section }) => <Text style={styles.sectionHeader}>{section.title}</Text>}
                         keyExtractor={keyExtractor}
                         windowSize={2}
+                        // shouldItemUpdate={shouldComponentUpdate}
                         initialNumToRender={3}
                         viewabilityConfig={viewabilityConfig}
                         maxToRenderPerBatch={1}

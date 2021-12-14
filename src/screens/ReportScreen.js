@@ -38,23 +38,28 @@ const TouchableFunction = ({ ...props }) => {
         <TouchableOpacity style={{
             backgroundColor: '#F0F5F9',
             borderRadius: 5,
-            width: (wp(93) / 3)
+            width: (wp(93) / 3),
+            height:  35,
+            alignItems:'center',
+            justifyContent:'center',
+            backgroundColor: props.flag ? theme.colors.primary : '#F0F5F9',
+
         }}
             onPress={props.onPress}
             onPressIn={props.onPressIn}>
             <Text numberOfLines={1}
                 ellipsizeMode='tail'
                 style={{
-                    flex: 1,
+                    // flex: 1,
                     color: props.flag ? '#fff' : theme.colors.textColor,
                     fontSize: hp(1.8),
-                    backgroundColor: props.flag ? theme.colors.primary : '#F0F5F9',
-                    borderRadius: 5,
+                    // backgroundColor: props.flag ? theme.colors.primary : '#F0F5F9',
+                    // borderRadius: 5,
                     fontFamily: 'Poppins-Regular',
-                    height: 35,
+                    // height: 35,
                     textAlign: 'center',
                     textAlignVertical: 'center',
-                    paddingTop:3
+                    // paddingTop:3
                 }}>{props.title}</Text></TouchableOpacity>
     )
 

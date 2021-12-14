@@ -473,7 +473,7 @@ const styles = StyleSheet.create({
     submitButtonText: {
         color: colors.WHITE,
         //backgroundColor:colors.GREEN,
-        fontFamily: 'popins',
+        fontFamily: 'Poppins-SemiBold',
         fontSize: 18,
         alignItems: 'center',
     },

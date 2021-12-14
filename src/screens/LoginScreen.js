@@ -34,6 +34,7 @@ import api_config from '../Api/api';
 import {login_api} from '../Api/login_api';
 import axios from 'axios';
 import EncryptedStorage from 'react-native-encrypted-storage';
+import { heightPercentageToDP } from '../components/responsive-ratio';
 
 var Aes = NativeModules.Aes;
 
@@ -274,10 +275,13 @@ const LoginScreen = ({route, navigation}) => {
       await EncryptedStorage.setItem('isLogout', JSON.stringify(isLogout));
       await EncryptedStorage.setItem('user_data', JSON.stringify(data));
       await EncryptedStorage.setItem('user_id', id.toString());
+      // console.log('hi', await EncryptedStorage.getItem('Plan_data'))
 
-      let dataPlan = JSON.parse(await EncryptedStorage.getItem('Plan_data'));
+      let dataPlan = await EncryptedStorage.getItem('Plan_data');
+      dataPlan = dataPlan &&  JSON.parse(dataPlan)
+      // console.log('hi')
 
-      console.log('dataPlan>>>>>>.', dataPlan)
+      // console.log('dataPlan>>>>>>.', dataPlan)
       setLoading(false);
 
       if (dataPlan && dataPlan.user_id == id)
@@ -366,14 +370,11 @@ const LoginScreen = ({route, navigation}) => {
           resizeMode={'contain'}
         />
       </View>
-
-      
-<ScrollView>
         <View
           style={{
           backgroundColor: '#fff',
           // width: '120%',
-          flex: 1,
+          // flex: 1,
           marginTop: '5%',
           // height: '75%',
           borderTopLeftRadius: 25,
@@ -427,7 +428,6 @@ const LoginScreen = ({route, navigation}) => {
           </TouchableOpacity>
           <View style={{ alignItems: 'center', bottom: 5}}><Text style={{fontFamily:'Poppins-Regular'}}>Version: {defaultMessages.en.versionNumber}</Text></View>
         </View>
-        </ScrollView>
     </View>
      
   );
@@ -490,7 +490,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '46%', justifyContent: 'center',alignItems:'center'
+    height: heightPercentageToDP(41), justifyContent: 'center',alignItems:'center'
   },
 });
 

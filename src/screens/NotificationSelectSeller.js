@@ -11,6 +11,7 @@ import {
   FlatList,
   Alert,
   SafeAreaView,
+  Platform,
 } from "react-native";
 import { baseUrl } from "../components/Global";
 import { fontSizeMyPostCenterText } from "../components/Global";
@@ -1064,7 +1065,7 @@ else {
                   />
                 </View>
                 {this.state.sellerList.length > 0 ? <FlatList
-                  style={{ flex: 1 }}
+                  style={{ flex: 1,maxHeight:heightPercentageToDP(35)}}
                   data={this.state.sellerList}
                   keyExtractor={this._keyExtractor.bind(this)}
                   renderItem={this._renderItem.bind(this)}
@@ -1307,7 +1308,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular'
 
   },
-  dropdown3DropdownStyle: { backgroundColor: "white", marginTop: heightPercentageToDP(-4) },
+  dropdown3DropdownStyle: { backgroundColor: "white", marginTop: heightPercentageToDP(Platform.OS === 'ios' ? 0 : -4) },
   dropdown3RowStyle: {
     backgroundColor: "#fff",
     borderBottomColor: "#444",
